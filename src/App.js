@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Products from "./pages/Products";
 import Profile from "./pages/Profile";
+import Chat from "./pages/Chat";
 
 function App() {
   return (

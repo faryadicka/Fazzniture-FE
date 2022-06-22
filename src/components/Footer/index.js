@@ -14,8 +14,8 @@ class Footer extends Component {
   render() {
     return (
       <div className='footer-container'>
-        <div className='row justify-content-center footer-padding-column'>
-          <div className='col-md-3 footer-brand-column'>
+        <div className='row container justify-content-center footer-padding-column'>
+          <div className='col-md-3 col-10 footer-brand-column'>
             <h1>FAZZNITURE</h1>
             <p className='footer-desc'>Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo.</p>
             <div className='d-flex justify-content-around'>
@@ -25,7 +25,7 @@ class Footer extends Component {
               <img src={Discord} alt="facebook-logo" />
             </div>
           </div>
-          <div className='col-md-2 footer-company-column'>
+          <div className='col-md-2 col-6 footer-company-column mt-4'>
             <ul className="footer-style-list">
               <h5 className='text-bold'>COMPANY</h5>
               <li>ABOUT US</li>
@@ -35,7 +35,7 @@ class Footer extends Component {
               <li>SITE MAP</li>
             </ul>
           </div>
-          <div className='col-md-2 footer-user-column'>
+          <div className='col-md-2 col-6 footer-user-column mt-4'>
             <ul className="footer-style-list">
               <h5 className='text-bold'>USER FUL</h5>
               <li>THE COLLECTION</li>
@@ -44,7 +44,7 @@ class Footer extends Component {
               <li>INSTAGRAM SHOP</li>
             </ul>
           </div>
-          <div className='col-md-4 footer-contact-column'>
+          <div className='col-md-4 col-12 footer-contact-column mt-3'>
             <ul className="footer-style-list">
               <h5 className='text-bold'>CONTACT US</h5>
               <li><img src={Mail} alt="mail-logo" /> info@la-studioweb.com</li>
