@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+.header-color-black{
+    color:  #1A1A1A;
+}
+.header-arimo-16{
+    font-family: 'Arimo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+}
+.header-arimo-56{
+    font-family: 'Arimo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 64px;
+}
+.header-main{
+    background: url("../../assets/background/Header-Background.png");
+}
+.header-path{
+    position: absolute;
+    margin-left: 80px;
+    padding-top: 40px;
+    cursor: pointer;
+}
+.header-title{
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+    padding-top: 75px;
+}
+.header-desc{
+    text-align: center;
+    padding-bottom: 70px;
+}
