@@ -1,0 +1,32 @@
+*,
+::after,
+::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  color: white;
+  background-color: #000;
+  width: 100%;
+  height: 520px;
+}
+
+.footer-style-list > li {
+  list-style: none;
+  font-size: 13px;
+  margin-top: 20px;
+  color: #b4b4b4;
+}
+
+.footer-desc {
+  color: #b4b4b4;
+}
+
+.footer-padding-column {
+  padding-top: 100px;
+}
+
+.footer-contact-column {
+  padding-left: 50px;
+}
