@@ -1,0 +1,91 @@
+.product-detail-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.image-zoom {
+  width: 800px;
+}
+
+.image-rate {
+  width: 150px;
+}
+
+.button-count {
+  background-color: white;
+  border: none;
+}
+
+.counter-box {
+  display: flex;
+  background-color: white;
+  border: 1px solid black;
+  width: 100px;
+  height: 50px;
+}
+
+.button-cart {
+  margin-left: 10px;
+  background-color: black;
+  color: white;
+  width: 150px;
+  padding: 5px;
+}
+
+.button-wishlist {
+  border: 1px solid black;
+  margin-left: 10px;
+  background-color: white;
+  color: black;
+  width: 150px;
+  padding: 5px;
+}
+
+.square-love {
+  background-color: black;
+  margin-left: 10px;
+  width: 50px;
+}
+
+.love-button {
+  position: relative;
+  left: 13px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.description-list > li {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.add-info {
+  width: 350px;
+}
+
+.social-media-pd > img {
+  width: 35px;
+  margin-right: 20px;
+}
+
+.button-information > button {
+  background-color: white;
+  font-size: 26px;
+  padding-bottom: 10px;
+}
+
+.btn-unborder {
+  border: none;
+}
+
+.btn-border {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid black;
+}
+
+@media (max-width: 600px) {
+  .image-zoom {
+    width: 100%;
+  }
+}

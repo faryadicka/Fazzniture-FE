@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Products from "./pages/Products";
 import Profile from "./pages/Profile";
 import Chat from "./pages/Chat";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/products" element={<Products />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/product-detail/:id" element={<ProductDetail />} />
           </Routes>
         </Router>
       </PersistGate>
