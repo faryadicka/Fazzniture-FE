@@ -1,16 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 // assets
 import "./Profile.css";
-import Avatar from "../../assets/avatar-collab.png";
-import Edit from "../../assets/edit.png";
-import Edit3 from "../../assets/edit-3.png";
-import Logout from "../../assets/log-out.png";
+import Avatar from "../../assets/img/avatar-collab.png";
+import Edit from "../../assets/vector/edit.png";
+import Edit3 from "../../assets/vector/edit-3.png";
+import Logout from "../../assets/vector/log-out.png";
 
 //components
 import Footer from "../../components/Footer/index";
 import Navbar from "../../components/Navbar/index";
 import Header from "../../components/Header/index";
+
+//ReduxAction
+import { getProfileAction } from "../../redux/actionCreator/auth";
 
 class Profile extends Component {
   constructor(props) {
@@ -30,8 +34,6 @@ class Profile extends Component {
     };
     this.inputFile = React.createRef();
   }
-
-  //getProfilById
 
   handleUpload = (event) => {
     event.preventDefault();
@@ -75,6 +77,11 @@ class Profile extends Component {
     event.preventDevault();
     //patch axios
   };
+
+  componentDidMount() {
+    const { dispatch, token } = this.props;
+    dispatch(getProfileAction(token));
+  }
 
   render() {
     const {
@@ -283,4 +290,21 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+  const {
+    auth: {
+      userData: { name, email, gender, pict, description },
+      authData: { token },
+    },
+  } = state;
+  return {
+    name,
+    email,
+    gender,
+    pict,
+    description,
+    token,
+  };
+};
+
+export default connect(mapStateToProps)(Profile);

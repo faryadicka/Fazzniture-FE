@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 
 // assets
 import "./Chat.css"
-import Avachat from "../../assets/ava-chat.png"
-import Path from "../../assets/Path.png"
+import Avachat from "../../assets/img/ava-chat.png"
+import Path from "../../assets/vector/Path.png"
 
 //component
 import Navbar from '../../components/Navbar'

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 //assets
 import "./Product.css";
-import Drop from "../../assets/dropdown.png";
+import Drop from "../../assets/vector/dropdown.png";
+import Favorite from "../../assets/img/favImage.png";
 
 //componenets
 import Navbar from "../../components/Navbar";
@@ -25,7 +26,7 @@ class Products extends Component {
           <div className="row justify-content-between px-4 px-md-0">
             <div className="col-12 col-md-3">
               <div className="row">
-                <div className="col-6 col-md-12 my-md-5">
+                <div className="col-6 col-md-12 my-md-3">
                   <div className="row">
                     <h5>CATEGORY</h5>
                     <CategoryList name="Accessories" qty="0" />
@@ -49,7 +50,7 @@ class Products extends Component {
                     </div>
                   </form>
                 </div>
-                <div className="col-3 col-md-12 my-md-5">
+                <div className="col-3 col-md-12 my-md-3">
                   <h5>BRANDS</h5>
                   <CheckBoxBrands brands="IKEA" />
                   <CheckBoxBrands brands="IKEA" />
@@ -58,7 +59,7 @@ class Products extends Component {
                   <CheckBoxBrands brands="IKEA" />
                   <CheckBoxBrands brands="IKEA" />
                 </div>
-                <div className="col-3 col-md-12 my-md-5">
+                <div className="col-3 col-md-12 my-md-3">
                   <h5 className="mb-md-4">COLORS</h5>
                   <button className="button-color choco me-3"></button>
                   <button className="button-color blue me-3"></button>
@@ -67,11 +68,19 @@ class Products extends Component {
                   <button className="button-color green me-3"></button>
                   <button className="button-color orange"></button>
                 </div>
-                <div className="col-3 col-md-12 my-md-5">
+                <div className="col-3 col-md-12 my-md-3">
                   <h5 className="mb-md-4">SIZES</h5>
                   <div className="d-flex gap-1 flex-wrap">
                     <SizeButton size="S" />
                   </div>
+                </div>
+                <div className="col-3 col-md-12 my-md-3">
+                  <img
+                    className="w-100 mt-md3-3"
+                    src={Favorite}
+                    alt="favorite"
+                  />
+                  <button className="product-button-fav">SHOP NOW</button>
                 </div>
               </div>
             </div>
