@@ -14,7 +14,7 @@ import Navbar from "../../components/Navbar/index";
 import Header from "../../components/Header/index";
 
 //ReduxAction
-import { getProfileAction } from "../../redux/actionCreator/auth";
+// import { getProfileAction } from "../../redux/actionCreator/auth";
 
 class Profile extends Component {
   constructor(props) {
@@ -79,8 +79,8 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    const { dispatch, token } = this.props;
-    dispatch(getProfileAction(token));
+    // const { dispatch, token } = this.props;
+    // dispatch(getProfileAction(token));
   }
 
   render() {
@@ -292,17 +292,11 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => {
   const {
-    auth: {
-      userData: { name, email, gender, pict, description },
-      authData: { token },
+    user: {
+      loginData: { token },
     },
   } = state;
   return {
-    name,
-    email,
-    gender,
-    pict,
-    description,
     token,
   };
 };
