@@ -7,8 +7,7 @@ import { store, persistor } from "./redux/store"
 
 // Pages
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Auth from "./pages/Auth";
 import Products from "./pages/Products";
 import Profile from "./pages/Profile";
 import Chat from "./pages/Chat";
@@ -20,8 +19,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/auth" element={<Auth/>} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/products" element={<Products />} />
             <Route path="/chat" element={<Chat />} />
