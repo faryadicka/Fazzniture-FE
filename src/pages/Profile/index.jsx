@@ -38,11 +38,26 @@ class Profile extends Component {
     const { dispatch, token } = this.props;
     dispatch(getProfileAction(token)).then((res) => {
       this.setState({
-        username: res.value.data.username,
-        email: res.value.data.email,
-        gender: res.value.data.gender,
-        store: res.value.data.description,
-        image: res.value.data.pict,
+        username:
+          res.value.data.username === undefined
+            ? "gak ada datanya"
+            : res.value.data.username,
+        email:
+          res.value.data.email === undefined
+            ? "gak ada datanya"
+            : res.value.data.email,
+        gender:
+          res.value.data.gender === undefined
+            ? "gak ada datanya"
+            : res.value.data.gender,
+        store:
+          res.value.data.description === undefined
+            ? "gak ada datanya"
+            : res.value.data.description,
+        image:
+          res.value.data.pict === undefined
+            ? "gak ada datanya"
+            : res.value.data.pict,
       });
     });
   };
