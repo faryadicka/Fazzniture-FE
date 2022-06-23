@@ -14,7 +14,7 @@ class Footer extends Component {
   render() {
     return (
       <div className='footer-container'>
-        <div className='row container justify-content-center footer-padding-column'>
+        <div className='row container justify-content-center footer-padding-column text-center text-md-left'>
           <div className='col-md-3 col-10 footer-brand-column'>
             <h1>FAZZNITURE</h1>
             <p className='footer-desc'>Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo.</p>
