@@ -1,0 +1,21 @@
+.button-size-products {
+  padding: 0 20px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.button-size-products:hover {
+  background-color: #212121;
+  color: white;
+}
+
+.size-white {
+  background-color: white;
+  color: #212121;
+}
+
+.size-black {
+  background-color: #212121;
+  color: white;
+}

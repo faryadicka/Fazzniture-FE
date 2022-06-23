@@ -24,8 +24,9 @@
 }
 
 .footer-padding-column {
-  padding-top: 100px;
+  padding: 100px 0;
   margin-right: 0px !important;
+  margin-left: 100px !important;
 }
 
 .footer-contact-column {

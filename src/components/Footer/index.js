@@ -2,20 +2,20 @@ import React, { Component } from 'react'
 
 // assets
 import './Footer.css'
-import Facebook from '../../assets/1.png'
-import Twitter from '../../assets/2.png'
-import Youtube from '../../assets/3.png'
-import Discord from '../../assets/4.png'
-import Mail from '../../assets/mail.png'
-import Call from '../../assets/call.png'
-import Time from '../../assets/time.png'
+import Facebook from '../../assets/vector/1.png'
+import Twitter from '../../assets/vector/2.png'
+import Youtube from '../../assets/vector/3.png'
+import Discord from '../../assets/vector/4.png'
+import Mail from '../../assets/vector/mail.png'
+import Call from '../../assets/vector/call.png'
+import Time from '../../assets/vector/time.png'
 
 class Footer extends Component {
   render() {
     return (
       <div className='footer-container'>
-        <div className='row container justify-content-center footer-padding-column'>
-          <div className='col-md-3 col-10 footer-brand-column'>
+        <div className='row container justify-content-center footer-padding-column text-md-left'>
+          <div className='col-md-3 col-10 footer-brand-column mt-md-4'>
             <h1>FAZZNITURE</h1>
             <p className='footer-desc'>Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo.</p>
             <div className='d-flex justify-content-around'>

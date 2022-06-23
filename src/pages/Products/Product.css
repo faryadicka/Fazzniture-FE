@@ -3,13 +3,6 @@
   padding-bottom: 100px;
 }
 
-.button-black-reuseable {
-  background-color: black;
-  color: white;
-  width: 120px;
-  height: 45px;
-}
-
 .button-color {
   width: 20px;
   height: 20px;
@@ -17,11 +10,16 @@
   border-radius: 50%;
 }
 
-.button-size {
-  width: 40px;
-  height: 40px;
-  background-color: white;
+.product-button-fav {
+  position: relative;
+  bottom: 50px;
+  left: 30px;
+  background-color: black;
   border: 1px solid black;
+  width: 110px;
+  height: 35px;
+  font-size: 10px;
+  color: white;
 }
 
 .choco {

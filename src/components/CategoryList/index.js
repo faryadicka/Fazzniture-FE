@@ -9,12 +9,10 @@ class CategoryList extends Component {
   }
   render() {
     return (
-      <>
-        <div className='d-flex justify-content-between'>
-          <Link to="/" className='text-decoration-none text-dark'>{this.props.name}</Link>
-          <p className='produtcs-qty'>{this.props.qty}</p>
-        </div>
-      </>
+      <div className='d-flex justify-content-between'>
+        <Link to="/" className='text-decoration-none text-dark'>{this.props.name}</Link>
+        <p className='produtcs-qty'>{this.props.qty}</p>
+      </div>
     )
   }
 }
