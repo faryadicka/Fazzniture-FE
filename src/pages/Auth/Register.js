@@ -11,10 +11,11 @@ export class Register extends Component {
         }
     }
   render() {
+    const {pageHandler} = this.props
     return (
       <div className='register-main'>
         <div className='register-left-section'>
-            <div className='register-login-nav register-color-grey register-arimo-30'>Login Account</div>
+            <div className='register-login-nav register-color-grey register-arimo-30' onClick={() => {pageHandler("login")}}>Login Account</div>
             <div className='register-register-nav register-color-black register-arimo-30'>Register Account</div>
         </div>
         <div className='register-right-section'>

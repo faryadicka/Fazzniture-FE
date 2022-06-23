@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Navigate } from "react-router-dom"
+// import { Navigate } from "react-router-dom"
 
 // Components
 // import BlackButton from "../../components/Black-Button";
@@ -43,11 +43,12 @@ class Login extends Component {
 
   render() {
     // if (this.props.token) return <Navigate to="/" />
+    const {pageHandler} = this.props
     return (
       <div className='login-main'>
         <div className='login-left-section'>
           <div className='login-login-nav login-color-black login-arimo-30'>Login Account</div>
-          <div className='login-register-nav login-color-grey login-arimo-30'>Register Account</div>
+          <div className='login-register-nav login-color-grey login-arimo-30' onClick={() => {pageHandler("register")}}>Register Account</div>
         </div>
         <div className='login-right-section'>
           <div className='login-color-black login-arimo-30 login-title'>Login</div>
