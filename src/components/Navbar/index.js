@@ -12,10 +12,10 @@ export class Navbar extends Component {
                         </div>
                     </div>
                     <div className='navbar-2'>
-                        <div className='navar-2-content'>Home</div>
-                        <div className='navar-2-content'>Pages</div>
-                        <div className='navar-2-content'>Shop</div>
-                        <div className='navar-2-content'>Blog</div>
+                        <div className='navbar-2-content'>Home</div>
+                        <div className='navbar-2-content'>Pages</div>
+                        <div className='navbar-2-content'>Shop</div>
+                        <div className='navbar-2-content'>Blog</div>
                     </div>
                     <div className='navbar-3'>
                         <div><img src={require("../../assets/vector/Vector-Search.png")} alt="Search" className="navbar-3-logo"/></div>
