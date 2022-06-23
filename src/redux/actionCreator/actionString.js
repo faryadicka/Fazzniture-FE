@@ -1,5 +1,6 @@
 // Request AXIOS
 export const loginAuth = "LOGIN_AUTH"
+export const getProfile = "GET_PROFILE"
 
 //Handle Promise
 export const PENDING = "_PENDING"
