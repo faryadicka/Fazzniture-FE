@@ -6,9 +6,9 @@ export const authLoginAxios = (body) => {
   return axios.post(URL, body)
 }
 
-// export const getProfileAxios = (token) => {
-//   const URL = `${REACT_APP_HOST}/auth/login`
-//   return axios.post(URL, {
-//     headers: { "Authorization": token }
-//   })
-// }
+export const getProfileAxios = (token) => {
+  const URL = `${REACT_APP_HOST}/users`
+  return axios.get(URL, {
+    headers: { "Authorization": token }
+  })
+}

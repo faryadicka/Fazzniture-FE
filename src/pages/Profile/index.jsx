@@ -14,8 +14,7 @@ import Navbar from "../../components/Navbar/index";
 import Header from "../../components/Header/index";
 
 //ReduxAction
-// import { getProfileAction } from "../../redux/actionCreator/auth";
-
+import { getProfileAction } from "../../redux/actionCreator/user";
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -24,17 +23,29 @@ class Profile extends Component {
       emailClick: true,
       storeClick: true,
       nameClick: true,
-      name: "Name",
+      username: "Name",
       email: "example@mail.com",
       gender: "Unknown",
       store: "-",
       image: "",
-      imgPriview: "",
+      imgPreview: "",
       imgDefault: Avatar,
     };
     this.inputFile = React.createRef();
   }
 
+  getProfilePage = () => {
+    const { dispatch, token } = this.props;
+    dispatch(getProfileAction(token)).then((res) => {
+      this.setState({
+        username: res.value.data.username,
+        email: res.value.data.email,
+        gender: res.value.data.gender,
+        store: res.value.data.description,
+        image: res.value.data.pict,
+      });
+    });
+  };
   handleUpload = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -54,9 +65,9 @@ class Profile extends Component {
 
   updateForm = () => {
     let body = new FormData();
-    const { email, image, name, gender, store } = this.state;
-    if (name !== "") {
-      body.append("name", name);
+    const { email, image, username, gender, store } = this.state;
+    if (username !== "") {
+      body.append("username", username);
     }
     if (email !== "") {
       body.append("email", email);
@@ -75,12 +86,12 @@ class Profile extends Component {
 
   handleUpdate = (event) => {
     event.preventDevault();
-    //patch axios
+    //patch redux
   };
 
   componentDidMount() {
-    // const { dispatch, token } = this.props;
-    // dispatch(getProfileAction(token));
+    const { token } = this.props;
+    this.getProfilePage(token);
   }
 
   render() {
@@ -92,8 +103,11 @@ class Profile extends Component {
       gender,
       store,
       nameClick,
-      name,
+      username,
+      imgPreview,
+      image,
     } = this.state;
+    console.log(this.props.token);
     return (
       <>
         <Navbar />
@@ -110,7 +124,7 @@ class Profile extends Component {
                   event.preventDefault();
                 }}
                 className="rounded-circle img-avatar"
-                src={Avatar}
+                src={imgPreview ? imgPreview : image}
                 alt=""
               ></img>
               <input
@@ -128,11 +142,11 @@ class Profile extends Component {
                   hidden={nameClick}
                   onChange={(event) => {
                     this.setState({
-                      name: event.target.value,
+                      username: event.target.value,
                     });
                   }}
                   className="fw-bold form-control"
-                  value={name}
+                  value={username}
                   placeholder="Name"
                 />
                 <img
