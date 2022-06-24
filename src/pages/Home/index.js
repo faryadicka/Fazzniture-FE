@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import "./Home.css"
 import Navbar from "./Navbar.js"
 import Jumbotron from "./Jumbotron.js"
@@ -7,27 +8,74 @@ import CardRight from "./CardRight.js"
 import Testimony from "./Testimony.js"
 import Footer from "../../components/Footer";
 
+import { getFavoriteAction } from "../../redux/actionCreator/getFavorite"
+
 export class index extends Component {
+  constructor() {
+    super()
+    this.state = {
+      favoriteProducts: [],
+      errorMessage: ""
+    }
+  }
+
+  getFavoriteProduct = () => {
+    
+    const { dispatch, token } = this.props
+    dispatch(getFavoriteAction(token))
+      .then((res) => {
+        console.log(res)
+        this.setState({
+          favoriteProducts: res.value.data.data
+        })
+      })
+      .catch((err) => {
+        this.setState({
+          errorMessage: err.response.msg
+        })
+      })
+  }
+
+  componentDidMount = () => {
+    this.getFavoriteProduct()
+  }
+
   render() {
+    const {favoriteProducts} = this.props
     return (
       <div>
         <Navbar/>
         <Jumbotron/>
-        <CardLeft
-        name="Mid-Century 1929 Sofa with Pilow"
-        description="Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo. Curabitur blandit ultrices ex. Curabitur ut magna dignissim, dignissim neque et, placerat risus. Morbi dictum lectus quam"
-        picture={require("../../assets/img/product-left.png")}
-        id="1"/>
-        <CardRight
-        name="Mini Modern Lamp"
-        description="Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo. Curabitur blandit ultrices ex. Curabitur ut magna dignissim, dignissim neque et, placerat risus. Morbi dictum lectus quam"
-        picture={require("../../assets/img/product-right.png")}
-        id="2"/>
+        {favoriteProducts.map((item) => {
+            return (favoriteProducts.indexOf(item) % 2 === 0 ?
+              <CardLeft
+              name={item.name}
+              description="Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo. Curabitur blandit ultrices ex. Curabitur ut magna dignissim, dignissim neque et, placerat risus. Morbi dictum lectus quam"
+              picture={item.file}
+              key={item.id}
+              />:
+              <CardRight
+              name={item.name}
+              description="Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo. Curabitur blandit ultrices ex. Curabitur ut magna dignissim, dignissim neque et, placerat risus. Morbi dictum lectus quam"
+              picture={item.file}
+              key={item.id}
+              />
+
+            )
+        })}
+
+        
         <Testimony/>
         <Footer/>
       </div>
     )
   }
 }
+const mapStateToProps = (state) => {
+  const { user: { loginData: { token } }, favorite: {favoriteProducts} } = state
+  return {
+    token, favoriteProducts
+  }
+}
 
-export default index
+export default connect(mapStateToProps)(index)

@@ -14,7 +14,7 @@ export class Jumbotron extends Component {
         onClick={() => {
           window.scrollTo(0, 660)
         }}>
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
                 south
             </span>
         </div>
