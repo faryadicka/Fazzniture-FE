@@ -12,3 +12,8 @@ export const getProfileAxios = (token) => {
     headers: { "Authorization": token }
   })
 }
+
+export const authRegisterAxios = (body) => {
+  const URL = `${REACT_APP_HOST}/auth/register`
+  return axios.post(URL, body)
+}
