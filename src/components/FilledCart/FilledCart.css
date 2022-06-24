@@ -1,0 +1,64 @@
+.header-cart > div {
+  color: #8d8d8d;
+}
+
+.line-cart-bottom {
+  margin-top: 50px;
+  background-color: #dbdbdb;
+  width: 105%;
+  height: 1px;
+}
+
+.conditional-button > button {
+  width: 100px;
+  border: none;
+  background-color: white;
+}
+
+.form-coupon {
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 10px;
+}
+
+.form-coupon > button {
+  border: none;
+  background-color: white;
+  font-weight: bold;
+}
+.form-coupon > input {
+  width: 250px;
+  border: none;
+  background-color: white;
+}
+
+.card-checkout {
+  background-color: #f9f9f9;
+}
+
+.card-checkout > p {
+  font-weight: bold;
+}
+
+.shipping-cart {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #8d8d8d;
+}
+
+.shipping-radio > label {
+  color: #8d8d8d;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+.btn-checkout {
+  border: none;
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 50px;
+  margin-top: 30px;
+}
+
+/* .shipping-cart > input {
+  width: 100px;
+} */

@@ -12,6 +12,10 @@ import Products from "./pages/Products";
 import Profile from "./pages/Profile";
 import Chat from "./pages/Chat";
 import ProductDetail from "./pages/ProductDetail";
+import NotFound from "./pages/NotFound";
+import Cart from "./pages/Cart";
+// import PrivateRoute from "./components/PrivateRoute";
+// import PublicRoute from "./components/PublicRoute";
 
 function App() {
   return (
@@ -20,11 +24,13 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/auth" element={<Auth/>} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/products" element={<Products />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/product-detail/:id" element={<ProductDetail />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </PersistGate>

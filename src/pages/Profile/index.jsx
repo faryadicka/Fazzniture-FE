@@ -14,7 +14,7 @@ import Navbar from "../../components/Navbar/index";
 import Header from "../../components/Header/index";
 
 //ReduxAction
-import { getProfileAction } from "../../redux/actionCreator/user";
+// import { getProfileAction } from "../../redux/actionCreator/user";
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -27,40 +27,25 @@ class Profile extends Component {
       email: "example@mail.com",
       gender: "Unknown",
       store: "-",
-      image: "",
+      image: Avatar,
       imgPreview: "",
-      imgDefault: Avatar,
+      useSrc: true,
     };
     this.inputFile = React.createRef();
   }
 
-  getProfilePage = () => {
-    const { dispatch, token } = this.props;
-    dispatch(getProfileAction(token)).then((res) => {
-      this.setState({
-        username:
-          res.value.data.username === undefined
-            ? "gak ada datanya"
-            : res.value.data.username,
-        email:
-          res.value.data.email === undefined
-            ? "gak ada datanya"
-            : res.value.data.email,
-        gender:
-          res.value.data.gender === undefined
-            ? "gak ada datanya"
-            : res.value.data.gender,
-        store:
-          res.value.data.description === undefined
-            ? "gak ada datanya"
-            : res.value.data.description,
-        image:
-          res.value.data.pict === undefined
-            ? "gak ada datanya"
-            : res.value.data.pict,
-      });
-    });
-  };
+  // getProfilePage = (token) => {
+  //   const { dispatch, email, gender, description, pict, username } = this.props;
+  //   dispatch(getProfileAction(token)).then((res) => {
+  //     this.setState({
+  //       username,
+  //       email,
+  //       gender,
+  //       image: pict,
+  //       store: description,
+  //     });
+  //   });
+  // };
   handleUpload = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -72,6 +57,7 @@ class Profile extends Component {
         this.setState({
           imgPreview: reader.result,
           image: file,
+          useSrc: false,
         });
       };
       reader.readAsDataURL(file);
@@ -105,8 +91,16 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    const { token } = this.props;
-    this.getProfilePage(token);
+    // const { token } = this.props;
+    // this.getProfilePage(token);
+    const { email, gender, description, pict, username } = this.props;
+    this.setState({
+      username,
+      email,
+      gender,
+      store: description,
+      image: pict,
+    });
   }
 
   render() {
@@ -121,6 +115,7 @@ class Profile extends Component {
       username,
       imgPreview,
       image,
+      useSrc,
     } = this.state;
     console.log(this.props.token);
     return (
@@ -139,7 +134,7 @@ class Profile extends Component {
                   event.preventDefault();
                 }}
                 className="rounded-circle img-avatar"
-                src={imgPreview ? imgPreview : image}
+                src={useSrc ? image : imgPreview}
                 alt=""
               ></img>
               <input
@@ -271,7 +266,7 @@ class Profile extends Component {
                 <div className="row justify-content-between">
                   <div className="col-md-6">
                     <label className="ms-md-2 form-label profile-label">
-                      Label
+                      Store
                     </label>
                     <input
                       onChange={(event) => {
@@ -322,11 +317,19 @@ class Profile extends Component {
 const mapStateToProps = (state) => {
   const {
     user: {
-      loginData: { token },
+      loginData: {
+        token,
+        datauser: { username, description, email, gender, pict },
+      },
     },
   } = state;
   return {
     token,
+    username,
+    description,
+    email,
+    gender,
+    pict,
   };
 };
 

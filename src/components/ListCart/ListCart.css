@@ -1,0 +1,23 @@
+.remove-button {
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+}
+
+.cart-button-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-button-count > button {
+  width: 80px;
+  border: none;
+  background-color: white;
+  position: relative;
+  bottom: 6px;
+}
+
+.cart-total {
+  width: 30px;
+}
