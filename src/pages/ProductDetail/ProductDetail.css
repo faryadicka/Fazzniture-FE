@@ -84,8 +84,17 @@
   border-bottom: 2px solid black;
 }
 
+.image-desc {
+  width: 400px;
+}
+
 @media (max-width: 600px) {
   .image-zoom {
     width: 100%;
+  }
+  .button-information > button {
+    background-color: white;
+    font-size: 15px;
+    padding-bottom: 10px;
   }
 }

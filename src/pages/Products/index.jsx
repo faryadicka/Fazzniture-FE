@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import "./Product.css";
 import Drop from "../../assets/vector/dropdown.png";
 import Favorite from "../../assets/img/favImage.png";
+import Image from "../../assets/img/image.png";
 
 //componenets
 import Navbar from "../../components/Navbar";
@@ -107,50 +108,62 @@ class Products extends Component {
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
                 <CardProduct
                   title="Coaster 506222-CO Loveseat"
                   price="$765.99"
+                  image={Image}
                 />
               </div>
               <PageButton number="01" />

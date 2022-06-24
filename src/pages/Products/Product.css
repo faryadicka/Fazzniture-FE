@@ -60,3 +60,10 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+@media (max-width: 600px) {
+  .product-button-fav {
+    top: 10px;
+    left: -6px;
+  }
+}

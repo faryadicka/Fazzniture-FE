@@ -16,18 +16,16 @@ import Fb from "../../assets/vector/fb.png";
 import Ytb from "../../assets/vector/ytb.png";
 import Mask from "../../assets/img/Mask.png";
 import Big from "../../assets/img/big.png";
+import Pd from "../../assets/img/pd.png";
 
 // Components
 import Navbar from "../../components/Navbar/index";
 import Footer from "../../components/Footer/index";
 import ImageDetail from "../../components/ImageDetail";
+import CardProduct from "../../components/CardProduct";
 
 class ProductDetail extends Component {
-  state = {
-    btnClicked: false,
-  };
   render() {
-    const { btnClicked } = this.state;
     return (
       <>
         <Navbar />
@@ -112,31 +110,64 @@ class ProductDetail extends Component {
               </ul>
             </div>
             <img src={AddInfo} alt="add-info" className="add-info mt-md-3" />
-            <div className="d-flex mt-md-5 social-media-pd">
+            <div className="d-flex mt-md-5 my-4 social-media-pd">
               <img src={Fb} alt="fb" />
               <img src={Twt} alt="twt" />
               <img src={Ytb} alt="ytb" />
             </div>
             <div className="d-flex mt-md-5 justify-content-between button-information">
-              <button
-                onClick={() => {
-                  if (!btnClicked) {
-                    return this.setState({
-                      btnClicked: true,
-                    });
-                  }
-                  return this.setState({
-                    btnClicked: false,
-                  });
-                }}
-                className={`${btnClicked ? "btn-border" : "btn-unborder"}`}
-              >
-                Description
-              </button>
+              <button className="btn-unborder">Description</button>
               <button className="btn-unborder">Review</button>
               <button className="btn-unborder">Additional Information</button>
               <button className="btn-unborder">About Brand</button>
               <button className="btn-unborder">Shipping & Delivery</button>
+            </div>
+            <div className="row align-items-center my-md-3">
+              <div className="col-md-6">
+                <img src={Big} alt="imagedesc" className="image-desc" />
+              </div>
+              <div className="col-md-6 detail-desc">
+                <p>
+                  Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at
+                  egestas magna molestie a. Proin ac ex maximus, ultrices justo
+                  eget, sodales orci. Aliquam egestas libero ac turpis pharetra,
+                  in vehicula lacus scelerisque. Vestibulum ut sem laoreet,
+                  feugiat tellus at, hendrerit arcu..
+                  <ul className="my-md-3">
+                    <li>
+                      Maecenas eu ante a elit tempus fermentum. Aliquam commodo
+                      tincidunt semper
+                    </li>
+                    <li>
+                      Maecenas eu ante a elit tempus fermentum. Aliquam commodo
+                      tincidunt semper
+                    </li>
+                  </ul>
+                  Nunc lacus elit, faucibus ac laoreet sed, dapibus ac mi.
+                  Maecenas eu ante a elit tempus fermentum. Aliquam commodo
+                  tincidunt semper. Phasellus accum
+                </p>
+              </div>
+            </div>
+            <div className="row title-related text-center">
+              <h1>Related Products</h1>
+            </div>
+            <div className="row justify-content-center my-md-4 my-4">
+              <CardProduct
+                title="Coaster 506222-CO Loveseat"
+                price="$765.99"
+                image={Pd}
+              />
+              <CardProduct
+                title="Coaster 506222-CO Loveseat"
+                price="$765.99"
+                image={Pd}
+              />
+              <CardProduct
+                title="Coaster 506222-CO Loveseat"
+                price="$765.99"
+                image={Pd}
+              />
             </div>
           </div>
         </div>
