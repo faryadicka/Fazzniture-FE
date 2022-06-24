@@ -26,9 +26,14 @@
 .footer-padding-column {
   padding: 100px 0;
   margin-right: 0px !important;
-  margin-left: 100px !important;
 }
 
 .footer-contact-column {
   padding-left: 50px;
+}
+
+@media (min-width: 1200px) {
+  .footer-padding-column {
+    margin-left: 100px !important;
+  }
 }
