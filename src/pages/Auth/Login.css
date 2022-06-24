@@ -101,3 +101,14 @@ input::-ms-clear {
   color: white;
   height: 50px;
 }
+.login-button{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    color: red;
+    align-items: center;
+    font-family: 'Arimo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+}
