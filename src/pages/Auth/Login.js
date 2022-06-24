@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import { Navigate } from "react-router-dom"
 
 // Components
-// import BlackButton from "../../components/Black-Button";
+import BlackButton from "../../components/Black-Button";
 
 //ReduxAction
 import { loginAuthAction } from "../../redux/actionCreator/user"
@@ -80,10 +80,10 @@ class Login extends Component {
               }
             </i>
           </label>
-          <button onClick={this.handleLogin} className='button-login'>LOGIN</button>
+          <div onClick={this.handleLogin}><BlackButton text="Login"/></div>
           <div className='login-bottom-container'>
             <label className='login-checkbox-container'><input type="checkbox" className='login-checkbox' />Remember me</label>
-            <div className='login-forgot'>Forget your password?</div>
+            <div className='login-forgot' onClick={() => {pageHandler("forgot")}}>Forget your password?</div>
           </div>
         </div>
       </div>

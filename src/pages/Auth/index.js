@@ -7,6 +7,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Login from './Login.js';
 import Register from './Register.js';
+import Forgot from './Forgot.js';
 
 export class index extends Component {
 constructor(props) {
@@ -23,12 +24,14 @@ pageHandler = (page) => {
   render() {
     const {page} = this.state
     return (
-        <Fragment>
-            <Navbar/>
-            <Header title="My Account" desc="Register and log in with your account to be able to shop at will"/>
-            {page === "login" ? <Login pageHandler={this.pageHandler}/> : <Register pageHandler={this.pageHandler}/>}
-            <Footer/>
-        </Fragment>
+      <Fragment>
+          <Navbar/>
+          <Header title="My Account" desc="Register and log in with your account to be able to shop at will"/>
+          {page === "login" && <Login pageHandler={this.pageHandler}/>}
+          {page === "register" && <Register pageHandler={this.pageHandler}/>}
+          {page === "forgot" && <Forgot pageHandler={this.pageHandler}/>}
+          <Footer/>
+      </Fragment>
     )
   };
 };
