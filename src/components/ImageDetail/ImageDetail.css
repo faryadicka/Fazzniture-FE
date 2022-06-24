@@ -1,0 +1,10 @@
+.image-detail {
+  width: 140px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .image-detail {
+    width: 100%;
+  }
+}
