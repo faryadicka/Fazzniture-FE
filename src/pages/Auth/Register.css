@@ -86,6 +86,17 @@
 .register-checkbox-container{
     margin-right: 20px;
 }
+.register-button{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    color: red;
+    align-items: center;
+    font-family: 'Arimo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+}
 input::-ms-reveal,
 input::-ms-clear {
     display: none;
