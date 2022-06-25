@@ -1,0 +1,28 @@
+.card-myproduct {
+  height: 150px;
+}
+
+.image-myproduct {
+  width: 80px;
+}
+
+.name-myproduct {
+  width: 400px;
+}
+
+.price-myproduct {
+  width: 13%;
+}
+
+.status-myproduct {
+  width: 20%;
+}
+
+.delete-myproduct {
+  border: none;
+  background-color: #d94141;
+  color: white;
+  font-size: 12px;
+  width: 180px;
+  height: 45px;
+}

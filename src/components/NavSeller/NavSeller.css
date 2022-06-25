@@ -1,0 +1,22 @@
+.navigation-profile-seller {
+  margin: 0px 0 70px;
+}
+
+.navigation-profile-seller > button {
+  background-color: white;
+  font-size: 30px;
+}
+
+.disable-button {
+  border: none;
+  background-color: white;
+  color: #b4b4b4;
+}
+
+.active-button {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid black;
+  color: black;
+}

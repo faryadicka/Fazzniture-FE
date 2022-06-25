@@ -1,9 +1,3 @@
-.profile-container {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  /* background-color: gray; */
-}
-
 .img-pencil-profile {
   width: 24px;
   height: 24px;
@@ -51,27 +45,4 @@
   border-bottom: 1px solid #4d4d4d;
   border-left: 1px solid #4d4d4d;
   border-right: 1px solid #4d4d4d;
-}
-
-.navigation-profile-seller {
-  margin: 0px 0 70px;
-}
-
-.navigation-profile-seller > button {
-  background-color: white;
-  font-size: 30px;
-}
-
-.disable-button {
-  border: none;
-  background-color: white;
-  color: #b4b4b4;
-}
-
-.active-button {
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom: 2px solid black;
-  color: black;
 }

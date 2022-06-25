@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./ListCart.css";
 import Remove from "../../assets/vector/small-remove.png";
-import ImageCart from "../../assets/vector/img.png";
+import ImageCart from "../../assets/img/img.png";
 
 export class ListCart extends Component {
   render() {

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+import withHOC from "../../helpers/withHOC";
+
 //assets
 import "./Product.css";
 import Drop from "../../assets/vector/dropdown.png";
@@ -17,7 +20,35 @@ import PageButton from "../../components/PageButton";
 import SizeButton from "../../components/SizeButton";
 import BlackButton from "../../components/Black-Button";
 
+//ActionReducer
+import { getProductsAction } from "../../redux/actionCreator/products";
+
 class Products extends Component {
+  componentDidMount() {
+    const { dispatch, products, searchParams } = this.props;
+    const name = searchParams.get("name") || "";
+    const categories = searchParams.get("categories") || "";
+    const sizes = searchParams.get("sizes") || "";
+    const colors = searchParams.get("colors") || "";
+    const brands = searchParams.get("brands") || "";
+    const max = searchParams.get("max") || "";
+    const min = searchParams.get("min") || "";
+    const sort = searchParams.get("sort") || "";
+    const order = searchParams.get("order") || "";
+    dispatch(
+      getProductsAction(
+        name,
+        categories,
+        sizes,
+        brands,
+        colors,
+        max,
+        min,
+        sort,
+        order
+      )
+    );
+  }
   render() {
     return (
       <>
@@ -176,4 +207,13 @@ class Products extends Component {
   }
 }
 
-export default Products;
+const mapStateToProps = (state) => {
+  const {
+    products: { products },
+  } = state;
+  return {
+    products,
+  };
+};
+
+export default connect(mapStateToProps)(withHOC(Products));

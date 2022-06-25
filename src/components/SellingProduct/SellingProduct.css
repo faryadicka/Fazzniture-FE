@@ -1,0 +1,17 @@
+.add-image {
+  cursor: pointer;
+}
+
+.image-multiple-view > img {
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+}
+
+.button-sell {
+  background-color: black;
+  color: white;
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+}
