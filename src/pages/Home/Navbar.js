@@ -26,14 +26,14 @@ export class Navbar extends Component {
                         <div><img src={require("../../assets/vector/Vector-Cart.png")} alt="Cart" className="header-navbar-3-logo" onClick={()=>{navigate("/cart")}}/></div>
                         <div className='dropdown'>
                             <img src={require("../../assets/vector/Vector-Drop.png")} alt="Drop" className="header-navbar-3-logo dropbtn"/>
-                            <div class="dropdown-content">
+                            <div className="dropdown-content">
                                 {!this.props.isLoggedIn ?
-                                <div class="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
-                                <div class="dropdown-content-child" onClick={() => {navigate("/profile")}}>Profile</div>
+                                <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
+                                <div className="dropdown-content-child" onClick={() => {navigate("/profile")}}>Profile</div>
                                 }
                                 {!this.props.isLoggedIn ?
-                                <div class="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
-                                <div class="dropdown-content-child" onClick={() => {navigate("/")}}>Logout</div>
+                                <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
+                                <div className="dropdown-content-child" onClick={() => {navigate("/")}}>Logout</div>
                                 }
                             </div>
                         </div>
