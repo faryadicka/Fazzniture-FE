@@ -1,9 +1,11 @@
 import React from "react"
-import { useParams, useSearchParams, useNavigate } from "react-router-dom"
+import { useParams, useSearchParams, useLocation, useNavigate } from "react-router-dom"
 
 const withHOC = (Component) => {
   const WithHOC = (props) => {
     const params = useParams()
+    const location = useLocation()
+    const navigate = useNavigate()
     const [searchParams, setSearcParams] = useSearchParams()
     const navigate = useNavigate();
     return (
@@ -11,6 +13,7 @@ const withHOC = (Component) => {
         params={params}
         searchParams={searchParams}
         setSearcParams={setSearcParams}
+        location={location}
         navigate={navigate}
         {...props}
       />

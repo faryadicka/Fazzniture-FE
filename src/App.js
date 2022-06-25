@@ -9,7 +9,8 @@ import { store, persistor } from "./redux/store"
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Products from "./pages/Products";
-import Profile from "./pages/Profile";
+// import Profile from "./pages/Profile";
+import Info from "./pages/Info";
 import Chat from "./pages/Chat";
 import ProductDetail from "./pages/ProductDetail";
 import NotFound from "./pages/NotFound";
@@ -26,7 +27,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/profile" element={<Profile />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
+            <Route path="/profile" element={<Info />} />
+            <Route path="/myproduct" element={<Info />} />
+            <Route path="/sellingproduct" element={<Info />} />
+            <Route path="/myorder" element={<Info />} />
             <Route path="/products" element={<Products />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/product-detail/:id" element={<ProductDetail />} />
