@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import withHOC from "../../helpers/withHOC";
 // import { Navigate } from "react-router-dom"
 
 // Components
@@ -28,15 +29,16 @@ class Login extends Component {
     const body = { email, password }
     dispatch(loginAuthAction(body))
       .then((res) => {
-        console.log(res)
         this.setState({
           successMessage: res.value.data.msg,
           isLogin: true
         })
+        this.props.navigate("/")
       })
       .catch((err) => {
         this.setState({
-          errorMessage: err.response.msg
+          isError: true,
+          errorMessage: err.response.data.msg
         })
       })
   }
@@ -80,7 +82,8 @@ class Login extends Component {
               }
             </i>
           </label>
-          <div onClick={this.handleLogin}><BlackButton text="Login"/></div>
+          <div onClick={this.handleLogin} className="login-button"><BlackButton text="Login"/> 
+            {this.state.isError === true ? <p>{this.state.errorMessage}</p> : <></>}</div>
           <div className='login-bottom-container'>
             <label className='login-checkbox-container'><input type="checkbox" className='login-checkbox' />Remember me</label>
             <div className='login-forgot' onClick={() => {pageHandler("forgot")}}>Forget your password?</div>
@@ -98,4 +101,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(withHOC(Login))
