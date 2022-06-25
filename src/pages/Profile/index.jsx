@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 // assets
 import "./Profile.css";
-import Avatar from "../../assets/img/avatar-collab.png";
+// import Avatar from "../../assets/img/avatar-collab.png";
 import Edit from "../../assets/vector/edit.png";
 import Edit3 from "../../assets/vector/edit-3.png";
 import Logout from "../../assets/vector/log-out.png";
@@ -11,10 +11,13 @@ import Logout from "../../assets/vector/log-out.png";
 //components
 import Footer from "../../components/Footer/index";
 import Navbar from "../../components/Navbar/index";
+import ModalSuccess from "../../components/ModalSuccess";
 import Header from "../../components/Header/index";
 
+//Axios
+import { updateProfileAxios } from "../../services/auth";
 //ReduxAction
-// import { getProfileAction } from "../../redux/actionCreator/user";
+import { getProfileAction } from "../../redux/actionCreator/user";
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -23,29 +26,41 @@ class Profile extends Component {
       emailClick: true,
       storeClick: true,
       nameClick: true,
-      username: "Name",
-      email: "example@mail.com",
-      gender: "Unknown",
-      store: "-",
-      image: Avatar,
-      imgPreview: "",
+      storeNameClick: true,
+      username: "",
+      email: "",
+      gender: "",
+      storeDesc: "",
+      image: "",
+      storeName: "",
+      imgPreview: null,
       useSrc: true,
+      updateSuccess: false,
+      errorMsg: "",
+      successMsg: "",
     };
     this.inputFile = React.createRef();
   }
 
-  // getProfilePage = (token) => {
-  //   const { dispatch, email, gender, description, pict, username } = this.props;
-  //   dispatch(getProfileAction(token)).then((res) => {
-  //     this.setState({
-  //       username,
-  //       email,
-  //       gender,
-  //       image: pict,
-  //       store: description,
-  //     });
-  //   });
-  // };
+  getProfilePage = (token) => {
+    const { dispatch /*email, gender, description, pict, username*/ } =
+      this.props;
+    dispatch(getProfileAction(token))
+      .then((res) => {
+        // console.log(res.value.data);
+        this.setState({
+          username: res.value.data.data.username,
+          email: res.value.data.data.email,
+          gender: res.value.data.data.gender,
+          image: res.value.data.data.pict,
+          storeDesc: res.value.data.data.store_description,
+          storeName: res.value.data.data.store,
+        });
+      })
+      .catch((err) => {
+        // console.log(err);
+      });
+  };
   handleUpload = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -54,11 +69,16 @@ class Profile extends Component {
       data.image = file;
       const reader = new FileReader();
       reader.onload = () => {
-        this.setState({
-          imgPreview: reader.result,
-          image: file,
-          useSrc: false,
-        });
+        this.setState(
+          {
+            imgPreview: reader.result,
+            image: file,
+            useSrc: false,
+          },
+          () => {
+            console.log(this.state.image);
+          }
+        );
       };
       reader.readAsDataURL(file);
     }
@@ -66,41 +86,52 @@ class Profile extends Component {
 
   updateForm = () => {
     let body = new FormData();
-    const { email, image, username, gender, store } = this.state;
+    const { email, image, username, gender, storeDesc, storeName } = this.state;
     if (username !== "") {
       body.append("username", username);
     }
     if (email !== "") {
       body.append("email", email);
     }
-    if (image !== "") {
-      body.append("image", image);
+    if (image !== null) {
+      body.append("file", image);
     }
     if (gender !== "") {
       body.append("gender", gender);
     }
-    if (store !== "") {
-      body.append("store", store);
+    if (storeDesc !== "") {
+      body.append("storeDesc", storeDesc);
+    }
+    if (storeName !== "") {
+      body.append("storeName", storeName);
     }
     return body;
   };
 
   handleUpdate = (event) => {
-    event.preventDevault();
-    //patch redux
+    event.preventDefault();
+    const { token } = this.props;
+    const body = this.updateForm();
+    console.log(body);
+    updateProfileAxios(body, token)
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          updateSuccess: true,
+          successMsg: res.data.msg,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({
+          errorMsg: err.response.msg,
+        });
+      });
   };
 
   componentDidMount() {
-    // const { token } = this.props;
-    // this.getProfilePage(token);
-    const { email, gender, description, pict, username } = this.props;
-    this.setState({
-      username,
-      email,
-      gender,
-      store: description,
-      image: pict,
-    });
+    const { token } = this.props;
+    this.getProfilePage(token);
   }
 
   render() {
@@ -108,16 +139,22 @@ class Profile extends Component {
       genderClick,
       emailClick,
       storeClick,
+      storeNameClick,
       email,
       gender,
-      store,
+      storeDesc,
       nameClick,
       username,
       imgPreview,
       image,
       useSrc,
+      storeName,
+      updateSuccess,
+      errorMsg,
+      successMsg,
     } = this.state;
-    console.log(this.props.token);
+    const { role_id } = this.props;
+    console.log(this.props.role_id);
     return (
       <>
         <Navbar />
@@ -125,7 +162,33 @@ class Profile extends Component {
           title="Profile"
           desc="See your notifications for the latest updates"
         />
-        <form className="container profile-container px-4 px-md-0">
+        <div className="container profile-container px-4 px-md-0">
+          {role_id === "3" ? (
+            <div className="d-flex justify-content-around navigation-profile-seller">
+              <button
+                className={`${true ? "active-button" : "disable-button"}`}
+              >
+                Profile
+              </button>
+              <button
+                className={`${true ? "active-button" : "disable-button"}`}
+              >
+                My Product
+              </button>
+              <button
+                className={`${true ? "active-button" : "disable-button"}`}
+              >
+                Selling Product
+              </button>
+              <button
+                className={`${true ? "active-button" : "disable-button"}`}
+              >
+                My Order
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
           <div className="row">
             <div className="col-md-1">
               <img
@@ -134,9 +197,9 @@ class Profile extends Component {
                   event.preventDefault();
                 }}
                 className="rounded-circle img-avatar"
-                src={useSrc ? image : imgPreview}
+                src={useSrc ? `${image}` : imgPreview}
                 alt=""
-              ></img>
+              />
               <input
                 type="file"
                 name="imageprofile"
@@ -149,7 +212,7 @@ class Profile extends Component {
             <div className="col-md-2 ms-md-4">
               <div className="d-flex pt-md-3">
                 <input
-                  hidden={nameClick}
+                  // hidden={nameClick}
                   onChange={(event) => {
                     this.setState({
                       username: event.target.value,
@@ -160,7 +223,9 @@ class Profile extends Component {
                   placeholder="Name"
                 />
                 <img
-                  onClick={() => {
+                  onClick={(event) => {
+                    this.inputFile.current.click();
+                    event.preventDefault();
                     if (nameClick) {
                       return this.setState({
                         nameClick: false,
@@ -199,7 +264,12 @@ class Profile extends Component {
                   </div>
                   <div className="col-md-1 mt-md-4 me-md-4">
                     <div className="d-flex">
-                      <button className="btn fw-bold">EDIT</button>
+                      <button
+                        onClick={this.handleUpdate}
+                        className="btn fw-bold"
+                      >
+                        EDIT
+                      </button>
                       <img
                         onClick={() => {
                           if (genderClick) {
@@ -240,7 +310,12 @@ class Profile extends Component {
                   </div>
                   <div className="col-md-1 mt-md-4 me-md-4">
                     <div className="d-flex">
-                      <button className="btn fw-bold">EDIT</button>
+                      <button
+                        onClick={this.handleUpdate}
+                        className="btn fw-bold"
+                      >
+                        EDIT
+                      </button>
                       <img
                         onClick={() => {
                           if (emailClick) {
@@ -261,27 +336,82 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
+            {role_id === "3" ? (
+              <div className="row-store-name">
+                <div className="col-md-12">
+                  <div className="row justify-content-between">
+                    <div className="col-md-6">
+                      <label className="ms-md-2 form-label profile-label">
+                        Store Name
+                      </label>
+                      <input
+                        onChange={(event) => {
+                          this.setState({
+                            storeName: event.target.value,
+                          });
+                        }}
+                        disabled={storeNameClick}
+                        className="form-control border-0 email-value"
+                        value={storeName}
+                      />
+                    </div>
+                    <div className="col-md-1 mt-md-4 me-md-4">
+                      <div className="d-flex">
+                        <button
+                          onClick={this.handleUpdate}
+                          className="btn fw-bold"
+                        >
+                          EDIT
+                        </button>
+                        <img
+                          onClick={() => {
+                            if (storeNameClick) {
+                              return this.setState({
+                                storeNameClick: false,
+                              });
+                            }
+                            return this.setState({
+                              storeNameClick: true,
+                            });
+                          }}
+                          className="ms-md-2 img-pencil-profile mt-2"
+                          src={Edit3}
+                          alt="edit"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
             <div className="row-store">
               <div className="col-md-12">
                 <div className="row justify-content-between">
                   <div className="col-md-6">
                     <label className="ms-md-2 form-label profile-label">
-                      Store
+                      Store Description
                     </label>
                     <input
                       onChange={(event) => {
                         this.setState({
-                          store: event.target.value,
+                          storeDesc: event.target.value,
                         });
                       }}
                       disabled={storeClick}
                       className="form-control border-0 store-value"
-                      value={store}
+                      value={storeDesc}
                     />
                   </div>
                   <div className="col-md-1 mt-md-4 me-md-4">
                     <div className="d-flex">
-                      <button className="btn fw-bold">EDIT</button>
+                      <button
+                        onClick={this.handleUpdate}
+                        className="btn fw-bold"
+                      >
+                        EDIT
+                      </button>
                       <img
                         onClick={() => {
                           if (storeClick) {
@@ -307,8 +437,18 @@ class Profile extends Component {
             <img src={Logout} alt="" />
             LOGOUT
           </button>
-        </form>
+        </div>
         <Footer />
+        <ModalSuccess
+          showModal={updateSuccess}
+          success={updateSuccess}
+          message={updateSuccess ? successMsg : errorMsg}
+          hideModal={() => {
+            this.setState({
+              updateSuccess: false,
+            });
+          }}
+        />
       </>
     );
   }
@@ -319,7 +459,7 @@ const mapStateToProps = (state) => {
     user: {
       loginData: {
         token,
-        datauser: { username, description, email, gender, pict },
+        datauser: { username, description, email, gender, pict, role_id },
       },
     },
   } = state;
@@ -330,6 +470,7 @@ const mapStateToProps = (state) => {
     email,
     gender,
     pict,
+    role_id,
   };
 };
 
