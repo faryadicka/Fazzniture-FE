@@ -24,7 +24,6 @@ export class index extends Component {
     const { dispatch, token } = this.props
     dispatch(getFavoriteAction(token))
       .then((res) => {
-        console.log(res)
         this.setState({
           favoriteProducts: res.value.data.data
         })
