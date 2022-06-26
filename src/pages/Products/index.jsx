@@ -60,7 +60,7 @@ class Products extends Component {
     for (let page = 1; page <= totalPage; page++) {
       pageItem.push(page);
     }
-    console.log(pageItem);
+    console.log(data);
     return (
       <>
         <Navbar />
@@ -175,8 +175,8 @@ class Products extends Component {
                     title={data.name}
                     price={data.price}
                     image={data.file}
-                    key={data.id}
-                    id={data.id}
+                    key={data.product_id}
+                    id={data.product_id}
                   />
                 ))}
               </div>

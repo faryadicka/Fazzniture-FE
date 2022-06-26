@@ -1,0 +1,25 @@
+.myorder-header {
+  color: #8d8d8d;
+  font-size: 11px;
+  margin-left: 50px;
+}
+
+.product {
+  width: 40%;
+}
+
+.price {
+  width: 11%;
+}
+
+.quantity {
+  width: 13%;
+}
+
+.status-order {
+  width: 15%;
+}
+
+.total {
+  width: 15%;
+}

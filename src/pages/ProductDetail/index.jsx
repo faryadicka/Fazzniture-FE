@@ -22,50 +22,86 @@ import Ytb from "../../assets/vector/ytb.png";
 // Components
 import Navbar from "../../components/Navbar/index";
 import Footer from "../../components/Footer/index";
-// import ImageDetail from "../../components/ImageDetail";
+import ImageDetail from "../../components/ImageDetail";
 import CardProduct from "../../components/CardProduct";
 
-// Redux action
-// import { getProductByIdAction } from "../../redux/actionCreator/products";
-
 //Axios request
-// import { getProductRelatedAxios } from "../../services/products";
+import {
+  getProductByIdAxios,
+  getProductRelatedAxios,
+} from "../../services/products";
 class ProductDetail extends Component {
   constructor() {
     super();
     this.state = {
       relatedProduct: [],
+      pict: [],
+      brand: "",
+      price: 0,
+      description: "",
+      category: "",
+      productId: "",
+      stock: 0,
     };
   }
 
-  // getProductRelated = () => {
-  //   const {
-  //     productId: { category_id },
-  //   } = this.props;
-  //   getProductRelatedAxios(category_id)
-  //     .then((res) => {
-  //       console.log(res);
-  //       this.setState({
-  //         relatedProduct: res.data,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  // componentDidMount() {
-  //   const {
-  //     params: { id },
-  //   } = this.props;
-  //   getProductByIdAction(id);
-  // this.getProductRelated();
-  // }
+  getProductById = (id) => {
+    getProductByIdAxios(id)
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          pict: res.data.pict,
+          brand: res.data.data.brand,
+          price: res.data.data.price,
+          description: res.data.data.description,
+          category: res.data.data.category,
+          productId: res.data.data.product_id,
+          stock: res.data.data.unit_stock,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  getProductRelated = (category) => {
+    getProductRelatedAxios(category)
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          relatedProduct: res.data.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  componentDidMount() {
+    const {
+      params: { id },
+    } = this.props;
+    const { category } = this.state;
+    this.getProductById(id);
+    this.getProductRelated(category);
+  }
+
   render() {
     // const {
     // productId: { file },
     // productId,
     // } = this.props;
-    // const { relatedProduct } = this.state;
+    const {
+      pict,
+      brand,
+      price,
+      stock,
+      productId,
+      description,
+      category,
+      relatedProduct,
+    } = this.state;
+    // const image = pict[0].file;
+    console.log(category);
     return (
       <>
         <Navbar />
@@ -92,18 +128,16 @@ class ProductDetail extends Component {
           <div className="row justify-content-between mt-md-5 mt-5">
             <div className="col-12 col-md-3">
               <div className="row justify-content-around">
-                {/* {file.map((image) => (
-                  <ImageDetail
-                  image={image}
-                  />
-                ))} */}
+                {pict.map((item) => (
+                  <ImageDetail image={item.file} key={item.id} />
+                ))}
               </div>
             </div>
             <div className="col-md-8">
               <div className="row">
                 <div className="col-md-8">
                   <img
-                    // src={file[0]}
+                    // src={image}
                     alt="img-big"
                     className="mt-md-5 image-zoom"
                   />
@@ -112,17 +146,17 @@ class ProductDetail extends Component {
             </div>
           </div>
           <div className="row mt-md-5 ms-md-5">
-            {/* <h3>{productId.name}</h3> */}
+            <h3>{brand}</h3>
             <img src={Rate} alt="rate" className="image-rate my-3" />
             <div className="d-flex justify-content-between">
-              {/* <h3>{productId.price}</h3> */}
+              <h3>{price}</h3>
               <div className="info-stock mt-3 w-50">
                 <img src={Check} alt="check" />
-                19 Sold / 40 In Stock
+                19 Sold / {stock} In Stock
               </div>
             </div>
             <div className="desc-product-detail mt-md-4 mt-3">
-              {/* <p>{productId.description}</p> */}
+              <p>{description}</p>
             </div>
             <div className="d-flex">
               <div className="counter-box">
@@ -139,9 +173,9 @@ class ProductDetail extends Component {
             <div className="row mt-md-5">
               <ul className="description-list">
                 <li>SKU: N/A</li>
-                <li>Categories: Furniture, Interior, Chair</li>
+                <li>Categories: {category}</li>
                 <li>Tag: Furniture, Chair, Scandinavian, Modern</li>
-                {/* <li>Product ID : {productId.id}</li> */}
+                <li>Product ID : {productId}</li>
               </ul>
             </div>
             <img src={AddInfo} alt="add-info" className="add-info mt-md-3" />
@@ -167,8 +201,8 @@ class ProductDetail extends Component {
               </div>
               <div className="col-md-6 detail-desc">
                 <p>
-                  {/* {productId.description} */}
-                  Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at
+                  {description}
+                  {/* Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at
                   egestas magna molestie a. Proin ac ex maximus, ultrices justo
                   eget, sodales orci. Aliquam egestas libero ac turpis pharetra,
                   in vehicula lacus scelerisque. Vestibulum ut sem laoreet,
@@ -185,7 +219,7 @@ class ProductDetail extends Component {
                   </ul>
                   Nunc lacus elit, faucibus ac laoreet sed, dapibus ac mi.
                   Maecenas eu ante a elit tempus fermentum. Aliquam commodo
-                  tincidunt semper. Phasellus accum
+                  tincidunt semper. Phasellus accum */}
                 </p>
               </div>
             </div>
@@ -193,14 +227,15 @@ class ProductDetail extends Component {
               <h1>Related Products</h1>
             </div>
             <div className="row justify-content-center my-md-4 my-4">
-              {/* {relatedProduct.map((product) => (
+              {relatedProduct.map((product) => (
                 <CardProduct
-                  title={product.name}
+                  title={product.brand}
                   price={product.price}
                   image={product.file}
-                  key={product.id}
+                  key={product.product_id}
+                  id={product.product_id}
                 />
-              ))} */}
+              ))}
               {/* <CardProduct
                 title="Coaster 506222-CO Loveseat"
                 price="$765.99"

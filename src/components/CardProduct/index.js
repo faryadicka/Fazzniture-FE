@@ -10,6 +10,7 @@ class CardProduct extends Component {
     return (
       <div className='col-md-4 text-center card-product-click' onClick={() => {
         navigate(`/product-detail/${id}`)
+        window.scrollTo(0, 0);
       }}>
         <div className="card card-products">
           <img src={this.props.image} className="card-img-top" alt="productsImage" />
