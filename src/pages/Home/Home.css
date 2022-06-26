@@ -155,7 +155,7 @@
    }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 600px) {
    .jumbotron {
       padding: 0px 10px;
    }

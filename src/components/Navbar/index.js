@@ -33,13 +33,13 @@ export class Navbar extends Component {
                                 <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
                                 <div className="dropdown-content-child" onClick={() => {navigate("/profile")}}>Profile</div>
                                 }
-                                {!this.props.isLoggedIn ?
-                                <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
-                                <div className="dropdown-content-child" onClick={() => {navigate("/notification")}}>Notification</div>
+                                {this.props.isLoggedIn ?
+                                <div className="dropdown-content-child" onClick={() => {navigate("/notification")}}>Notification</div>:
+                                <></>
                                 }
-                                {!this.props.isLoggedIn ?
-                                <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
-                                <div className="dropdown-content-child" onClick={() => {navigate("/")}}>Logout</div>
+                                {this.props.isLoggedIn ?
+                                <div className="dropdown-content-child" onClick={() => {navigate("/")}}>Logout</div>:
+                                <></>
                                 }
                             </div>
                         </div>
