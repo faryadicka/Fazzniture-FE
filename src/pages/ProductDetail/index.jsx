@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 //Helpers
@@ -14,18 +15,57 @@ import Love from "../../assets/vector/love.png";
 import Twt from "../../assets/vector/twt.png";
 import Fb from "../../assets/vector/fb.png";
 import Ytb from "../../assets/vector/ytb.png";
-import Mask from "../../assets/img/Mask.png";
-import Big from "../../assets/img/big.png";
-import Pd from "../../assets/img/pd.png";
+// import Mask from "../../assets/img/Mask.png";
+// import Big from "../../assets/img/big.png";
+// import Pd from "../../assets/img/pd.png";
 
 // Components
 import Navbar from "../../components/Navbar/index";
 import Footer from "../../components/Footer/index";
-import ImageDetail from "../../components/ImageDetail";
+// import ImageDetail from "../../components/ImageDetail";
 import CardProduct from "../../components/CardProduct";
 
+// Redux action
+// import { getProductByIdAction } from "../../redux/actionCreator/products";
+
+//Axios request
+// import { getProductRelatedAxios } from "../../services/products";
 class ProductDetail extends Component {
+  constructor() {
+    super();
+    this.state = {
+      relatedProduct: [],
+    };
+  }
+
+  // getProductRelated = () => {
+  //   const {
+  //     productId: { category_id },
+  //   } = this.props;
+  //   getProductRelatedAxios(category_id)
+  //     .then((res) => {
+  //       console.log(res);
+  //       this.setState({
+  //         relatedProduct: res.data,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  // componentDidMount() {
+  //   const {
+  //     params: { id },
+  //   } = this.props;
+  //   getProductByIdAction(id);
+  // this.getProductRelated();
+  // }
   render() {
+    // const {
+    // productId: { file },
+    // productId,
+    // } = this.props;
+    // const { relatedProduct } = this.state;
     return (
       <>
         <Navbar />
@@ -52,42 +92,37 @@ class ProductDetail extends Component {
           <div className="row justify-content-between mt-md-5 mt-5">
             <div className="col-12 col-md-3">
               <div className="row justify-content-around">
-                <ImageDetail image={Mask} />
-                <ImageDetail image={Mask} />
-                <ImageDetail image={Mask} />
-                <ImageDetail image={Mask} />
-                <ImageDetail image={Mask} />
+                {/* {file.map((image) => (
+                  <ImageDetail
+                  image={image}
+                  />
+                ))} */}
               </div>
             </div>
             <div className="col-md-8">
               <div className="row">
                 <div className="col-md-8">
-                  <img src={Big} alt="img-big" className="mt-md-5 image-zoom" />
+                  <img
+                    // src={file[0]}
+                    alt="img-big"
+                    className="mt-md-5 image-zoom"
+                  />
                 </div>
               </div>
             </div>
           </div>
           <div className="row mt-md-5 ms-md-5">
-            <h3>Coaster Home Furnishings Sofa in Oatmeal</h3>
+            {/* <h3>{productId.name}</h3> */}
             <img src={Rate} alt="rate" className="image-rate my-3" />
             <div className="d-flex justify-content-between">
-              <h3>PRICE</h3>
+              {/* <h3>{productId.price}</h3> */}
               <div className="info-stock mt-3 w-50">
                 <img src={Check} alt="check" />
                 19 Sold / 40 In Stock
               </div>
             </div>
             <div className="desc-product-detail mt-md-4 mt-3">
-              <p>
-                Donec nunc nunc, gravida vitae diam vel, varius interdum erat.
-                Quisque a nunc vel diam auctor commodo. Curabitur blandit
-                ultrices exurabitur ut magna dignissim, dignissiNullam vitae
-                venenatis elit. Proin dui lacus, viverra at imperdiet non,
-                facilisis eget orci. Vivamus ac elit tellus. Vestibulum nulla
-                dui, consequat vitae diam eu, pretium finibus libero. Class
-                aptent taciti sociosqu ad litora torquent per conubia nostra,
-                per inceptos himenaeos. Aliquam vitae neque tellus.
-              </p>
+              {/* <p>{productId.description}</p> */}
             </div>
             <div className="d-flex">
               <div className="counter-box">
@@ -106,7 +141,7 @@ class ProductDetail extends Component {
                 <li>SKU: N/A</li>
                 <li>Categories: Furniture, Interior, Chair</li>
                 <li>Tag: Furniture, Chair, Scandinavian, Modern</li>
-                <li>Product ID : 1</li>
+                {/* <li>Product ID : {productId.id}</li> */}
               </ul>
             </div>
             <img src={AddInfo} alt="add-info" className="add-info mt-md-3" />
@@ -124,10 +159,15 @@ class ProductDetail extends Component {
             </div>
             <div className="row align-items-center my-md-3">
               <div className="col-md-6">
-                <img src={Big} alt="imagedesc" className="image-desc" />
+                <img
+                  // src={productId.file}
+                  alt="imagedesc"
+                  className="image-desc"
+                />
               </div>
               <div className="col-md-6 detail-desc">
                 <p>
+                  {/* {productId.description} */}
                   Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at
                   egestas magna molestie a. Proin ac ex maximus, ultrices justo
                   eget, sodales orci. Aliquam egestas libero ac turpis pharetra,
@@ -153,7 +193,15 @@ class ProductDetail extends Component {
               <h1>Related Products</h1>
             </div>
             <div className="row justify-content-center my-md-4 my-4">
-              <CardProduct
+              {/* {relatedProduct.map((product) => (
+                <CardProduct
+                  title={product.name}
+                  price={product.price}
+                  image={product.file}
+                  key={product.id}
+                />
+              ))} */}
+              {/* <CardProduct
                 title="Coaster 506222-CO Loveseat"
                 price="$765.99"
                 image={Pd}
@@ -162,12 +210,7 @@ class ProductDetail extends Component {
                 title="Coaster 506222-CO Loveseat"
                 price="$765.99"
                 image={Pd}
-              />
-              <CardProduct
-                title="Coaster 506222-CO Loveseat"
-                price="$765.99"
-                image={Pd}
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -177,4 +220,13 @@ class ProductDetail extends Component {
   }
 }
 
-export default withHOC(ProductDetail);
+const mapStateToProps = (state) => {
+  const {
+    products: { productId },
+  } = state;
+  return {
+    productId,
+  };
+};
+
+export default connect(mapStateToProps)(withHOC(ProductDetail));

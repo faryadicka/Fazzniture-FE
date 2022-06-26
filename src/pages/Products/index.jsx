@@ -7,7 +7,6 @@ import withHOC from "../../helpers/withHOC";
 import "./Product.css";
 import Drop from "../../assets/vector/dropdown.png";
 import Favorite from "../../assets/img/favImage.png";
-import Image from "../../assets/img/image.png";
 
 //componenets
 import Navbar from "../../components/Navbar";
@@ -25,14 +24,14 @@ import { getProductsAction } from "../../redux/actionCreator/products";
 
 class Products extends Component {
   componentDidMount() {
-    const { dispatch, products, searchParams } = this.props;
+    const { dispatch, searchParams } = this.props;
     const name = searchParams.get("name") || "";
-    const categories = searchParams.get("categories") || "";
-    const sizes = searchParams.get("sizes") || "";
-    const colors = searchParams.get("colors") || "";
-    const brands = searchParams.get("brands") || "";
-    const max = searchParams.get("max") || "";
-    const min = searchParams.get("min") || "";
+    const categories = searchParams.get("category") || "";
+    const sizes = searchParams.get("size") || "";
+    const colors = searchParams.get("color") || "";
+    const brands = searchParams.get("brand") || "";
+    const max = searchParams.get("max_range") || "";
+    const min = searchParams.get("min_range") || "";
     const sort = searchParams.get("sort") || "";
     const order = searchParams.get("order") || "";
     dispatch(
@@ -50,6 +49,18 @@ class Products extends Component {
     );
   }
   render() {
+    const {
+      data,
+      meta: { page, totalPage },
+      searchParamsRedux,
+      setSearchParams,
+    } = this.props;
+    let active = Number(page);
+    let pageItem = [];
+    for (let page = 1; page <= totalPage; page++) {
+      pageItem.push(page);
+    }
+    console.log(pageItem);
     return (
       <>
         <Navbar />
@@ -61,15 +72,7 @@ class Products extends Component {
                 <div className="col-6 col-md-12 my-md-3">
                   <div className="row">
                     <h5>CATEGORY</h5>
-                    <CategoryList name="Accessories" qty="0" />
-                    <CategoryList name="Accessories" qty="0" />
-                    <CategoryList name="Accessories" qty="0" />
-                    <CategoryList name="Accessories" qty="0" />
-                    <CategoryList name="Accessories" qty="0" />
-                    <CategoryList name="Accessories" qty="0" />
-                    <CategoryList name="Accessories" qty="0" />
-                    <CategoryList name="Accessories" qty="0" />
-                    <CategoryList name="Accessories" qty="0" />
+                    <CategoryList name="Accessories" qty="0" key="1" />
                   </div>
                 </div>
                 <div className="col-6 col-md-12">
@@ -84,26 +87,57 @@ class Products extends Component {
                 </div>
                 <div className="col-3 col-md-12 my-md-3">
                   <h5>BRANDS</h5>
-                  <CheckBoxBrands brands="IKEA" />
-                  <CheckBoxBrands brands="IKEA" />
-                  <CheckBoxBrands brands="IKEA" />
-                  <CheckBoxBrands brands="IKEA" />
-                  <CheckBoxBrands brands="IKEA" />
-                  <CheckBoxBrands brands="IKEA" />
+                  <CheckBoxBrands brand="IKEA" id="id" key="1" />
                 </div>
                 <div className="col-3 col-md-12 my-md-3">
                   <h5 className="mb-md-4">COLORS</h5>
-                  <button className="button-color choco me-3"></button>
-                  <button className="button-color blue me-3"></button>
-                  <button className="button-color black me-3"></button>
-                  <button className="button-color purple me-3"></button>
-                  <button className="button-color green me-3"></button>
-                  <button className="button-color orange"></button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({ ...searchParamsRedux, color: "choco" });
+                    }}
+                    className="button-color choco me-3"
+                  ></button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({ ...searchParamsRedux, color: "blue" });
+                    }}
+                    className="button-color blue me-3"
+                  ></button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({ ...searchParamsRedux, color: "black" });
+                    }}
+                    className="button-color black me-3"
+                  ></button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({
+                        ...searchParamsRedux,
+                        color: "purple",
+                      });
+                    }}
+                    className="button-color purple me-3"
+                  ></button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({ ...searchParamsRedux, color: "green" });
+                    }}
+                    className="button-color green me-3"
+                  ></button>
+                  <button
+                    onClick={() => {
+                      setSearchParams({
+                        ...searchParamsRedux,
+                        color: "orange",
+                      });
+                    }}
+                    className="button-color orange"
+                  ></button>
                 </div>
                 <div className="col-3 col-md-12 my-md-3">
                   <h5 className="mb-md-4">SIZES</h5>
                   <div className="d-flex gap-1 flex-wrap">
-                    <SizeButton size="S" />
+                    <SizeButton size="S" key="1" />
                   </div>
                 </div>
                 <div className="col-3 col-md-12 my-md-3">
@@ -136,68 +170,19 @@ class Products extends Component {
                 </div>
               </div>
               <div className="row justify-content-between mt-md-4">
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
-                <CardProduct
-                  title="Coaster 506222-CO Loveseat"
-                  price="$765.99"
-                  image={Image}
-                />
+                {data.map((data) => (
+                  <CardProduct
+                    title={data.name}
+                    price={data.price}
+                    image={data.file}
+                    key={data.id}
+                    id={data.id}
+                  />
+                ))}
               </div>
-              <PageButton number="01" />
+              {pageItem.map((page) => (
+                <PageButton number={page} currentPage={active} />
+              ))}
             </div>
           </div>
         </div>
@@ -209,10 +194,15 @@ class Products extends Component {
 
 const mapStateToProps = (state) => {
   const {
-    products: { products },
+    products: {
+      products: { data, meta },
+    },
+    searchParamsRedux,
   } = state;
   return {
-    products,
+    data,
+    meta,
+    searchParamsRedux,
   };
 };
 

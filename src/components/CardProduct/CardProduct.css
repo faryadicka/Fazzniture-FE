@@ -17,3 +17,7 @@
     margin-bottom: 20px;
   }
 }
+
+.card-product-click {
+  cursor: pointer;
+}

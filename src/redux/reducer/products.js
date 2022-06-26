@@ -1,7 +1,8 @@
-import { getProductsString, PENDING, FULFILLED, REJECTED } from "../actionCreator/actionString";
+import { getProductsString, getProductIdString, PENDING, FULFILLED, REJECTED } from "../actionCreator/actionString";
 
 const initialState = {
   products: [],
+  productId: [],
   isLoading: false,
   err: null
 }
@@ -14,6 +15,14 @@ const productsReducer = (state = initialState, action) => {
       console.log(action.payload.data)
       return { ...state, products: action.payload.data, isLoading: false }
     case getProductsString + REJECTED:
+      return { ...state, isLoading: false, err: action.payload }
+
+    case getProductIdString + PENDING:
+      return { ...state, isLoading: true }
+    case getProductIdString + FULFILLED:
+      console.log(action.payload.data)
+      return { ...state, productId: action.payload.data, isLoading: false }
+    case getProductIdString + REJECTED:
       return { ...state, isLoading: false, err: action.payload }
     default:
       return state

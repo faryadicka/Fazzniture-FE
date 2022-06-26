@@ -6,12 +6,12 @@ const withHOC = (Component) => {
     const params = useParams()
     const location = useLocation()
     const navigate = useNavigate()
-    const [searchParams, setSearcParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
     return (
       <Component
         params={params}
         searchParams={searchParams}
-        setSearcParams={setSearcParams}
+        setSearchParams={setSearchParams}
         location={location}
         navigate={navigate}
         {...props}
