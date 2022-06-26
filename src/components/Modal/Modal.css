@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+.modal-title{
+    font-family: 'Arimo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 37px;
+    color: black;
+    text-align: center;
+    padding-top: 20px;
+
+}
+.modal-body{
+    font-family: 'Arimo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+}
+.modal-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

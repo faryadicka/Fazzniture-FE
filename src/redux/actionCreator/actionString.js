@@ -11,6 +11,7 @@ export const sizeProduct = "SET_SIZE"
 export const brandProduct = "SET_BRAND"
 export const colorProduct = "SET_COLOR"
 
+export const registerAuth = "REGISTER_ACCOUNT"
 //Handle Promise
 export const PENDING = "_PENDING"
 export const FULFILLED = "_FULFILLED"
