@@ -1,114 +1,158 @@
-@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 .login-color-black {
-  color: #1a1a1a;
+   color: #1a1a1a;
 }
 .login-color-grey {
-  color: rgba(180, 180, 180, 1);
+   color: rgba(180, 180, 180, 1);
 }
 .login-arimo-30 {
-  font-family: "Arimo", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 37px;
+   font-family: 'Arimo', sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 30px;
+   line-height: 37px;
 }
 .login-arimo-12 {
-  font-family: "Arimo", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 28px;
+   font-family: 'Arimo', sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 12px;
+   line-height: 28px;
 }
 .login-main {
-  padding: 80px 240px 120px 240px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  column-gap: 100px;
+   padding: 80px 240px 120px 240px;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   column-gap: 100px;
 }
 .login-left-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
 }
 .login-login-nav {
-  margin: 0px 0px 50px 0px;
-  padding: 0px 0px 20px 0px;
-  position: relative;
+   margin: 0px 0px 50px 0px;
+   padding: 0px 0px 20px 0px;
+   position: relative;
 }
 .login-login-nav::before {
-  content: "";
-  position: absolute;
-  top: 50px;
-  width: 80px;
-  border-bottom: 2px solid #c2c2c2;
+   content: '';
+   position: absolute;
+   top: 50px;
+   width: 80px;
+   border-bottom: 2px solid #c2c2c2;
 }
 .login-register-nav {
-  cursor: pointer;
+   cursor: pointer;
 }
 .login-right-section {
-  display: flex;
-  flex-direction: column;
+   display: flex;
+   flex-direction: column;
 }
 .login-title {
-  margin-bottom: 35px;
+   margin-bottom: 35px;
 }
 .login-input-1 {
-  margin-bottom: 10px;
+   margin-bottom: 10px;
 }
 .login-input-2 {
-  margin-bottom: 30px;
-  position: relative;
-  display: flex;
-  flex-direction: row;
+   margin-bottom: 30px;
+   position: relative;
+   display: flex;
+   flex-direction: row;
 }
 .login-input {
-  border: 1px solid rgba(206, 206, 206, 1);
-  height: 70px;
-  width: 500px;
-  padding-left: 20px;
+   border: 1px solid rgba(206, 206, 206, 1);
+   height: 70px;
+   width: 500px;
+   padding-left: 20px;
 }
 .login-eye {
-  position: relative;
-  right: 30px;
-  top: 20px;
+   position: relative;
+   right: 30px;
+   top: 20px;
 }
 .login-bottom-container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 30px;
+   display: flex;
+   flex-direction: row;
+   margin-top: 30px;
 }
 .login-checkbox {
-  margin-right: 10px;
+   margin-right: 10px;
 }
 .login-checkbox-container {
-  margin-right: 20px;
+   margin-right: 20px;
 }
 .login-forgot {
-  color: #d25b5b;
-  cursor: pointer;
+   color: #d25b5b;
+   cursor: pointer;
 }
 input::-ms-reveal,
 input::-ms-clear {
-  display: none;
+   display: none;
 }
 
 .button-login {
-  width: 130px;
-  background-color: black;
-  color: white;
-  height: 50px;
+   width: 130px;
+   background-color: black;
+   color: white;
+   height: 50px;
 }
-.login-button{
-    display: flex;
-    flex-direction: row;
-    column-gap: 20px;
-    color: red;
-    align-items: center;
-    font-family: 'Arimo', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
+.login-button {
+   display: flex;
+   flex-direction: row;
+   column-gap: 20px;
+   color: red;
+   align-items: center;
+   font-family: 'Arimo', sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 15px;
+}
+
+@media (max-width: 428px) {
+   .navbar {
+      height: 150px !important;
+   }
+
+   .login-main {
+      padding: 20px;
+      flex-direction: column;
+   }
+
+   .login-input {
+      width: 100%;
+   }
+
+   #visibility-button {
+      margin-right: -50%;
+      padding-right: 100px;
+   }
+
+   .login-login-nav {
+      padding: 0px;
+   }
+
+   .footer-padding-column {
+      padding: 30px 0px;
+   }
+
+   .login-title {
+      display: none;
+   }
+
+   .login-left-section {
+      padding-bottom: 20px;
+   }
+
+   .login-login-nav {
+      margin-bottom: 20px;
+   }
+
+   .login-forgot {
+      font-size: 12px;
+   }
 }

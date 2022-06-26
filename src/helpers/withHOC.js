@@ -1,5 +1,5 @@
-import React from "react"
-import { useParams, useSearchParams, useLocation, useNavigate } from "react-router-dom"
+import React from 'react';
+import { useParams, useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 
 const withHOC = (Component) => {
   const WithHOC = (props) => {
@@ -21,4 +21,4 @@ const withHOC = (Component) => {
   return WithHOC
 }
 
-export default withHOC
+export default withHOC;
