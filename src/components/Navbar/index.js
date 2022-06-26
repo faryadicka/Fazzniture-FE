@@ -9,7 +9,7 @@ export class Navbar extends Component {
         return (
             <Fragment>
                 <div className='navbar'>
-                    <div className='col-12 col-md-4'>
+                    <div className='col-12 col-md-4' onClick={()=>{navigate("/")}}>
                         <div className='navbar-1'>
                             FAZZNITURE
                         </div>
@@ -27,11 +27,15 @@ export class Navbar extends Component {
                         <div><img src={require("../../assets/vector/Vector-Cart.png")} alt="Cart" className="navbar-3-logo"
                          onClick={()=>{navigate("/cart")}}/></div>
                         <div className='dropdown'>
-                            <img src={require("../../assets/vector/Vector-Drop.png")} alt="Drop" className="header-navbar-3-logo dropbtn"/>
+                            <img src={require("../../assets/vector/Vector-Drop.png")} alt="Drop" className="navbar-3-logo dropbtn"/>
                             <div className="dropdown-content">
                                 {!this.props.isLoggedIn ?
                                 <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
                                 <div className="dropdown-content-child" onClick={() => {navigate("/profile")}}>Profile</div>
+                                }
+                                {!this.props.isLoggedIn ?
+                                <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
+                                <div className="dropdown-content-child" onClick={() => {navigate("/notification")}}>Notification</div>
                                 }
                                 {!this.props.isLoggedIn ?
                                 <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
