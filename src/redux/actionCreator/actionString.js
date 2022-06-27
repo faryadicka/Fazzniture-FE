@@ -19,6 +19,8 @@ export const sortProduct = "SORT_PRODUCT"
 export const rangeProduct = "SET_RANGE"
 export const deleteParams = "DELETE_PARAMS"
 export const setStatus = "SET_STATUS"
+export const searchProduct = "SET_SEARCH"
+export const pageProduct = "SET_PAGE"
 
 //Handle Promise
 export const PENDING = "_PENDING"

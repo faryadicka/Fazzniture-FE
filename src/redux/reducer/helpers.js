@@ -1,7 +1,9 @@
-import { categoryProduct, sizeProduct, brandProduct, colorProduct, deleteParams, sortProduct, rangeProduct } from "../actionCreator/actionString"
+import { categoryProduct, sizeProduct, brandProduct, colorProduct, deleteParams, sortProduct, rangeProduct, searchProduct, pageProduct } from "../actionCreator/actionString"
+import { setPage } from "../actionCreator/helpers"
 
 let initialState = {
-  urlParams: {}
+  urlParams: {
+  }
 }
 
 const helpersReducer = (state = initialState, action) => {
@@ -23,6 +25,10 @@ const helpersReducer = (state = initialState, action) => {
       const { color } = action.payload
       state.urlParams.color = color
       return { ...state }
+    case searchProduct:
+      const { name } = action.payload
+      state.urlParams.name = name
+      return { ...state }
     case sortProduct:
       const { sort, order } = action.payload
       state.urlParams.sort = sort
@@ -36,6 +42,10 @@ const helpersReducer = (state = initialState, action) => {
     case deleteParams:
       const { object } = action.payload
       state.urlParams = object
+      return { ...state }
+    case pageProduct:
+      const { page } = action.payload
+      state.urlParams.page = page
       return { ...state }
     default:
       return state

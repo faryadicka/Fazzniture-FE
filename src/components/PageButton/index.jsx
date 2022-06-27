@@ -8,9 +8,7 @@ class PageButton extends Component {
   render() {
     return (
       <>
-        <button
-          className={`produtcs-pagination-button me-md-3 me-3 page-white`}
-        >
+        <button className={`produtcs-pagination-button mx-md-1 page-white`}>
           {this.props.number}
         </button>
       </>

@@ -1,4 +1,4 @@
-import { sizeProduct, brandProduct, categoryProduct, colorProduct, deleteParams, sortProduct, rangeProduct } from "./actionString"
+import { sizeProduct, brandProduct, categoryProduct, colorProduct, deleteParams, sortProduct, rangeProduct, searchProduct, pageProduct } from "./actionString"
 
 export const setCategory = (category) => {
   return {
@@ -58,6 +58,24 @@ export const deleteParamsAction = (object) => {
     type: deleteParams,
     payload: {
       object
+    }
+  }
+}
+
+export const setSearch = (name) => {
+  return {
+    type: searchProduct,
+    payload: {
+      name
+    }
+  }
+}
+
+export const setPage = (page) => {
+  return {
+    type: pageProduct,
+    payload: {
+      page
     }
   }
 }
