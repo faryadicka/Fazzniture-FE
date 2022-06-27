@@ -8,9 +8,9 @@ export class MyProduct extends Component {
     return (
       <>
         <div className="row justify-content-between my-product-row">
-          <div className="col-md-5">Products</div>
-          <div className="col-md-2">Stock status</div>
-          <div className="col-md-3">Price</div>
+          <div className="col-md-5 col-5">Products</div>
+          <div className="col-md-2 col-3">Stock status</div>
+          <div className="col-md-3 col-3">Price</div>
         </div>
         <div className="row">
           <CardMyProduct />

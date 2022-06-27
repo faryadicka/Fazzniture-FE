@@ -1,34 +1,55 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import withHOC from "../../helpers/withHOC";
 
 // assets
 import "./SizeButton.css";
 
-export class SizeButton extends Component {
-  state = {
-    sizeClicked: false,
-  };
+import { setSize } from "../../redux/actionCreator/helpers";
+
+class SizeButton extends Component {
+  state = {};
   render() {
-    const { sizeClicked } = this.state;
+    const { size, setSearchParams, urlParams, dispatch } = this.props;
     return (
       <button
         onClick={() => {
-          if (!sizeClicked) {
-            return this.setState({
-              sizeClicked: true,
-            });
+          if (size === "S") {
+            dispatch(setSize("S"));
+            setSearchParams(urlParams);
           }
-          return this.setState({
-            sizeClicked: false,
-          });
+          if (size === "M") {
+            dispatch(setSize("M"));
+            setSearchParams(urlParams);
+          }
+          if (size === "L") {
+            dispatch(setSize("L"));
+            setSearchParams(urlParams);
+          }
+          if (size === "XL") {
+            dispatch(setSize("XL"));
+            setSearchParams(urlParams);
+          }
+          if (size === "XXL") {
+            dispatch(setSize("XXL"));
+            setSearchParams(urlParams);
+          }
         }}
-        className={`button-size-products ${
-          !sizeClicked ? "size-white" : "size-black"
-        }`}
+        className={`button-size-products size-white`}
       >
-        S
+        {size}
       </button>
     );
   }
 }
 
-export default SizeButton;
+const mapStateToProps = (state) => {
+  const {
+    helpers: { urlParams },
+  } = state;
+  return {
+    urlParams,
+  };
+};
+
+export default connect(mapStateToProps)(withHOC(SizeButton));
