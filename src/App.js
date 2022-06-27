@@ -18,6 +18,7 @@ import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import Notification from './pages/Notification';
 import Blog from './pages/Blog';
+import OrderTracking from './pages/OrderTracking';
 // import PrivateRoute from "./components/PrivateRoute";
 // import PublicRoute from "./components/PublicRoute";
 
@@ -41,6 +42,7 @@ function App() {
                   <Route path="/wishlist" element={<Wishlist />} />
                   <Route path="/notification" element={<Notification />} />
                   <Route path="/blog" element={<Blog />} />
+                  <Route path="/order-tracking" element={<OrderTracking />} />
                   <Route path="*" element={<NotFound />} />
                </Routes>
             </Router>

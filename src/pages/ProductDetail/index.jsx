@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import withHOC from '../../helpers/withHOC';
 
 //Redux
-import { addProduct, reduceProduct, updateProductCart } from '../../redux/actionCreator';
+// import { addProduct, reduceProduct, updateProductCart } from '../../redux/actionCreator';
 
 //assets
 import './ProductDetail.css';
@@ -117,9 +117,9 @@ class ProductDetail extends Component {
                      </div>
                      <button
                         className="button-cart"
-                        onClick={() => {
-                           dispatch(updateProductCart(id, this.state.qty));
-                        }}
+                        // onClick={() => {
+                        //    dispatch(updateProductCart(id, this.state.qty));
+                        // }}
                      >
                         Add to cart
                      </button>
