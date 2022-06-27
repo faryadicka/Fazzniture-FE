@@ -15,7 +15,9 @@ import Chat from './pages/Chat';
 import ProductDetail from './pages/ProductDetail';
 import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
-import Wislist from './pages/Wishlist'
+import Wishlist from './pages/Wishlist';
+import Notification from './pages/Notification';
+
 // import PrivateRoute from "./components/PrivateRoute";
 // import PublicRoute from "./components/PublicRoute";
 
@@ -36,7 +38,8 @@ function App() {
                   <Route path="/products" element={<Products />} />
                   <Route path="/chat" element={<Chat />} />
                   <Route path="/products/detail/:id" element={<ProductDetail />} />
-                  <Route path="/wishlist" element={<Wislist/>} />
+                  <Route path="/wishlist" element={<Wishlist />} />
+                  <Route path="/notification" element={<Notification />} />
                   <Route path="*" element={<NotFound />} />
                </Routes>
             </Router>
