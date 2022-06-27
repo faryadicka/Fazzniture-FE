@@ -7,6 +7,7 @@ import withHOC from "../../helpers/withHOC";
 import "./Product.css";
 import Drop from "../../assets/vector/dropdown.png";
 import Favorite from "../../assets/img/favImage.png";
+import GIF from "../../assets/gif/GIF.gif";
 
 //componenets
 import Navbar from "../../components/Navbar";
@@ -17,10 +18,15 @@ import CheckBoxBrands from "../../components/CheckBoxBrands";
 import CardProduct from "../../components/CardProduct";
 import PageButton from "../../components/PageButton";
 import SizeButton from "../../components/SizeButton";
-import BlackButton from "../../components/Black-Button";
 
 //ActionReducer
 import { getProductsAction } from "../../redux/actionCreator/products";
+import {
+  setColor,
+  deleteParamsAction,
+  setSort,
+  setRange,
+} from "../../redux/actionCreator/helpers";
 
 //Axios
 import {
@@ -38,6 +44,10 @@ class Products extends Component {
       colors: [],
       sizes: [],
       brands: [],
+      min_range: 0,
+      max_range: 0,
+      errorGet: false,
+      successGet: false,
     };
   }
 
@@ -118,6 +128,7 @@ class Products extends Component {
     this.getAllBrands();
     this.getAllSizes();
     this.getAllColors();
+    dispatch(deleteParamsAction({}));
   }
   componentDidUpdate(prevProps) {
     const { dispatch, searchParams } = this.props;
@@ -143,25 +154,37 @@ class Products extends Component {
           sort,
           order
         )
-      );
+      )
+        .then((res) => {
+          console.log(res);
+          this.setState({
+            errorGet: false,
+          });
+        })
+        .catch((err) => {
+          this.setState({
+            errorGet: true,
+          });
+        });
     }
   }
   render() {
     const {
       data,
       meta: { page, totalPage, totalData },
-      searchParamsRedux,
       setSearchParams,
-      // dispatch,
-      helper,
+      dispatch,
+      urlParams,
+      // location,
     } = this.props;
     let active = Number(page);
     let pageItem = [];
     for (let page = 1; page <= totalPage; page++) {
       pageItem.push(page);
     }
-    const { categories, brands, sizes } = this.state;
-    console.log(helper);
+    const { categories, brands, sizes, min_range, max_range, errorGet } =
+      this.state;
+    // console.log(max_range);
     return (
       <>
         <Navbar />
@@ -179,12 +202,43 @@ class Products extends Component {
                   </div>
                 </div>
                 <div className="col-6 col-md-12">
-                  <form>
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      dispatch(setRange(min_range, max_range));
+                      setSearchParams(urlParams);
+                    }}
+                  >
                     <h5>PRICE</h5>
-                    <p>Price $from - $to</p>
-                    <input type="range" className="w-75" />
+                    <p>
+                      Price IDR {min_range} - IDR {max_range}
+                    </p>
+                    <input
+                      type="range"
+                      max={1000000}
+                      value={min_range}
+                      className="w-75"
+                      onChange={(event) => {
+                        this.setState({
+                          min_range: event.target.value,
+                        });
+                      }}
+                    />
+                    <input
+                      type="range"
+                      max={1000000}
+                      value={max_range}
+                      className="w-75"
+                      onChange={(event) => {
+                        this.setState({
+                          max_range: event.target.value,
+                        });
+                      }}
+                    />
                     <div className="mt-md-4">
-                      <BlackButton text="FILTER" />
+                      <button type="submit" className="filter-price">
+                        Filter
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -202,48 +256,43 @@ class Products extends Component {
                   <h5 className="mb-md-4">COLORS</h5>
                   <button
                     onClick={() => {
-                      setSearchParams({
-                        color: "choco",
-                      });
+                      dispatch(setColor("choco"));
+                      setSearchParams(urlParams);
                     }}
                     className="button-color choco me-3"
                   ></button>
                   <button
                     onClick={() => {
-                      setSearchParams({
-                        color: "blue",
-                      });
+                      dispatch(setColor("blue"));
+                      setSearchParams(urlParams);
                     }}
                     className="button-color blue me-3"
                   ></button>
                   <button
                     onClick={() => {
-                      setSearchParams({
-                        color: "black",
-                      });
+                      dispatch(setColor("black"));
+                      setSearchParams(urlParams);
                     }}
                     className="button-color black me-3"
                   ></button>
                   <button
                     onClick={() => {
-                      setSearchParams({
-                        color: "purple",
-                      });
+                      dispatch(setColor("purple"));
+                      setSearchParams(urlParams);
                     }}
                     className="button-color purple me-3"
                   ></button>
                   <button
                     onClick={() => {
-                      setSearchParams({ color: "green" });
+                      dispatch(setColor("green"));
+                      setSearchParams(urlParams);
                     }}
                     className="button-color green me-3"
                   ></button>
                   <button
                     onClick={() => {
-                      setSearchParams({
-                        ...searchParamsRedux,
-                        color: "orange",
-                      });
+                      dispatch(setColor("orange"));
+                      setSearchParams(urlParams);
                     }}
                     className="button-color orange"
                   ></button>
@@ -279,7 +328,8 @@ class Products extends Component {
                     <div className="dropdown-content">
                       <div
                         onClick={() => {
-                          setSearchParams({ sort: "price", order: "desc" });
+                          dispatch(setSort("price", "desc"));
+                          setSearchParams(urlParams);
                         }}
                         className="more-expensive mb-3"
                       >
@@ -287,7 +337,8 @@ class Products extends Component {
                       </div>
                       <div
                         onClick={() => {
-                          setSearchParams({ sort: "price", order: "asc" });
+                          dispatch(setSort("price", "asc"));
+                          setSearchParams(urlParams);
                         }}
                         className="more-cheap"
                       >
@@ -297,9 +348,12 @@ class Products extends Component {
                   </div>
                 </div>
               </div>
-              <div className="row justify-content-between mt-md-4">
-                {data.length === 0 ? (
-                  <h1>PRODUCTS NOT FOUND</h1>
+              <div className="row justify-content-between text-center mt-md-4">
+                {errorGet ? (
+                  <>
+                    <h1 className="product-404">PRODUCTS NOT FOUND</h1>
+                    <img src={GIF} alt="gif" />
+                  </>
                 ) : (
                   data.map((data) => (
                     <CardProduct
@@ -312,9 +366,13 @@ class Products extends Component {
                   ))
                 )}
               </div>
-              {pageItem.map((page) => (
-                <PageButton number={page} currentPage={active} />
-              ))}
+              {errorGet ? (
+                <></>
+              ) : (
+                pageItem.map((page) => (
+                  <PageButton number={page} currentPage={active} />
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -329,12 +387,12 @@ const mapStateToProps = (state) => {
     products: {
       products: { data, meta },
     },
-    helper,
+    helpers: { urlParams },
   } = state;
   return {
     data,
     meta,
-    helper,
+    urlParams,
   };
 };
 

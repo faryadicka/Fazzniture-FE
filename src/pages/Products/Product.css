@@ -64,6 +64,17 @@
   display: block;
 }
 
+.filter-price {
+  width: 65%;
+  height: 50px;
+  background-color: black;
+  color: white;
+}
+
+.product-404 {
+  margin-top: 100px;
+}
+
 @media (max-width: 600px) {
   .product-button-fav {
     top: 10px;
