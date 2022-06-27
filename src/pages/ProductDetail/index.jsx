@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
 
 //Helpers
 import withHOC from "../../helpers/withHOC";
+
+//Redux
+import { addProduct, reduceProduct, updateProductCart } from "../../redux/actionCreator/cart";
 
 //assets
 import "./ProductDetail.css";
@@ -25,7 +29,12 @@ import ImageDetail from "../../components/ImageDetail";
 import CardProduct from "../../components/CardProduct";
 
 class ProductDetail extends Component {
+  state = {
+    qty: 0
+  }
   render() {
+    console.log(this.props)
+    const {params: {id}, dispatch, cart} = this.props;
     return (
       <>
         <Navbar />
@@ -91,11 +100,13 @@ class ProductDetail extends Component {
             </div>
             <div className="d-flex">
               <div className="counter-box">
-                <button className="w-100 button-count">-</button>
-                <p className="px-2 mt-md-2">qty</p>
-                <button className="w-100 button-count">+</button>
+                <button className="w-100 button-count" onClick={()=>{this.setState({qty: this.state.qty - 1})}}>-</button>
+                <p className="px-2 mt-md-2">{this.state.qty}</p>
+                <button className="w-100 button-count" onClick={()=>{this.setState({qty: this.state.qty + 1})}}>+</button>
               </div>
-              <button className="button-cart">Add to cart</button>
+              <button className="button-cart" onClick={()=>{
+                dispatch(updateProductCart(id, this.state.qty))
+              }}>Add to cart</button>
               <div className="square-love">
                 <img src={Love} alt="love" className="love-button" />
               </div>
@@ -106,7 +117,7 @@ class ProductDetail extends Component {
                 <li>SKU: N/A</li>
                 <li>Categories: Furniture, Interior, Chair</li>
                 <li>Tag: Furniture, Chair, Scandinavian, Modern</li>
-                <li>Product ID : 1</li>
+                <li>Product ID : {id}</li>
               </ul>
             </div>
             <img src={AddInfo} alt="add-info" className="add-info mt-md-3" />
@@ -127,7 +138,7 @@ class ProductDetail extends Component {
                 <img src={Big} alt="imagedesc" className="image-desc" />
               </div>
               <div className="col-md-6 detail-desc">
-                <p>
+                <div>
                   Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at
                   egestas magna molestie a. Proin ac ex maximus, ultrices justo
                   eget, sodales orci. Aliquam egestas libero ac turpis pharetra,
@@ -146,7 +157,7 @@ class ProductDetail extends Component {
                   Nunc lacus elit, faucibus ac laoreet sed, dapibus ac mi.
                   Maecenas eu ante a elit tempus fermentum. Aliquam commodo
                   tincidunt semper. Phasellus accum
-                </p>
+                </div>
               </div>
             </div>
             <div className="row title-related text-center">
@@ -177,4 +188,11 @@ class ProductDetail extends Component {
   }
 }
 
-export default withHOC(ProductDetail);
+const mapStateToProps = (state) => {
+  const { cartOfProduct: {cart}} = state
+  return {
+    cart
+  }
+}
+
+export default connect(mapStateToProps)(withHOC(ProductDetail));
