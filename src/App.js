@@ -1,14 +1,14 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 //Redux
-import { Provider as ReduxProvider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { store, persistor } from "./redux/store"
+import { Provider as ReduxProvider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/store';
 
 // Pages
-import Home from "./pages/Home";
-import Auth from "./pages/Auth";
-import Products from "./pages/Products";
+import Home from './pages/Home';
+import Auth from './pages/Auth';
+import Products from './pages/Products';
 // import Profile from "./pages/Profile";
 import Info from "./pages/Info";
 import Chat from "./pages/Chat";
@@ -22,6 +22,7 @@ import Blog from "./pages/Blog";
 // import PublicRoute from "./components/PublicRoute";
 
 function App() {
+<<<<<<< HEAD
   return (
     <ReduxProvider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -47,6 +48,32 @@ function App() {
       </PersistGate>
     </ReduxProvider>
   );
+=======
+   return (
+      <ReduxProvider store={store}>
+         <PersistGate loading={null} persistor={persistor}>
+            <Router>
+               <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/auth" element={<Auth />} />
+                  {/* <Route path="/profile" element={<Profile />} /> */}
+                  <Route path="/profile" element={<Info />} />
+                  <Route path="/myproduct" element={<Info />} />
+                  <Route path="/sellingproduct" element={<Info />} />
+                  <Route path="/myorder" element={<Info />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/chat" element={<Chat />} />
+                  <Route path="/products/detail/:id" element={<ProductDetail />} />
+                  <Route path="/wishlist" element={<Wishlist />} />
+                  <Route path="/notification" element={<Notification />} />
+                  <Route path="*" element={<NotFound />} />
+               </Routes>
+            </Router>
+         </PersistGate>
+      </ReduxProvider>
+   );
+>>>>>>> 0587c630ea7c5d5152eadfb63f2b994bb3440f08
 }
 
 export default App;

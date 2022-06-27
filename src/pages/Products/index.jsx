@@ -25,7 +25,7 @@ import { getProductsAction } from '../../redux/actionCreator/products';
 
 class Products extends Component {
    componentDidMount() {
-      const { dispatch, products, searchParams } = this.props;
+      const { dispatch, searchParams } = this.props;
       const name = searchParams.get('name') || '';
       const categories = searchParams.get('categories') || '';
       const sizes = searchParams.get('sizes') || '';
