@@ -8,6 +8,7 @@
     width: 100%;
     padding-left: 60px;
     padding-right: 60px;
+    justify-content: center;
 }
 .navbar-1{
     font-family: 'Arimo', sans-serif;
@@ -73,3 +74,29 @@
 .dropdown-content-child:hover {background-color: #c5c5c5;}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown-content-child:active{background-color: #3f3e3e; color: white;}
+
+.navbar-search{
+    color: white;
+    width:70vw;
+    margin:auto;
+    background-color: black;
+    border: none;
+}
+.navbar-search::placeholder{
+    color:white;
+}
+.navbar-search:focus{
+    outline: none;
+}
+.navbar-search-container{
+    background-color: black;
+    padding: 6px 20px;
+    position: absolute;
+    top:85px;
+}
+.navbar-search-logo{
+    width:18px
+}
+.navbar-search-container-none{
+    display: none;
+}
