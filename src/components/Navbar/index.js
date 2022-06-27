@@ -1,32 +1,68 @@
 import React, { Component, Fragment } from 'react'
 import "./Navbar.css"
+import withHOC from "../../helpers/withHOC";
+import { connect } from 'react-redux'
 
 export class Navbar extends Component {
+    state = {
+        search: false,
+    }
     render() {
+        const {navigate} = this.props
         return (
             <Fragment>
                 <div className='navbar'>
-                    <div className='col-12 col-md-4'>
+                    <div className='col-12 col-md-4' onClick={()=>{navigate("/")}}>
                         <div className='navbar-1'>
                             FAZZNITURE
                         </div>
                     </div>
                     <div className='navbar-2 col-12 col-md-4'>
-                        <div className='navbar-2-content'>Home</div>
-                        <div className='navbar-2-content'>Pages</div>
-                        <div className='navbar-2-content'>Shop</div>
-                        <div className='navbar-2-content'>Blog</div>
+                        <div className='navbar-2-content' onClick={()=>{navigate("/")}}>Home</div>
+                        <div className='navbar-2-content' onClick={()=>{navigate("/")}}>Pages</div>
+                        <div className='navbar-2-content' onClick={()=>{navigate("/products")}}>Shop</div>
+                        <div className='navbar-2-content' onClick={()=>{navigate("/blog")}}>Blog</div>
                     </div>
                     <div className='navbar-3 col-12 col-md-4'>
-                        <div><img src={require("../../assets/vector/Vector-Search.png")} alt="Search" className="navbar-3-logo"/></div>
-                        <div><img src={require("../../assets/vector/Vector-Love.png")} alt="Love" className="navbar-3-logo"/></div>
-                        <div><img src={require("../../assets/vector/Vector-Cart.png")} alt="Cart" className="navbar-3-logo"/></div>
-                        <div><img src={require("../../assets/vector/Vector-Drop.png")} alt="Drop" className="navbar-3-logo"/></div>
+                        <div><img src={require("../../assets/vector/Vector-Search.png")} alt="Search" className="navbar-3-logo" onClick={()=> {
+                            this.setState({search:!this.state.search})
+                        }} /></div>
+                        <div><img src={require("../../assets/vector/Vector-Love.png")} alt="Love" className="navbar-3-logo"
+                         onClick={()=>{navigate("/wishlist")}}/></div>
+                        <div><img src={require("../../assets/vector/Vector-Cart.png")} alt="Cart" className="navbar-3-logo"
+                         onClick={()=>{navigate("/cart")}}/></div>
+                        <div className='dropdown'>
+                            <img src={require("../../assets/vector/Vector-Drop.png")} alt="Drop" className="navbar-3-logo dropbtn"/>
+                            <div className="dropdown-content">
+                                {!this.props.isLoggedIn ?
+                                <div className="dropdown-content-child" onClick={() => {navigate("/auth")}}>Login</div>:
+                                <div className="dropdown-content-child" onClick={() => {navigate("/profile")}}>Profile</div>
+                                }
+                                {this.props.isLoggedIn ?
+                                <div className="dropdown-content-child" onClick={() => {navigate("/notification")}}>Notification</div>:
+                                <></>
+                                }
+                                {this.props.isLoggedIn ?
+                                <div className="dropdown-content-child" onClick={() => {navigate("/")}}>Logout</div>:
+                                <></>
+                                }
+                            </div>
+                        </div>
                     </div>
+                    <form className={this.state.search?'navbar-search-container':'navbar-search-container-none'}>
+                        <input type="text" placeholder='Search' className='navbar-search'/>
+                        <img src={require("../../assets/vector/Vector-Search-White.png")} alt="Search" className="navbar-search-logo"/>
+                    </form>
                 </div>
             </Fragment>
         )
     }
 }
-
-export default Navbar
+const mapStateToProps = (state) => {
+    const { user: { isLoggedIn } } = state
+    return {
+      isLoggedIn
+    }
+  }
+  
+export default connect(mapStateToProps)(withHOC(Navbar))

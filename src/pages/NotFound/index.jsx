@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 //components
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 //assets
 import "./NotFound.css";
@@ -11,8 +12,8 @@ import NF from "../../assets/img/notfound.png";
 export class NotFound extends Component {
   render() {
     return (
-      <>
-        <Navbar />
+      <div>
+        <Navbar/>
         <div className="container notfound-container">
           <div className="row">
             <div className="col-md-7">
@@ -37,8 +38,9 @@ export class NotFound extends Component {
             </div>
           </div>
         </div>
-      </>
-    );
+        <Footer/>
+      </div>
+    )
   }
 }
 

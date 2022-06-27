@@ -1,26 +1,28 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { connect } from "react-redux";
-import withHOC from "../../helpers/withHOC";
+import { connect } from 'react-redux';
+import withHOC from '../../helpers/withHOC';
 
 //assets
-import "./Product.css";
-import Drop from "../../assets/vector/dropdown.png";
-import Favorite from "../../assets/img/favImage.png";
+
+import './Product.css';
+import Drop from '../../assets/vector/dropdown.png';
+import Favorite from '../../assets/img/favImage.png';
+import Image from '../../assets/img/image.png';
 
 //componenets
-import Navbar from "../../components/Navbar";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import CategoryList from "../../components/CategoryList";
-import CheckBoxBrands from "../../components/CheckBoxBrands";
-import CardProduct from "../../components/CardProduct";
-import PageButton from "../../components/PageButton";
-import SizeButton from "../../components/SizeButton";
-import BlackButton from "../../components/Black-Button";
+import Navbar from '../../components/Navbar';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import CategoryList from '../../components/CategoryList';
+import CheckBoxBrands from '../../components/CheckBoxBrands';
+import CardProduct from '../../components/CardProduct';
+import PageButton from '../../components/PageButton';
+import SizeButton from '../../components/SizeButton';
+import BlackButton from '../../components/Black-Button';
 
 //ActionReducer
-import { getProductsAction } from "../../redux/actionCreator/products";
+import { getProductsAction } from '../../redux/actionCreator/products';
 
 //Axios
 import {
@@ -254,17 +256,9 @@ class Products extends Component {
                     {sizes.map((item) => (
                       <SizeButton size={item.name} key={item.id} />
                     ))}
+
                   </div>
-                </div>
-                <div className="col-3 col-md-12 my-md-3">
-                  <img
-                    className="w-100 mt-md3-3"
-                    src={Favorite}
-                    alt="favorite"
-                  />
-                  <button className="product-button-fav">SHOP NOW</button>
-                </div>
-              </div>
+               </div>
             </div>
             <div className="col-md-8">
               <div className="d-flex justify-content-between mt-4 mt-md-0">
@@ -336,6 +330,8 @@ const mapStateToProps = (state) => {
     meta,
     helper,
   };
-};
+
+
+
 
 export default connect(mapStateToProps)(withHOC(Products));

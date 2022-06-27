@@ -1,172 +1,208 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
-.home-arimo-60{
-    font-family: 'Arimo', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 60px;
-    line-height: 87px;
-}.home-arimo-50{
-    font-family: 'Arimo', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 50px;
-    line-height: 60px;
+.home-arimo-60 {
+   font-family: 'Arimo', sans-serif;
+   font-style: normal;
+   font-weight: 700;
+   font-size: 60px;
+   line-height: 87px;
 }
-.home-arimo-13{
-    font-family: 'Arimo', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 37px;
+.home-arimo-50 {
+   font-family: 'Arimo', sans-serif;
+   font-style: normal;
+   font-weight: 700;
+   font-size: 50px;
+   line-height: 60px;
 }
-.header-color-black{
-    color: black;
+.home-arimo-13 {
+   font-family: 'Arimo', sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 13px;
+   line-height: 37px;
 }
-.header-navbar{
-    display: flex;
-    flex-direction: row;
-    height: 85px;
-    width: 100%;
-    padding-left: 60px;
-    padding-right: 60px;
-    position: absolute;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;;
-}
-.header-navbar-1{
-    font-family: 'Arimo', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    text-align: center;
-
-    color: #1A1A1A;
-    cursor: pointer;
-}
-.header-navbar-2{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    column-gap: 30px;
-    font-family: 'Arimo';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 21px;
-    color: #1A1A1A;
-    cursor: pointer;
-}
-.header-navbar-2-content{
-    width: 50px;
-}
-.header-navbar-3{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    column-gap: 30px;
-}
-.header-navbar-3-logo{
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-.jumbotron{
-    background: url("../../assets/background/Jumbotron.png");
-    height: 660px;
-    object-fit: contain;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0px 340px;
-}
-.jumbotron-title{
-    padding-top: 100px;
-    text-align: center;
-}
-.jumbotron-subtitle{
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 60px;
-}
-.jumbotron-button{
-    text-align: center;
-    cursor: pointer;
-}
-.testimony{
-    height: 600px;
-    background-color: black;
-    padding: 70px 220px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.testimony-message{
-    font-family: 'Playfair Display', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 55px;
-    text-align: center;
-    color: #FFFFFF;
-    margin-bottom: 20px;
-}
-.testimony-line{
-    margin-bottom: 30px;
-
-}
-.testimony-person{
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 25px;
-    text-align: center;
-    color: #FFFFFF; 
-    margin-bottom: 100px;   
-}
-.testimony-image-container{
-    display: flex;
-    flex-direction: row;
-    column-gap: 100px;
-}
-.testimony-image{
-    height: 130px;
+.header-color-black {
+   color: black;
 }
 
-.card-container{
-    display: flex;
-    flex-direction: row;
-    height: 550px;
+.header-navbar {
+   position: absolute;
+   display: flex;
+   flex-direction: row;
+   height: 85px;
+   width: 100%;
+   padding-left: 60px;
+   padding-right: 60px;
+   background-color: transparent !important;
 }
-.card-picture{
-    height: 550px;
-    width: 550px;
-    object-fit: cover;
+.jumbotron {
+   background: url('../../assets/background/Jumbotron.png');
+   height: 660px;
+   object-fit: contain;
+   background-repeat: no-repeat;
+   background-position: bottom;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding: 0px 340px;
 }
-.card-details-container{
-    display: flex;
-    flex-direction: column;
-    padding: 140px;
+.jumbotron-title {
+   padding-top: 100px;
+   text-align: center;
 }
-.card-name{
-    margin-bottom: 20px;
+.jumbotron-subtitle {
+   text-align: center;
+   margin-top: 15px;
+   margin-bottom: 60px;
 }
-.card-description{
-    margin-bottom: 50px;
+.jumbotron-button {
+   text-align: center;
+   cursor: pointer;
 }
-.card-shop{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.testimony {
+   height: 750px;
+   background-color: black;
+   padding: 70px 220px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
-.card-shop-line{
-    margin-right: 20px;
+.testimony-message {
+   font-family: 'Playfair Display', sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 25px;
+   line-height: 55px;
+   text-align: center;
+   color: #ffffff;
+   margin-bottom: 20px;
+}
+.testimony-line {
+   margin-bottom: 30px;
+}
+.testimony-person {
+   font-family: 'Open Sans', sans-serif;
+   font-style: normal;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 25px;
+   text-align: center;
+   color: #ffffff;
+   margin-bottom: 100px;
+}
+.testimony-image-container {
+   display: flex;
+   flex-direction: row;
+   column-gap: 100px;
+}
+.testimony-image {
+   height: 130px;
+}
+
+.card-container {
+   display: flex;
+   flex-direction: row;
+   height: 550px;
+}
+.card-picture {
+   height: 550px;
+   width: 550px;
+   object-fit: cover;
+}
+.card-details-container {
+   display: flex;
+   flex-direction: column;
+   padding: 140px;
+}
+.card-name {
+   margin-bottom: 20px;
+}
+.card-description {
+   margin-bottom: 50px;
+}
+.card-shop {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+.card-shop-line {
+   margin-right: 20px;
+}
+.card-shop-button {
+   font-weight: bold;
+   cursor: pointer;
+}
+
+@media (max-width: 834px) {
+   .jumbotron {
+      padding: 20px 100px;
+   }
+
+   .jumbotron-title {
+      padding-top: 80px;
+      text-align: center;
+   }
+
+   .testimony {
+      height: 750px;
+      padding: 70px 55px;
+   }
+
+   .testimony-image-container {
+      column-gap: 25px;
+   }
+}
+
+@media (max-width: 600px) {
+   .jumbotron {
+      padding: 0px 10px;
+   }
+
+   .home-arimo-60 {
+      font-size: 30px;
+      line-height: 87px;
+   }
+
+   .header-navbar-1 {
+      margin-bottom: 5px;
+   }
+
+   .header-navbar-2 {
+      margin-bottom: 10px;
+   }
+
+   .jumbotron-title {
+      text-align: center;
+      padding-top: 80px;
+   }
+
+   .jumbotron-subtitle {
+      margin-top: 0px;
+      margin-bottom: 0px;
+   }
+
+   .testimony {
+      padding: 25px;
+   }
+
+   .testimony-message {
+      font-size: 15px;
+   }
+
+   .testimony-image img {
+      width: 50px;
+      height: 50px;
+   }
+
+   .testimony-image-container {
+      column-gap: 34px;
+   }
+
+   .header-navbar {
+      justify-content: center;
+   }
 }
 .card-shop-button{
     font-weight: bold;

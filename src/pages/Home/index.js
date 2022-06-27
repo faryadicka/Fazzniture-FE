@@ -24,7 +24,6 @@ export class index extends Component {
     const { dispatch, token } = this.props
     dispatch(getFavoriteAction(token))
       .then((res) => {
-        console.log(res)
         this.setState({
           favoriteProducts: res.value.data.data
         })
@@ -47,7 +46,7 @@ export class index extends Component {
       <div>
         <Navbar/>
         <Jumbotron/>
-        {favoriteProducts.map((item) => {
+        {/* {favoriteProducts.map((item) => {
             return (favoriteProducts.indexOf(item) % 2 === 0 ?
               <CardLeft
               name={item.name}
@@ -63,7 +62,7 @@ export class index extends Component {
               />
 
             )
-        })}
+        })} */}
 
         
         <Testimony/>

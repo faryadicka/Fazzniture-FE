@@ -1,12 +1,14 @@
-import React from "react"
-import { useParams, useSearchParams, useLocation, useNavigate } from "react-router-dom"
+import React from 'react';
+import { useParams, useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 
 const withHOC = (Component) => {
   const WithHOC = (props) => {
     const params = useParams()
     const location = useLocation()
-    const navigate = useNavigate()
-    const [searchParams, setSearchParams] = useSearchParams()
+
+    const [searchParams, setSearcParams] = useSearchParams()
+    const navigate = useNavigate();
+    
     return (
       <Component
         params={params}
@@ -21,4 +23,4 @@ const withHOC = (Component) => {
   return WithHOC
 }
 
-export default withHOC
+export default withHOC;

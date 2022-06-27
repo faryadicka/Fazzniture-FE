@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
 
 //Helpers
 import withHOC from "../../helpers/withHOC";
+
+//Redux
+import { addProduct, reduceProduct, updateProductCart } from "../../redux/actionCreator/cart";
 
 //assets
 import "./ProductDetail.css";
@@ -42,6 +46,7 @@ class ProductDetail extends Component {
       category: "",
       productId: "",
       stock: 0,
+      qty: 0
     };
   }
 
@@ -102,6 +107,11 @@ class ProductDetail extends Component {
     } = this.state;
     // const image = pict[0].file;
     console.log(category);
+
+ 
+  render() {
+    console.log(this.props)
+    const {params: {id}, dispatch, cart} = this.props;
     return (
       <>
         <Navbar />
@@ -160,11 +170,15 @@ class ProductDetail extends Component {
             </div>
             <div className="d-flex">
               <div className="counter-box">
-                <button className="w-100 button-count">-</button>
-                <p className="px-2 count-pd">0</p>
-                <button className="w-100 button-count">+</button>
+
+                <button className="w-100 button-count" onClick={()=>{this.setState({qty: this.state.qty - 1})}}>-</button>
+                <p className="px-2 mt-md-2">{this.state.qty}</p>
+                <button className="w-100 button-count" onClick={()=>{this.setState({qty: this.state.qty + 1})}}>+</button>
+
               </div>
-              <button className="button-cart">Add to cart</button>
+              <button className="button-cart" onClick={()=>{
+                dispatch(updateProductCart(id, this.state.qty))
+              }}>Add to cart</button>
               <div className="square-love">
                 <img src={Love} alt="love" className="love-button" />
               </div>
@@ -176,6 +190,7 @@ class ProductDetail extends Component {
                 <li>Categories: {category}</li>
                 <li>Tag: Furniture, Chair, Scandinavian, Modern</li>
                 <li>Product ID : {productId}</li>
+
               </ul>
             </div>
             <img src={AddInfo} alt="add-info" className="add-info mt-md-3" />
@@ -202,25 +217,9 @@ class ProductDetail extends Component {
               <div className="col-md-6 detail-desc">
                 <p>
                   {description}
-                  {/* Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at
-                  egestas magna molestie a. Proin ac ex maximus, ultrices justo
-                  eget, sodales orci. Aliquam egestas libero ac turpis pharetra,
-                  in vehicula lacus scelerisque. Vestibulum ut sem laoreet,
-                  feugiat tellus at, hendrerit arcu..
-                  <ul className="my-md-3">
-                    <li>
-                      Maecenas eu ante a elit tempus fermentum. Aliquam commodo
-                      tincidunt semper
-                    </li>
-                    <li>
-                      Maecenas eu ante a elit tempus fermentum. Aliquam commodo
-                      tincidunt semper
-                    </li>
-                  </ul>
-                  Nunc lacus elit, faucibus ac laoreet sed, dapibus ac mi.
-                  Maecenas eu ante a elit tempus fermentum. Aliquam commodo
-                  tincidunt semper. Phasellus accum */}
                 </p>
+                  
+                </div>
               </div>
             </div>
             <div className="row title-related text-center">
@@ -256,12 +255,15 @@ class ProductDetail extends Component {
 }
 
 const mapStateToProps = (state) => {
+
   const {
-    products: { productId },
+    products: { productId },cartOfProduct: {cart}
   } = state;
   return {
     productId,
+     cart
   };
 };
+ 
 
 export default connect(mapStateToProps)(withHOC(ProductDetail));
