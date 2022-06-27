@@ -4,6 +4,9 @@ import withHOC from "../../helpers/withHOC";
 import { connect } from 'react-redux'
 
 export class Navbar extends Component {
+    state = {
+        search: false,
+    }
     render() {
         const {navigate} = this.props
         return (
@@ -18,10 +21,12 @@ export class Navbar extends Component {
                         <div className='navbar-2-content' onClick={()=>{navigate("/")}}>Home</div>
                         <div className='navbar-2-content' onClick={()=>{navigate("/")}}>Pages</div>
                         <div className='navbar-2-content' onClick={()=>{navigate("/products")}}>Shop</div>
-                        <div className='navbar-2-content' onClick={()=>{navigate("/")}}>Blog</div>
+                        <div className='navbar-2-content' onClick={()=>{navigate("/blog")}}>Blog</div>
                     </div>
                     <div className='navbar-3 col-12 col-md-4'>
-                        <div><img src={require("../../assets/vector/Vector-Search.png")} alt="Search" className="navbar-3-logo"/></div>
+                        <div><img src={require("../../assets/vector/Vector-Search.png")} alt="Search" className="navbar-3-logo" onClick={()=> {
+                            this.setState({search:!this.state.search})
+                        }} /></div>
                         <div><img src={require("../../assets/vector/Vector-Love.png")} alt="Love" className="navbar-3-logo"
                          onClick={()=>{navigate("/wishlist")}}/></div>
                         <div><img src={require("../../assets/vector/Vector-Cart.png")} alt="Cart" className="navbar-3-logo"
@@ -44,6 +49,10 @@ export class Navbar extends Component {
                             </div>
                         </div>
                     </div>
+                    <form className={this.state.search?'navbar-search-container':'navbar-search-container-none'}>
+                        <input type="text" placeholder='Search' className='navbar-search'/>
+                        <img src={require("../../assets/vector/Vector-Search-White.png")} alt="Search" className="navbar-search-logo"/>
+                    </form>
                 </div>
             </Fragment>
         )
