@@ -44,7 +44,7 @@ class NavSeller extends Component {
         </button>
         <button
           onClick={() => {
-            navigate("/profiles");
+            navigate("/myorder");
           }}
           className={`${
             pathname === "/myorder" ? "active-button" : "disable-button"

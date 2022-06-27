@@ -4,27 +4,12 @@ import React, { Component } from "react";
 import "./PageButton.css";
 
 class PageButton extends Component {
-  state = {
-    pageClicked: false,
-  };
+  state = {};
   render() {
-    const { pageClicked } = this.state;
     return (
       <>
         <button
-          onClick={() => {
-            if (!pageClicked) {
-              return this.setState({
-                pageClicked: true,
-              });
-            }
-            return this.setState({
-              pageClicked: false,
-            });
-          }}
-          className={`produtcs-pagination-button ${
-            !pageClicked ? "page-white" : "page-black"
-          }`}
+          className={`produtcs-pagination-button me-md-3 me-3 page-white`}
         >
           {this.props.number}
         </button>
