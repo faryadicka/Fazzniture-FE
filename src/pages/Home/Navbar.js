@@ -18,7 +18,7 @@ export class Navbar extends Component {
                         <div className='navbar-2-content' onClick={()=>{navigate("/")}}>Home</div>
                         <div className='navbar-2-content' onClick={()=>{navigate("/")}}>Pages</div>
                         <div className='navbar-2-content' onClick={()=>{navigate("/products")}}>Shop</div>
-                        <div className='navbar-2-content' onClick={()=>{navigate("/")}}>Blog</div>
+                        <div className='navbar-2-content' onClick={()=>{navigate("/blog")}}>Blog</div>
                     </div>
                     <div className='navbar-3 col-12 col-md-4'>
                         <div><img src={require("../../assets/vector/Vector-Search.png")} alt="Search" className="navbar-3-logo"/></div>
