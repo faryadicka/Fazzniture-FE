@@ -6,7 +6,6 @@ import withHOC from "../../helpers/withHOC";
 //assets
 import "./Product.css";
 import Drop from "../../assets/vector/dropdown.png";
-import Favorite from "../../assets/img/favImage.png";
 import GIF from "../../assets/gif/GIF.gif";
 
 //componenets
@@ -47,7 +46,6 @@ class Products extends Component {
       min_range: 0,
       max_range: 0,
       errorGet: false,
-      successGet: false,
     };
   }
 
@@ -304,14 +302,6 @@ class Products extends Component {
                       <SizeButton size={item.name} key={item.id} />
                     ))}
                   </div>
-                </div>
-                <div className="col-3 col-md-12 my-md-3">
-                  <img
-                    className="w-100 mt-md3-3"
-                    src={Favorite}
-                    alt="favorite"
-                  />
-                  <button className="product-button-fav">SHOP NOW</button>
                 </div>
               </div>
             </div>
