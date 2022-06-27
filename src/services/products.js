@@ -6,6 +6,16 @@ export const getProductsAxios = (name = "", category = "", size = "", brand = ""
   return axios.get(URL)
 }
 
+export const createNewProductAxios = (body, token) => {
+  const URL = `${REACT_APP_HOST}/product`
+  console.log("fuck", body)
+  return axios.post(URL, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    }
+  })
+}
 export const getProductByIdAxios = (id) => {
   const URL = `${REACT_APP_HOST}/product/${id}`
   return axios.get(URL)
