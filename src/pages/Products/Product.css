@@ -43,14 +43,17 @@
 }
 
 .dropdown {
+  cursor: pointer;
   position: relative;
   display: inline-block;
 }
 
 .dropdown-content {
+  background-color: black;
+  color: white;
+  cursor: pointer;
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
@@ -59,6 +62,17 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.filter-price {
+  width: 65%;
+  height: 50px;
+  background-color: black;
+  color: white;
+}
+
+.product-404 {
+  margin-top: 100px;
 }
 
 @media (max-width: 600px) {

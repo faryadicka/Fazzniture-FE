@@ -1,9 +1,11 @@
-import { getProductsString, PENDING, FULFILLED, REJECTED, createNewProduct } from "../actionCreator/actionString";
+import { getProductsString, getProductIdString, PENDING, FULFILLED, REJECTED, setStatus,createNewProduct} from "../actionCreator/actionString";
 
 const initialState = {
   products: [],
+  productId: [],
   isLoading: false,
-  err: null
+  err: null,
+  statusGet: false
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -16,6 +18,7 @@ const productsReducer = (state = initialState, action) => {
     case getProductsString + REJECTED:
       return { ...state, isLoading: false, err: action.payload }
 
+
     
     case createNewProduct + PENDING:
       return { ...state, isLoading: true }
@@ -23,6 +26,18 @@ const productsReducer = (state = initialState, action) => {
       return { ...state, result: action.payload.data, isLoading: false }
     case createNewProduct + REJECTED:
       return { ...state, isLoading: false, err: action.payload }
+
+    case getProductIdString + PENDING:
+      return { ...state, isLoading: true }
+    case getProductIdString + FULFILLED:
+      console.log(action.payload.data)
+      return { ...state, productId: action.payload.data, isLoading: false }
+    case getProductIdString + REJECTED:
+      return { ...state, isLoading: false, err: action.payload }
+
+    case setStatus:
+      const { status } = action.payload
+      return { ...state, statusGet: status }
     default:
       return state
   }

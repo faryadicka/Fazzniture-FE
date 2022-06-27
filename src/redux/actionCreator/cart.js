@@ -18,6 +18,7 @@ export const reduceProduct = (id) => {
 }
 
 export const updateProductCart  = (id, qty) => {
+
   return {
     type: updateCart,
     id: id,

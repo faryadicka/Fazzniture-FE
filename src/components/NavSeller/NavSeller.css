@@ -20,3 +20,9 @@
   border-bottom: 2px solid black;
   color: black;
 }
+
+@media (max-width: 600px) {
+  .navigation-profile-seller > button {
+    font-size: 16px;
+  }
+}

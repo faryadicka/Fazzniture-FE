@@ -120,12 +120,11 @@ export class SellingProduct extends Component {
       <>
         <form className="row justify-content-center">
           <div className="col-md-5">
-            <h5 className="fw-bold d-block mb-md-5">Inventory</h5>
+            <h5 className="fw-bold d-block mb-md-5 mb-4">Inventory</h5>
             <input
               type="text"
               placeholder="Name of goods*"
-              className="w-100 mb-md-5 p-2"
-              onChange={(e)=>{this.setState({name: e.target.value})}}
+              className="w-100 mb-md-5 mb-4 p-2"
             />{" "}
             <br />
             <textarea
@@ -136,7 +135,7 @@ export class SellingProduct extends Component {
             >
               {/* Description Product * */}
             </textarea>
-            <h5 className="fw-bold d-block my-md-5">Item Details</h5>
+            <h5 className="fw-bold d-block my-md-5 my-4">Item Details</h5>
             <input
               type="text"
               placeholder="Unit price *"
@@ -160,7 +159,7 @@ export class SellingProduct extends Component {
               value="1"
               onChange={(e) => {this.setState({condition: e.target.value})}}
             />
-            <label htmlFor="New" className="me-md-5">
+            <label htmlFor="New" className="me-md-5 me-3">
               New Product
             </label>
             <input

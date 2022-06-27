@@ -10,6 +10,10 @@
   width: 150px;
 }
 
+.count-pd {
+  margin-top: 12px;
+}
+
 .button-count {
   background-color: white;
   border: none;

@@ -1,0 +1,22 @@
+.product-list-name {
+  width: 23%;
+  font-size: 15px;
+}
+
+.card-order {
+  position: relative;
+  right: 20px;
+}
+
+@media (max-width: 600px) {
+  .product-list-name {
+    font-size: 9px;
+  }
+  .card-order {
+    position: relative;
+    left: 10px;
+  }
+  .image-order {
+    width: 50px;
+  }
+}

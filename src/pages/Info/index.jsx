@@ -12,6 +12,7 @@ import Header from "../../components/Header/index";
 import NavSeller from "../../components/NavSeller";
 import ProfileComponent from "../../components/ProfileComponent";
 import MyProduct from "../../components/MyProduct";
+import MyOrder from "../../components/MyOrder";
 import SellingProduct from "../../components/SellingProduct/Index";
 
 class Profile extends Component {
@@ -37,6 +38,7 @@ class Profile extends Component {
           {pathname === "/profile" ? <ProfileComponent /> : <></>}
           {pathname === "/myproduct" ? <MyProduct /> : <></>}
           {pathname === "/sellingproduct" ? <SellingProduct /> : <></>}
+          {pathname === "/myorder" ? <MyOrder /> : <></>}
         </div>
         <Footer />
       </>
