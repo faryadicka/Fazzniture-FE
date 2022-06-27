@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 //Helpers
-import withHOC from "../../helpers/withHOC";
+import withHOC from '../../helpers/withHOC';
 
 //Redux
 import {
@@ -26,11 +27,12 @@ import Ytb from "../../assets/vector/ytb.png";
 // import Big from "../../assets/img/big.png";
 // import Pd from "../../assets/img/pd.png";
 
+
 // Components
-import Navbar from "../../components/Navbar/index";
-import Footer from "../../components/Footer/index";
-import ImageDetail from "../../components/ImageDetail";
-import CardProduct from "../../components/CardProduct";
+import Navbar from '../../components/Navbar/index';
+import Footer from '../../components/Footer/index';
+import ImageDetail from '../../components/ImageDetail';
+import CardProduct from '../../components/CardProduct';
 
 //Axios request
 import {
