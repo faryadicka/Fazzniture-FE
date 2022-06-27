@@ -9,7 +9,7 @@ class CardProduct extends Component {
     const { navigate, id } = this.props
     return (
       <div className='col-md-4 text-center card-product-click' onClick={() => {
-        navigate(`/product-detail/${id}`)
+        navigate(`/products/detail/${id}`)
         window.scrollTo(0, 0);
       }}>
         <div className="card card-products">

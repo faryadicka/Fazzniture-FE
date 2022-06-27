@@ -5,6 +5,7 @@ import productsReducer from "./products";
 import favoriteProductReducer from "./favorite";
 import registerReducer from "./register";
 import helpersReducer from "./helpers";
+import cartReducer from "./cart";
 
 const reducer = combineReducers({
   user: userReducer,
@@ -12,6 +13,7 @@ const reducer = combineReducers({
   products: productsReducer,
   register: registerReducer,
   helpers: helpersReducer,
+  cartOfProduct: cartReducer
 })
 
 export default reducer

@@ -7,8 +7,8 @@ import withHOC from "../../helpers/withHOC";
 
 //Redux
 import {
-  addProduct,
-  reduceProduct,
+  // addProduct,
+  // reduceProduct,
   updateProductCart,
 } from "../../redux/actionCreator/cart.js";
 
@@ -105,7 +105,7 @@ class ProductDetail extends Component {
     const {
       params: { id },
       dispatch,
-      cart,
+      // cart,
     } = this.props;
     const {
       pict,
