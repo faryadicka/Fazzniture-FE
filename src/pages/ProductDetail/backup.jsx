@@ -37,6 +37,7 @@ import {
   getProductByIdAxios,
   getProductRelatedAxios,
 } from "../../services/products";
+
 class ProductDetail extends Component {
   constructor() {
     super();
@@ -52,7 +53,6 @@ class ProductDetail extends Component {
       qty: 0,
     };
   }
-
   getProductById = (id) => {
     getProductByIdAxios(id)
       .then((res) => {
@@ -71,7 +71,6 @@ class ProductDetail extends Component {
         console.log(err);
       });
   };
-
   getProductRelated = (category) => {
     getProductRelatedAxios(category)
       .then((res) => {
@@ -92,16 +91,7 @@ class ProductDetail extends Component {
     this.getProductById(id);
     this.getProductRelated(category);
   }
-
-  // const {
-  // productId: { file },
-  // productId,
-  // } = this.props;
-
-  // const image = pict[0].file;
-
   render() {
-    console.log(this.props);
     const {
       params: { id },
       dispatch,
@@ -227,42 +217,6 @@ class ProductDetail extends Component {
               <button className="btn-unborder">About Brand</button>
               <button className="btn-unborder">Shipping & Delivery</button>
             </div>
-            <div className="row align-items-center my-md-3">
-              <div className="col-md-6">
-                <img
-                  // src={productId.file}
-                  alt="imagedesc"
-                  className="image-desc"
-                />
-              </div>
-              <div className="col-md-6 detail-desc">
-                <p>{description}</p>
-              </div>
-            </div>
-            <div className="row title-related text-center">
-              <h1>Related Products</h1>
-            </div>
-            <div className="row justify-content-center my-md-4 my-4">
-              {relatedProduct.map((product) => (
-                <CardProduct
-                  title={product.brand}
-                  price={product.price}
-                  image={product.file}
-                  key={product.product_id}
-                  id={product.product_id}
-                />
-              ))}
-              {/* <CardProduct
-                title="Coaster 506222-CO Loveseat"
-                price="$765.99"
-                image={Pd}
-              />
-              <CardProduct
-                title="Coaster 506222-CO Loveseat"
-                price="$765.99"
-                image={Pd}
-              /> */}
-            </div>
           </div>
         </div>
         <Footer />
@@ -270,16 +224,3 @@ class ProductDetail extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  const {
-    products: { productId },
-    cartOfProduct: { cart },
-  } = state;
-  return {
-    productId,
-    cart,
-  };
-};
-
-export default connect(mapStateToProps)(withHOC(ProductDetail));
