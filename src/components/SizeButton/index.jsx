@@ -11,24 +11,24 @@ class SizeButton extends Component {
   };
   render() {
     const { sizeClicked } = this.state;
-    const { searchParamsRedux, size, setSearchParams } = this.props;
+    const { size, setSearchParams } = this.props;
     return (
       <button
         onClick={() => {
           if (size === "S") {
-            setSearchParams({ ...searchParamsRedux, size: "S" });
+            setSearchParams({ size: "S" });
           }
           if (size === "M") {
-            setSearchParams({ ...searchParamsRedux, size: "M" });
+            setSearchParams({ size: "M" });
           }
           if (size === "L") {
-            setSearchParams({ ...searchParamsRedux, size: "L" });
+            setSearchParams({ size: "L" });
           }
           if (size === "XL") {
-            setSearchParams({ ...searchParamsRedux, size: "XL" });
+            setSearchParams({ size: "XL" });
           }
           if (size === "XXL") {
-            setSearchParams({ ...searchParamsRedux, size: "XXL" });
+            setSearchParams({ size: "XXL" });
           }
           if (!sizeClicked) {
             return this.setState({
@@ -50,10 +50,7 @@ class SizeButton extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { searchParamsRedux } = state;
-  return {
-    searchParamsRedux,
-  };
+  return state;
 };
 
 export default connect(mapStateToProps)(withHOC(SizeButton));

@@ -161,7 +161,7 @@ class ProductDetail extends Component {
             <div className="d-flex">
               <div className="counter-box">
                 <button className="w-100 button-count">-</button>
-                <p className="px-2 mt-md-2">qty</p>
+                <p className="px-2 count-pd">0</p>
                 <button className="w-100 button-count">+</button>
               </div>
               <button className="button-cart">Add to cart</button>

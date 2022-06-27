@@ -5,29 +5,29 @@ import withHOC from '../../helpers/withHOC';
 
 class CheckBoxBrands extends Component {
   render() {
-    const { searchParamsRedux, brand, id, setSearchParams } = this.props
+    const { brand, id, setSearchParams } = this.props
     return (
       <>
         <div>
           <input
             onChange={() => {
               if (id === 1) {
-                setSearchParams({ ...searchParamsRedux, brand: "ikea" })
+                setSearchParams({ brand: "ikea" })
               }
               if (id === 2) {
-                setSearchParams({ ...searchParamsRedux, brand: "mr+royal" })
+                setSearchParams({ brand: "mr+royal" })
               }
               if (id === 3) {
-                setSearchParams({ ...searchParamsRedux, brand: "sweet+house" })
+                setSearchParams({ brand: "sweet+house" })
               }
               if (id === 4) {
-                setSearchParams({ ...searchParamsRedux, brand: "north+oxford" })
+                setSearchParams({ brand: "north+oxford" })
               }
               if (id === 5) {
-                setSearchParams({ ...searchParamsRedux, brand: "mr+poppin" })
+                setSearchParams({ brand: "mr+poppin" })
               }
             }}
-            type="radio" id={id} name='brand' /> {brand}
+            type="checkbox" id={id} name='brand' value={brand} /> {brand}
         </div>
       </>
     )

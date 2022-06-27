@@ -15,3 +15,23 @@ export const getProductRelatedAxios = (category) => {
   const URL = `${REACT_APP_HOST}/product?category=${category}&page=1&limit=3`
   return axios.get(URL)
 }
+
+export const getAllCategoriesAxios = () => {
+  const URL = `${REACT_APP_HOST}/categories`
+  return axios.get(URL)
+}
+
+export const getAllBrandsAxios = () => {
+  const URL = `${REACT_APP_HOST}/brands`
+  return axios.get(URL)
+}
+
+export const getAllColorsAxios = () => {
+  const URL = `${REACT_APP_HOST}/colors`
+  return axios.get(URL)
+}
+
+export const getAllSizesAxios = () => {
+  const URL = `${REACT_APP_HOST}/sizes`
+  return axios.get(URL)
+}
