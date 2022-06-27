@@ -26,3 +26,28 @@
   width: 180px;
   height: 45px;
 }
+
+@media (max-width: 600px) {
+  .image-myproduct {
+    width: 50px;
+  }
+  .name-myproduct {
+    font-size: 9px;
+    width: 200px;
+  }
+  .status-myproduct {
+    font-size: 15px;
+    width: 20%;
+  }
+
+  .price-myproduct {
+    width: 13%;
+  }
+  .delete-myproduct {
+    width: 50px;
+    height: 25px;
+    font-size: 9px;
+    position: relative;
+    bottom: 7px;
+  }
+}

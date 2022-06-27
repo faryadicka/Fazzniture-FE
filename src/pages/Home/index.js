@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import "./Home.css"
 import Navbar from "./Navbar.js"
 import Jumbotron from "./Jumbotron.js"
-import CardLeft from "./CardLeft.js"
-import CardRight from "./CardRight.js"
+// import CardLeft from "./CardLeft.js"
+// import CardRight from "./CardRight.js"
 import Testimony from "./Testimony.js"
 import Footer from "../../components/Footer";
 
@@ -20,7 +20,6 @@ export class index extends Component {
   }
 
   getFavoriteProduct = () => {
-    
     const { dispatch, token } = this.props
     dispatch(getFavoriteAction(token))
       .then((res) => {
@@ -41,11 +40,11 @@ export class index extends Component {
   }
 
   render() {
-    const {favoriteProducts} = this.props
+    // const {favoriteProducts} = this.props
     return (
       <div>
-        <Navbar/>
-        <Jumbotron/>
+        <Navbar />
+        <Jumbotron />
         {/* {favoriteProducts.map((item) => {
             return (favoriteProducts.indexOf(item) % 2 === 0 ?
               <CardLeft
@@ -64,15 +63,15 @@ export class index extends Component {
             )
         })} */}
 
-        
-        <Testimony/>
-        <Footer/>
+
+        <Testimony />
+        <Footer />
       </div>
     )
   }
 }
 const mapStateToProps = (state) => {
-  const { user: { loginData: { token } }, favorite: {favoriteProducts} } = state
+  const { user: { loginData: { token } }, favorite: { favoriteProducts } } = state
   return {
     token, favoriteProducts
   }

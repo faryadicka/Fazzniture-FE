@@ -44,11 +44,11 @@ export class SellingProduct extends Component {
       <>
         <form className="row justify-content-center">
           <div className="col-md-5">
-            <h5 className="fw-bold d-block mb-md-5">Inventory</h5>
+            <h5 className="fw-bold d-block mb-md-5 mb-4">Inventory</h5>
             <input
               type="text"
               placeholder="Name of goods*"
-              className="w-100 mb-md-5 p-2"
+              className="w-100 mb-md-5 mb-4 p-2"
             />{" "}
             <br />
             <textarea
@@ -59,35 +59,35 @@ export class SellingProduct extends Component {
             >
               {/* Description Product * */}
             </textarea>
-            <h5 className="fw-bold d-block my-md-5">Item Details</h5>
+            <h5 className="fw-bold d-block my-md-5 my-4">Item Details</h5>
             <input
               type="text"
               placeholder="Unit price *"
-              className="w-100 mb-md-5 p-2"
+              className="w-100 mb-md-5 p-2 mb-3"
             />
             <input
               type="text"
               placeholder="Unit stock *"
               className="w-100 mb-md-5 p-2"
             />
-            <p>Stock Condition</p>
+            <p className="my-3">Stock Condition</p>
             <input
               type="radio"
               name="conditional"
               id="New"
-              className="me-md-1"
+              className="me-md-1 me-2"
             />
-            <label htmlFor="New" className="me-md-5">
+            <label htmlFor="New" className="me-md-5 me-3">
               New Product
             </label>
             <input
               type="radio"
               name="conditional"
               id="Second"
-              className="me-md-1"
+              className="me-md-1 me-1"
             />
             <label htmlFor="Second">Second Product</label>
-            <h5 className="fw-bold d-block my-md-5">Photo of Goods</h5>
+            <h5 className="fw-bold d-block my-md-5 my-4">Photo of Goods</h5>
             <input
               type="file"
               multiple
@@ -109,7 +109,7 @@ export class SellingProduct extends Component {
                 }}
               />
             </div>
-            <button className="mt-md-5 button-sell">Sell Product</button>
+            <button className="mt-md-5 button-sell mt-3">Sell Product</button>
           </div>
         </form>
       </>
