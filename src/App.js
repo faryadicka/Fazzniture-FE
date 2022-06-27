@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Notification from "./pages/Notification";
+import Blog from "./pages/Blog";
 // import PrivateRoute from "./components/PrivateRoute";
 // import PublicRoute from "./components/PublicRoute";
 
@@ -39,6 +40,7 @@ function App() {
             <Route path="/products/detail/:id" element={<ProductDetail />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/notification" element={<Notification />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
