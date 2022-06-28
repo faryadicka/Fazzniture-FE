@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Login from './Login.js';
 import Register from './Register.js';
-import Forgot from './Forgot.js';
+import Forgot from './Forgot.jsx';
 
 export class index extends Component {
 constructor(props) {

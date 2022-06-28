@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import "./Home.css"
 import Navbar from "./Navbar.js"
 import Jumbotron from "./Jumbotron.js"
-// import CardLeft from "./CardLeft.js"
-// import CardRight from "./CardRight.js"
+import CardLeft from "./CardLeft.js"
+import CardRight from "./CardRight.js"
 import Testimony from "./Testimony.js"
 import Footer from "../../components/Footer";
 
@@ -40,12 +40,12 @@ export class index extends Component {
   }
 
   render() {
-    // const {favoriteProducts} = this.props
+    const {favoriteProducts} = this.props
     return (
       <div>
         <Navbar />
         <Jumbotron />
-        {/* {favoriteProducts.map((item) => {
+        {favoriteProducts.map((item) => {
             return (favoriteProducts.indexOf(item) % 2 === 0 ?
               <CardLeft
               name={item.name}
@@ -61,7 +61,7 @@ export class index extends Component {
               />
 
             )
-        })} */}
+        })}
 
 
         <Testimony />
