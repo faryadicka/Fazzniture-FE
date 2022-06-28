@@ -10,7 +10,7 @@ export default class OrderTracking extends Component {
    render() {
       return (
          <>
-            <Navbar />
+            <Navbar page="shop"/>
             <Header section="Tracking" title="Order Tracking" desc="Track where your order arrived" />
             <section className="order-track-main">
                <section className="aside-order-track">

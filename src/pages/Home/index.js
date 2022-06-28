@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import "./Home.css"
-import Navbar from "./Navbar.js"
+import Navbar from "../../components/Navbar"
 import Jumbotron from "./Jumbotron.js"
 import CardLeft from "./CardLeft.js"
 import CardRight from "./CardRight.js"
@@ -43,7 +43,7 @@ export class index extends Component {
     const {favoriteProducts} = this.props
     return (
       <div>
-        <Navbar />
+        <Navbar page="home"/>
         <Jumbotron />
         {favoriteProducts.map((item) => {
             return (favoriteProducts.indexOf(item) % 2 === 0 ?
