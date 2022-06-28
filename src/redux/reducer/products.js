@@ -1,4 +1,4 @@
-import { getProductsString, getProductIdString, PENDING, FULFILLED, REJECTED, setStatus,createNewProduct} from "../actionCreator/actionString";
+import { getProductsString, getProductIdString, PENDING, FULFILLED, REJECTED, setStatus, createNewProduct } from "../actionCreator/actionString";
 
 const initialState = {
   products: [],
@@ -19,8 +19,6 @@ const productsReducer = (state = initialState, action) => {
     case getProductsString + REJECTED:
       return { ...state, isLoading: false, err: action.payload }
 
-
-    
     case createNewProduct + PENDING:
       return { ...state, isLoading: true }
     case createNewProduct + FULFILLED:

@@ -53,7 +53,6 @@ class Products extends Component {
   getAllCategories = () => {
     getAllCategoriesAxios()
       .then((res) => {
-        // console.log(res.data);
         this.setState({
           categories: res.data.data,
         });
@@ -77,7 +76,6 @@ class Products extends Component {
   getAllSizes = () => {
     getAllSizesAxios()
       .then((res) => {
-        // console.log(res.data);
         this.setState({
           sizes: res.data.data,
         });
@@ -89,7 +87,6 @@ class Products extends Component {
   getAllColors = () => {
     getAllColorsAxios()
       .then((res) => {
-        // console.log(res.data);
         this.setState({
           colors: res.data.data,
         });
@@ -102,24 +99,24 @@ class Products extends Component {
   nextLink = () => {
     const {
       setSearchParams,
-      meta: { page },
+      meta: { page, next },
       urlParams,
       dispatch,
     } = this.props;
     dispatch(setPage(Number(page) + 1));
-    setSearchParams(urlParams);
+    setSearchParams(next.slice(9));
     window.scrollTo(0, 0);
   };
 
   prevLink = () => {
     const {
       setSearchParams,
-      meta: { page },
+      meta: { page, prev },
       urlParams,
       dispatch,
     } = this.props;
     dispatch(setPage(Number(page) - 1));
-    setSearchParams(urlParams);
+    setSearchParams(prev.slice(9));
     window.scrollTo(0, 0);
   };
   componentDidMount() {
@@ -178,7 +175,6 @@ class Products extends Component {
         )
       )
         .then((res) => {
-          console.log(res);
           this.setState({
             errorGet: false,
           });
@@ -197,7 +193,7 @@ class Products extends Component {
       setSearchParams,
       dispatch,
       urlParams,
-      // location,
+      searchParams,
     } = this.props;
     let active = Number(page);
     let pageItem = [];
@@ -206,7 +202,8 @@ class Products extends Component {
     }
     const { categories, brands, sizes, min_range, max_range, errorGet } =
       this.state;
-    console.log(page);
+    console.log("next :", next);
+    console.log("prev :", prev);
     return (
       <>
         <Navbar />
@@ -380,7 +377,8 @@ class Products extends Component {
                   ))
                 )}
               </div>
-              {page <= 1 ? (
+              {searchParams.get("page") === "" ||
+              searchParams.get("page") <= 1 ? (
                 <></>
               ) : (
                 <button onClick={this.prevLink} className="btn-link me-md-1">
@@ -394,7 +392,8 @@ class Products extends Component {
                   <PageButton number={page} currentPage={active} />
                 ))
               )}
-              {page > 1 ? (
+              {searchParams.get("page") === "" ||
+              searchParams.get("page") > 1 ? (
                 <></>
               ) : (
                 <button onClick={this.nextLink} className="btn-link ms-md-1">
