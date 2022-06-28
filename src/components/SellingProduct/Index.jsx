@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import "./SellingProduct.css";
 import AddImage from "../../assets/img/addimage.png";
 import {createProduct} from "../../redux/actionCreator/products";
+import Modal from "../Modal"
 
 export class SellingProduct extends Component {
   constructor() {
@@ -107,14 +108,18 @@ export class SellingProduct extends Component {
     e.preventDefault()
     const body = this.createForm()
     const {dispatch, token} = this.props
-    console.log(body, token)
     dispatch(createProduct(body, token))
-    .then((res) => {console.log(res)})
+    .then((res) => {this.setState({showModal:true})})
     .catch((err) => {console.log(err)})
   }
+      modalHandler = () => {
+        this.setState({
+          showModal: false,
+        })
+        this.props.pageHandler("login")
+      }
 
   render() {
-    console.log(this.state)
     const { imgPreview } = this.state;
     return (
       <>
@@ -449,6 +454,9 @@ export class SellingProduct extends Component {
               >Sell Product</button>
           </div>
         </form>
+        {this.state.showModal ?
+        <Modal  modalHandler={this.modalHandler} title="Success!" message="Your product is successfully added" button="Continue" navigateTo="/profile" close="true" />:
+        <></>}
       </>
     );
   }
