@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import {Modal} from 'react-bootstrap';
 import BlackButton from "../Black-Button";
+import withHOC from "../../helpers/withHOC"
 import "./Modal.css"
 
 export class showModal extends Component {
     render() {
-        const { modalHandler, title, message, button, close } = this.props
+        const { modalHandler, title, message, button, close, navigateTo, navigate } = this.props
         return (
             <div>
                 <Modal show={title} size="s" centered className="modal">
@@ -19,7 +20,7 @@ export class showModal extends Component {
                     </Modal.Body>
                     <Modal.Footer className="modal-footer">
                         <div onClick={() => {
-                            modalHandler()
+                            navigate(navigateTo)
                         }}>
                             <BlackButton text={button}/>
                         </div>
@@ -38,4 +39,4 @@ export class showModal extends Component {
     }
 }
 
-export default showModal
+export default withHOC(showModal)
