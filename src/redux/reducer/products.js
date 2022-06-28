@@ -23,7 +23,7 @@ const productsReducer = (state = initialState, action) => {
     case createNewProduct + PENDING:
       return { ...state, isLoading: true }
     case createNewProduct + FULFILLED:
-      return { ...state, result: action.payload.data, isLoading: false }
+      return { ...state, results: action.payload.data, isLoading: false }
     case createNewProduct + REJECTED:
       return { ...state, isLoading: false, err: action.payload }
 
