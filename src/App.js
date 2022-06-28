@@ -19,6 +19,7 @@ import Wishlist from './pages/Wishlist';
 import Notification from './pages/Notification';
 import Blog from './pages/Blog';
 import OrderTracking from './pages/OrderTracking';
+import Reset from './pages/Reset/index.jsx';
 // import PrivateRoute from "./components/PrivateRoute";
 // import PublicRoute from "./components/PublicRoute";
 
@@ -43,6 +44,7 @@ function App() {
                   <Route path="/notification" element={<Notification />} />
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/order-tracking" element={<OrderTracking />} />
+                  <Route path="/reset" element={<Reset />} />
                   <Route path="*" element={<NotFound />} />
                </Routes>
             </Router>
