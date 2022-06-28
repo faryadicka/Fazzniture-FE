@@ -5,7 +5,8 @@ const initialState = {
   productId: [],
   isLoading: false,
   err: null,
-  statusGet: false
+  statusGet: false,
+  result: []
 }
 
 const productsReducer = (state = initialState, action) => {
