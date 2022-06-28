@@ -14,26 +14,8 @@ class SizeButton extends Component {
     return (
       <button
         onClick={() => {
-          if (size === "S") {
-            dispatch(setSize("S"));
-            setSearchParams(urlParams);
-          }
-          if (size === "M") {
-            dispatch(setSize("M"));
-            setSearchParams(urlParams);
-          }
-          if (size === "L") {
-            dispatch(setSize("L"));
-            setSearchParams(urlParams);
-          }
-          if (size === "XL") {
-            dispatch(setSize("XL"));
-            setSearchParams(urlParams);
-          }
-          if (size === "XXL") {
-            dispatch(setSize("XXL"));
-            setSearchParams(urlParams);
-          }
+          dispatch(setSize(size));
+          setSearchParams(urlParams);
         }}
         className={`button-size-products size-white`}
       >

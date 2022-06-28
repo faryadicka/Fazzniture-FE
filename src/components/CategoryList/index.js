@@ -20,42 +20,8 @@ class CategoryList extends Component {
         <button
           onClick={() => {
             dispatch(deleteParamsAction({}));
-            if (name === "Accessories") {
-              dispatch(setCategory("Accessories"))
-              setSearchParams(urlParams)
-            }
-            if (name === "Brands") {
-              dispatch(setCategory("Brands"))
-              setSearchParams(urlParams)
-            }
-            if (name === "Clothing") {
-              dispatch(setCategory("Clothing"))
-              setSearchParams(urlParams)
-            }
-            if (name === "Fashion") {
-              dispatch(setCategory("Fashion"))
-              setSearchParams(urlParams)
-            }
-            if (name === "Furniture") {
-              dispatch(setCategory("Furniture"))
-              setSearchParams(urlParams)
-            }
-            if (name === "Men") {
-              dispatch(setCategory("Men"))
-              setSearchParams(urlParams)
-            }
-            if (name === "Woman") {
-              dispatch(setCategory("Woman"))
-              setSearchParams(urlParams)
-            }
-            if (name === "Shoes") {
-              dispatch(setCategory("Shoes"))
-              setSearchParams(urlParams)
-            }
-            if (name === "Wallets") {
-              dispatch(setCategory("Wallets"))
-              setSearchParams(urlParams)
-            }
+            dispatch(setCategory(name))
+            setSearchParams(urlParams)
           }}
           className='button-categories text-dark'>{name}</button>
         <p className='produtcs-qty'>{qty}</p>
