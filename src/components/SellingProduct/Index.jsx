@@ -155,253 +155,143 @@ export class SellingProduct extends Component {
             />
 
 
-            <p>Stock Condition</p>
-            <input
-              type="radio"
-              name="conditional"
-              id="New"
-              className="me-md-1"
-              value="1"
-              onChange={(e) => {this.setState({condition: e.target.value})}}
-            />
-            <label htmlFor="New" className="me-md-5 me-3">
-              New Product
-            </label>
-            <input
-              type="radio"
-              name="conditional"
-              id="Second"
-              className="me-md-1"
-              value="2"
-              onChange={(e) => {this.setState({condition: e.target.value})}}
-            />
-            <label htmlFor="Second">Second Product</label>
+            <p className="selling-input-title">Stock Condition</p>
+            <div className="selling-input-container">
+              <label htmlFor="New" className="selling-input-label">
+                <input type="radio" name="conditional" id="New" className="me-md-1" value="1"
+                onChange={(e) => {this.setState({condition: e.target.value})}}/>
+                New Product
+              </label>
+              <label htmlFor="Second" className="selling-input-label">
+                <input type="radio" name="conditional" id="Second" className="me-md-1" value="2"
+                onChange={(e) => {this.setState({condition: e.target.value})}}/>
+                Second Product
+              </label>
+            </div>
 
-            <p>Category</p>
-            <input
-              type="radio"
-              name="category"
-              id="Accessories"
-              className="me-md-1"
-              value="1"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Accessories" className="me-md-5">
-              Accessories
-            </label>
-            <input
-              type="radio"
-              name="category"
-              id="Brands"
-              className="me-md-1"
-              value="2"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Brands">
-              Brands
-            </label>
-            <input
-              type="radio"
-              name="category"
-              id="Clothing"
-              className="me-md-1"
-              value="3"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Clothing">
-              Clothing
-            </label>
-            <input
-              type="radio"
-              name="category"
-              id="Fashion"
-              className="me-md-1"
-              value="4"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Fashion">
-              Fashion
-            </label>
-            <input
-              type="radio"
-              name="category"
-              id="Furniture"
-              className="me-md-1"
-              value="5"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Furniture">
-              Furniture
-            </label>
-            <input
-              type="radio"
-              name="category"
-              id="Men"
-              className="me-md-1"
-              value="6"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Men">
-              Men
-            </label>
-            <input
-              type="radio"
-              name="category"
-              id="Woman"
-              className="me-md-1"
-              value="7"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Woman">
-              Woman
-            </label>
-            <input
-              type="radio"
-              name="category"
-              id="Shoes"
-              className="me-md-1"
-              value="8"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Shoes">
-              Shoes
-            </label>
-            <input
-              type="radio"
-              name="category"
-              id="Wallets"
-              className="me-md-1"
-              value="9"
-              onChange={(e) => {this.setState({category_id: e.target.value})}}
-            />
-            <label htmlFor="Wallets">
-              Wallets
-            </label>
+            <p className="selling-input-title">Category</p>
+            <div className="selling-input-container">
+              <div className="selling-input">
+                <label htmlFor="Accessories" className="selling-input-label">
+                  <input type="radio" name="category" id="Accessories" className="me-md-1" value="1"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Accessories
+                </label>
+                <label htmlFor="Brands" className="selling-input-label">
+                  <input type="radio" name="category" id="Brands" className="me-md-1" value="2"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Brands
+                </label>
+                <label htmlFor="Clothing" className="selling-input-label">
+                  <input type="radio" name="category" id="Clothing" className="me-md-1" value="3"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Clothing
+                </label>
+                <label htmlFor="Fashion" className="selling-input-label">
+                  <input type="radio" name="category" id="Fashion" className="me-md-1" value="4"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Fashion
+                </label>
+              </div>
+              <div className="selling-input">
+                <label htmlFor="Furniture" className="selling-input-label">
+                  <input type="radio" name="category" id="Furniture" className="me-md-1" value="5"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Furniture
+                </label>
+                <label htmlFor="Men" className="selling-input-label">
+                  <input type="radio" name="category" id="Men" className="me-md-1" value="6"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Men
+                </label>
+                <label htmlFor="Woman" className="selling-input-label">
+                  <input type="radio" name="category" id="Woman" className="me-md-1" value="7"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Woman
+                </label>
+                <label htmlFor="Shoes" className="selling-input-label">
+                  <input type="radio" name="category" id="Shoes" className="me-md-1" value="8"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Shoes
+                </label>
+                <label htmlFor="Wallets" className="selling-input-label">
+                  <input type="radio" name="category" id="Wallets" className="me-md-1" value="9"
+                    onChange={(e) => {this.setState({category_id: e.target.value})}}/>
+                    Wallets
+                </label>
+              </div>
+            </div>
 
-            <p>Size</p>
-            <input
-              type="radio"
-              name="size"
-              id="S"
-              className="me-md-1"
-              value="1"
-              onChange={(e) => {this.setState({size_id: e.target.value})}}
-            />
-            <label htmlFor="S" className="me-md-5">
-              S
-            </label>
-            <input
-              type="radio"
-              name="size"
-              id="M"
-              className="me-md-1"
-              value="2"
-              onChange={(e) => {this.setState({size_id: e.target.value})}}
-            />
-            <label htmlFor="M">
-              M
-            </label>
-            <input
-              type="radio"
-              name="size"
-              id="L"
-              className="me-md-1"
-              value="3"
-              onChange={(e) => {this.setState({size_id: e.target.value})}}
-            />
-            <label htmlFor="L">
-              L
-            </label>
-            <input
-              type="radio"
-              name="size"
-              id="XL"
-              className="me-md-1"
-              value="4"
-              onChange={(e) => {this.setState({size_id: e.target.value})}}
-            />
-            <label htmlFor="XL">
-              XL
-            </label>
-            <input
-              type="radio"
-              name="size"
-              id="XXL"
-              className="me-md-1"
-              value="5"
-              onChange={(e) => {this.setState({size_id: e.target.value})}}
-            />
-            <label htmlFor="XXL">
-              XXL
-            </label>
-            <input
-              type="radio"
-              name="size"
-              id="PULL SIZE"
-              className="me-md-1"
-              value="6"
-              onChange={(e) => {this.setState({size_id: e.target.value})}}
-            />
-            <label htmlFor="PULL SIZE">
-              PULL SIZE
-            </label>
+            <p className="selling-input-title">Size</p>
+            <div className="selling-input-container">
+              <div className="selling-input">
+                <label htmlFor="S" className="selling-input-label">
+                  <input type="radio" name="size" id="S" className="me-md-1" value="1"
+                    onChange={(e) => {this.setState({size_id: e.target.value})}}/>
+                    S
+                </label>
+                <label htmlFor="M" className="selling-input-label">
+                  <input type="radio" name="size" id="M" className="me-md-1" value="2"
+                    onChange={(e) => {this.setState({size_id: e.target.value})}}/>
+                    M
+                </label>
+                <label htmlFor="L" className="selling-input-label">
+                  <input type="radio" name="size" id="L" className="me-md-1" value="3"
+                    onChange={(e) => {this.setState({size_id: e.target.value})}} />
+                    L
+                </label>
+              </div>
+              <div className="selling-input">
+                <label htmlFor="XL" className="selling-input-label">
+                  <input type="radio" name="size" id="XL" className="me-md-1" value="4"
+                    onChange={(e) => {this.setState({size_id: e.target.value})}} />
+                    XL
+                </label>
+                <label htmlFor="XXL" className="selling-input-label">
+                  <input type="radio" name="size" id="XXL" className="me-md-1" value="5"
+                    onChange={(e) => {this.setState({size_id: e.target.value})}}/>
+                    XXL
+                </label>
+                <label htmlFor="PULL SIZE" className="selling-input-label">
+                  <input type="radio" name="size" id="PULL SIZE" className="me-md-1" value="6"
+                    onChange={(e) => {this.setState({size_id: e.target.value})}} />
+                    PULL SIZE
+                </label>
+              </div>
+            </div>
 
-            <p>Brands</p>
-            <input
-              type="radio"
-              name="brands"
-              id="IKEA"
-              className="me-md-1"
-              value="1"
-              onChange={(e) => {this.setState({brands_id: e.target.value})}}
-            />
-            <label htmlFor="IKEA" className="me-md-5">
-              IKEA
-            </label>
-            <input
-              type="radio"
-              name="brands"
-              id="Mr Royal"
-              className="me-md-1"
-              value="2"
-              onChange={(e) => {this.setState({brands_id: e.target.value})}}
-            />
-            <label htmlFor="Mr Royal" className="me-md-5">
-              Mr Royal
-            </label>
-            <input
-              type="radio"
-              name="brands"
-              id="Sweet House"
-              className="me-md-1"
-              value="3"
-              onChange={(e) => {this.setState({brands_id: e.target.value})}}
-            />
-            <label htmlFor="Sweet House" className="me-md-5">
-              Sweet House
-            </label>
-            <input
-              type="radio"
-              name="brands"
-              id="North Oxford"
-              className="me-md-1"
-              value="4"
-              onChange={(e) => {this.setState({brands_id: e.target.value})}}
-            />
-            <label htmlFor="North Oxford" className="me-md-5">
-              North Oxford
-            </label>
-            <input
-              type="radio"
-              name="brands"
-              id="Mr Poppin 1929"
-              className="me-md-1"
-              value="5"
-              onChange={(e) => {this.setState({brands_id: e.target.value})}}
-            />
-            <label htmlFor="Mr Poppin 1929" className="me-md-5">
-              Mr Poppin 1929
-            </label>
+            <p className="selling-input-title">Brands</p>
+            <div className="selling-input-container">
+              <div className="selling-input">
+                <label htmlFor="IKEA" className="selling-input-label">
+                  <input type="radio" name="brands" id="IKEA" className="me-md-1" value="1"
+                    onChange={(e) => {this.setState({brands_id: e.target.value})}}/>
+                    IKEA
+                </label>
+                <label htmlFor="Mr Royal" className="selling-input-label">
+                  <input type="radio" name="brands" id="Mr Royal" className="me-md-1" value="2"
+                  onChange={(e) => {this.setState({brands_id: e.target.value})}}/>
+                  Mr Royal
+                </label>
+              </div>
+              <div className="selling-input">
+                <label htmlFor="Sweet House" className="selling-input-label">
+                  <input type="radio" name="brands" id="Sweet House" className="me-md-1" value="3"
+                  onChange={(e) => {this.setState({brands_id: e.target.value})}}/>
+                  Sweet House
+                </label>
+                <label htmlFor="North Oxford" className="selling-input-label">
+                  <input type="radio" name="brands" id="North Oxford" className="me-md-1" value="4"
+                  onChange={(e) => {this.setState({brands_id: e.target.value})}}/>
+                  North Oxford
+                </label>
+                <label htmlFor="Mr Poppin 1929" className="selling-input-label">
+                  <input type="radio" name="brands" id="Mr Poppin 1929" className="me-md-1" value="5"
+                  onChange={(e) => {this.setState({brands_id: e.target.value})}}/>
+                  Mr Poppin 1929
+                </label>
+              </div>            
+            </div>
 
 
             <h5 className="fw-bold d-block my-md-5">Photo of Goods</h5>
@@ -427,29 +317,6 @@ export class SellingProduct extends Component {
               />
             </div>
             <button className="mt-md-5 button-sell"
-            // onClick={(e)=>{
-              // e.preventDefault()
-              // const data = {
-              //   name: this.state.name,
-              //   description: this.state.name,
-              //   brands_id: this.state.brands_id,
-              //   category_id: this.state.category_id,
-              //   size_id: this.state.size_id,
-              //   price: this.state.price,
-              //   stock: this.state.stock,
-              //   condition: this.state.condition,
-              //   // files: this.state.files
-
-              // }
-              // let body = new FormData();
-              // body = {...body, ...data};
-              // body.append("file", this.state.file1)
-              // body.append("file", this.state.file2)
-              // body.append("file", this.state.file3)
-              // body.append("file", this.state.file4)
-              // body.append("file", this.state.file5)
-              // this.createNewProduct()
-              // }}
               onClick={this.createNewProduct}
               >Sell Product</button>
           </div>
