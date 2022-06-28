@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import BlackButton from '../../components/Black-Button';
 // import Modal from "../../components/Modal"
+const { REACT_APP_HOST } = process.env
 
 const Forgot = (props) => {
     const [email, setEmail] = useState('')
@@ -11,7 +12,7 @@ const Forgot = (props) => {
     const sendLink = async ()=>{
         try {
             const body = {email}
-            const result = await axios.post(`http://localhost:8000/auth/forgot-password`, body)
+            const result = await axios.post(`${REACT_APP_HOST}/auth/forgot-password`, body)
             modalHandler()
             console.log(result);
         } catch (error) {
