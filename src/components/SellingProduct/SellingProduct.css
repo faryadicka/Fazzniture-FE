@@ -15,3 +15,26 @@
   height: 40px;
   font-size: 15px;
 }
+
+.selling-input-title{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.selling-input-container{
+  display: flex;
+  flex-direction: row;
+}
+.selling-input{
+  display: flex;
+  flex-direction: column;
+}
+.selling-input-label{
+  width: 200px;
+  font-family: 'Arimo', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 28px;
+  color: #4A4141;
+}

@@ -23,8 +23,23 @@ export class Navbar extends Component {
           </div>
           <div className='navbar-2 col-12 col-md-4'>
             <div className='navbar-2-content' onClick={() => { navigate("/") }}>Home</div>
-            <div className='navbar-2-content' onClick={() => { navigate("/") }}>Pages</div>
-            <div className='navbar-2-content' onClick={() => { navigate("/products") }}>Shop</div>
+            <div className='navbar-2-content dropdown' >
+              Pages
+              <div className="dropdown-content">
+                <div className="dropdown-content-child" onClick={() => { navigate("") }}>About Us</div>
+                <div className="dropdown-content-child" onClick={() => { navigate("") }}>Contact Us</div>
+                <div className="dropdown-content-child" onClick={() => { navigate("") }}>Cooming Soon</div>
+                <div className="dropdown-content-child" onClick={() => { navigate("") }}>FAQ</div>
+              </div>
+            </div>
+            <div className='navbar-2-content dropdown'>
+              Shop
+              <div className="dropdown-content">
+                <div className="dropdown-content-child" onClick={() => { navigate("/products") }}>Product</div>
+                <div className="dropdown-content-child" onClick={() => { navigate("/cart") }}>Shopping Cart</div>
+                <div className="dropdown-content-child" onClick={() => { navigate("/order-tracking") }}>Order Tracking</div>
+              </div>
+            </div>
             <div className='navbar-2-content' onClick={() => { navigate("/blog") }}>Blog</div>
           </div>
           <div className='navbar-3 col-12 col-md-4'>
@@ -37,13 +52,17 @@ export class Navbar extends Component {
               onClick={() => { navigate("/cart") }} /></div>
             <div className='dropdown'>
               <img src={require("../../assets/vector/Vector-Drop.png")} alt="Drop" className="navbar-3-logo dropbtn" />
-              <div className="dropdown-content">
+              <div className="dropdown-content dropdown-content-right">
                 {!this.props.isLoggedIn ?
                   <div className="dropdown-content-child" onClick={() => { navigate("/auth") }}>Login</div> :
                   <div className="dropdown-content-child" onClick={() => { navigate("/profile") }}>Profile</div>
                 }
                 {this.props.isLoggedIn ?
                   <div className="dropdown-content-child" onClick={() => { navigate("/notification") }}>Notification</div> :
+                  <div className="dropdown-content-child" onClick={() => { navigate("/auth") }}>Register</div>
+                }
+                {this.props.isLoggedIn ?
+                  <div className="dropdown-content-child" onClick={() => { navigate("/chat") }}>Chat</div> :
                   <></>
                 }
                 {this.props.isLoggedIn ?
