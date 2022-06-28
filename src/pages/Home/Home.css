@@ -27,16 +27,6 @@
    color: black;
 }
 
-.header-navbar {
-   position: absolute;
-   display: flex;
-   flex-direction: row;
-   height: 85px;
-   width: 100%;
-   padding-left: 60px;
-   padding-right: 60px;
-   background-color: transparent !important;
-}
 .jumbotron {
    background: url('../../assets/background/Jumbotron.png');
    height: 660px;

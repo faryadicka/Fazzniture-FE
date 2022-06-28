@@ -190,8 +190,8 @@ class Products extends Component {
     }
     return (
       <>
-        <Navbar />
-        <Header title="Let's Shopping" desc="Find and buy the one you like" />
+        <Navbar page="shop"/>
+        <Header title="Let's Shopping" desc="Find and buy the one you like" section="Shop" page="Product"/>
         <div className="container products-container">
           <div className="row justify-content-between px-4 px-md-0">
             <div className="col-12 col-md-3">

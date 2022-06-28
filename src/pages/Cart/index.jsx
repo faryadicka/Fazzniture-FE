@@ -14,8 +14,8 @@ export class Cart extends Component {
   render() {
     return (
       <>
-        <Navbar />
-        <Header title="Your Cart" desc="Buy everything in your cart now!" />
+        <Navbar page="shop"/>
+        <Header title="Your Cart" desc="Buy everything in your cart now!" section="Cart"/>
         <div className="container my-md-5">
           {this.state.empty ? <EmptyCart /> : <FilledCart />}
         </div>
