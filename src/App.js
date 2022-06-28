@@ -44,7 +44,7 @@ function App() {
                   <Route path="/notification" element={<Notification />} />
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/order-tracking" element={<OrderTracking />} />
-                  <Route path="/reset" element={<Reset />} />
+                  <Route path="/reset/:token" element={<Reset />} />
                   <Route path="*" element={<NotFound />} />
                </Routes>
             </Router>
