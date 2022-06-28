@@ -120,6 +120,7 @@ class Products extends Component {
     window.scrollTo(0, 0);
   };
   componentDidMount() {
+    window.document.title = "Products";
     const { dispatch, searchParams } = this.props;
     const name = searchParams.get("name") || "";
     const categories = searchParams.get("category") || "";
