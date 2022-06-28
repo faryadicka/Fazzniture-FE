@@ -18,6 +18,7 @@ import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import Notification from './pages/Notification';
 import Blog from './pages/Blog';
+import OrderTracking from './pages/OrderTracking';
 // import PrivateRoute from "./components/PrivateRoute";
 // import PublicRoute from "./components/PublicRoute";
 
@@ -46,6 +47,7 @@ function App() {
       </PersistGate>
     </ReduxProvider>
   );
+
 }
 
 export default App;
