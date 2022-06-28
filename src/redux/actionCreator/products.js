@@ -1,6 +1,6 @@
 // RequestAXIOS
 
-import { getProductsAxios, getProductByIdAxios,createNewProductAxios } from "../../services/products"
+import { getProductsAxios, getProductByIdAxios, createNewProductAxios } from "../../services/products"
 // ActionString
 import { getProductsString, getProductIdString, setStatus, createNewProduct } from "./actionString"
 
@@ -15,8 +15,8 @@ export const createProduct = (body, token) => {
   return {
     type: createNewProduct,
     payload: createNewProductAxios(body, token)
-    }
-    }
+  }
+}
 export const getProductByIdAction = (id) => {
   return {
     type: getProductIdString,

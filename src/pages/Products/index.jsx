@@ -47,6 +47,8 @@ class Products extends Component {
       min_range: 0,
       max_range: 0,
       errorGet: false,
+      page: "",
+      totalPage: "",
     };
   }
 
@@ -64,7 +66,6 @@ class Products extends Component {
   getAllBrands = () => {
     getAllBrandsAxios()
       .then((res) => {
-        console.log(res.data.data);
         this.setState({
           brands: res.data.data,
         });
@@ -96,30 +97,8 @@ class Products extends Component {
       });
   };
 
-  nextLink = () => {
-    const {
-      setSearchParams,
-      meta: { page, next },
-      urlParams,
-      dispatch,
-    } = this.props;
-    dispatch(setPage(Number(page) + 1));
-    setSearchParams(next.slice(9));
-    window.scrollTo(0, 0);
-  };
-
-  prevLink = () => {
-    const {
-      setSearchParams,
-      meta: { page, prev },
-      urlParams,
-      dispatch,
-    } = this.props;
-    dispatch(setPage(Number(page) - 1));
-    setSearchParams(prev.slice(9));
-    window.scrollTo(0, 0);
-  };
   componentDidMount() {
+    console.log("haii");
     window.document.title = "Products";
     const { dispatch, searchParams } = this.props;
     const name = searchParams.get("name") || "";
@@ -149,6 +128,11 @@ class Products extends Component {
     this.getAllSizes();
     this.getAllColors();
     dispatch(deleteParamsAction({}));
+    const { meta } = this.props.products;
+    this.setState({
+      totalPage: meta.totalPage,
+      page: meta.page,
+    });
   }
   componentDidUpdate(prevProps) {
     const { dispatch, searchParams } = this.props;
@@ -188,23 +172,22 @@ class Products extends Component {
     }
   }
   render() {
+    const { data, setSearchParams, dispatch, urlParams } = this.props;
     const {
-      data,
-      meta: { page, totalPage, totalData, next, prev },
-      setSearchParams,
-      dispatch,
-      urlParams,
-      searchParams,
-    } = this.props;
+      categories,
+      brands,
+      sizes,
+      min_range,
+      max_range,
+      errorGet,
+      totalPage,
+      page,
+    } = this.state;
     let active = Number(page);
     let pageItem = [];
     for (let page = 1; page <= totalPage; page++) {
       pageItem.push(page);
     }
-    const { categories, brands, sizes, min_range, max_range, errorGet } =
-      this.state;
-    console.log("next :", next);
-    console.log("prev :", prev);
     return (
       <>
         <Navbar />
@@ -329,9 +312,7 @@ class Products extends Component {
             </div>
             <div className="col-md-8">
               <div className="d-flex justify-content-between mt-4 mt-md-0">
-                <div className="desc-pagination">
-                  Showing 1-12 of {totalData} Results
-                </div>
+                <div className="desc-pagination">Showing 1-12 of Results</div>
                 <div className="sort-by">
                   <div className="dropdown">
                     <span>
@@ -360,13 +341,13 @@ class Products extends Component {
                   </div>
                 </div>
               </div>
-              <div className="row justify-content-between text-center mt-md-4">
+              <div className="row justify-content-between gap-md-1 text-center mt-md-4">
                 {errorGet ? (
                   <>
-                    <h1 className="product-404">PRODUCTS NOT FOUND</h1>
+                    <h1 className="product-404 w-100">PRODUCTS NOT FOUND</h1>
                     <img src={GIF} alt="gif" />
                   </>
-                ) : (
+                ) : data ? (
                   data.map((data) => (
                     <CardProduct
                       title={data.name}
@@ -376,30 +357,14 @@ class Products extends Component {
                       id={data.product_id}
                     />
                   ))
-                )}
+                ) : null}
               </div>
-              {searchParams.get("page") === "" ||
-              searchParams.get("page") <= 1 ? (
-                <></>
-              ) : (
-                <button onClick={this.prevLink} className="btn-link me-md-1">
-                  &laquo;
-                </button>
-              )}
               {errorGet ? (
                 <></>
               ) : (
                 pageItem.map((page) => (
                   <PageButton number={page} currentPage={active} />
                 ))
-              )}
-              {searchParams.get("page") === "" ||
-              searchParams.get("page") > 1 ? (
-                <></>
-              ) : (
-                <button onClick={this.nextLink} className="btn-link ms-md-1">
-                  &raquo;
-                </button>
               )}
             </div>
           </div>
@@ -414,13 +379,15 @@ const mapStateToProps = (state) => {
   const {
     products: {
       products: { data, meta },
+      products,
     },
     helpers: { urlParams },
   } = state;
   return {
     data,
-    meta,
     urlParams,
+    products,
+    meta,
   };
 };
 

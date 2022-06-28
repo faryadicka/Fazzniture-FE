@@ -14,7 +14,6 @@ const productsReducer = (state = initialState, action) => {
     case getProductsString + PENDING:
       return { ...state, isLoading: true }
     case getProductsString + FULFILLED:
-      console.log(action.payload.data)
       return { ...state, products: action.payload.data, isLoading: false }
     case getProductsString + REJECTED:
       return { ...state, isLoading: false, err: action.payload }
@@ -29,7 +28,6 @@ const productsReducer = (state = initialState, action) => {
     case getProductIdString + PENDING:
       return { ...state, isLoading: true }
     case getProductIdString + FULFILLED:
-      console.log(action.payload.data)
       return { ...state, productId: action.payload.data, isLoading: false }
     case getProductIdString + REJECTED:
       return { ...state, isLoading: false, err: action.payload }

@@ -8,7 +8,7 @@ class CardProduct extends Component {
   render() {
     const { navigate, id } = this.props
     return (
-      <div className='col-md-4 text-center card-product-click' onClick={() => {
+      <div className='col-md-3 text-center card-product-click' onClick={() => {
         navigate(`/products/detail/${id}`)
         window.scrollTo(0, 0);
       }}>
