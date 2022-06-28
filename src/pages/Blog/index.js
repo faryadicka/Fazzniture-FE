@@ -25,7 +25,7 @@ export class index extends Component {
   render() {
     return (
         <div>
-            <Navbar/>
+            <Navbar page="blog"/>
             <Header section="Blog" title="Our Blog" desc="Read and enjoy content from us"/>
             <div className='blog'>
                 <div className='blog-side'>

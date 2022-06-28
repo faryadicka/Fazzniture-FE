@@ -10,6 +10,19 @@
   padding-right: 60px;
   justify-content: center;
 }
+.header-navbar {
+   position: absolute;
+   display: flex;
+   flex-direction: row;
+   height: 85px;
+   width: 100%;
+   padding-left: 60px;
+   padding-right: 60px;
+   background-color: transparent !important;
+}
+.navbar-underline{
+  border-bottom: 2px solid black;
+}
 .navbar-1 {
   font-family: "Arimo", sans-serif;
   font-style: normal;
@@ -24,6 +37,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  text-align: center;
   column-gap: 30px;
   font-family: "Arimo";
   font-style: normal;
@@ -34,7 +48,7 @@
   cursor: pointer;
 }
 .navbar-2-content {
-  width: 50px;
+  width: auto;
 }
 .navbar-3 {
   display: flex;
@@ -71,6 +85,7 @@
   text-decoration: none;
   display: block;
   cursor: pointer;
+  text-align: left;
   
   font-family: 'Arimo', sans-serif;
   font-style: normal;
