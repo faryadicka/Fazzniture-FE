@@ -25,6 +25,7 @@ import {
   deleteParamsAction,
   setSort,
   setRange,
+  setPage,
 } from "../../redux/actionCreator/helpers";
 
 //Axios
@@ -98,6 +99,29 @@ class Products extends Component {
       });
   };
 
+  nextLink = () => {
+    const {
+      setSearchParams,
+      meta: { page },
+      urlParams,
+      dispatch,
+    } = this.props;
+    dispatch(setPage(Number(page) + 1));
+    setSearchParams(urlParams);
+    window.scrollTo(0, 0);
+  };
+
+  prevLink = () => {
+    const {
+      setSearchParams,
+      meta: { page },
+      urlParams,
+      dispatch,
+    } = this.props;
+    dispatch(setPage(Number(page) - 1));
+    setSearchParams(urlParams);
+    window.scrollTo(0, 0);
+  };
   componentDidMount() {
     const { dispatch, searchParams } = this.props;
     const name = searchParams.get("name") || "";
@@ -169,7 +193,7 @@ class Products extends Component {
   render() {
     const {
       data,
-      meta: { page, totalPage, totalData },
+      meta: { page, totalPage, totalData, next, prev },
       setSearchParams,
       dispatch,
       urlParams,
@@ -182,7 +206,7 @@ class Products extends Component {
     }
     const { categories, brands, sizes, min_range, max_range, errorGet } =
       this.state;
-    // console.log(max_range);
+    console.log(page);
     return (
       <>
         <Navbar />
@@ -356,12 +380,26 @@ class Products extends Component {
                   ))
                 )}
               </div>
+              {page <= 1 ? (
+                <></>
+              ) : (
+                <button onClick={this.prevLink} className="btn-link me-md-1">
+                  &laquo;
+                </button>
+              )}
               {errorGet ? (
                 <></>
               ) : (
                 pageItem.map((page) => (
                   <PageButton number={page} currentPage={active} />
                 ))
+              )}
+              {page > 1 ? (
+                <></>
+              ) : (
+                <button onClick={this.nextLink} className="btn-link ms-md-1">
+                  &raquo;
+                </button>
               )}
             </div>
           </div>
