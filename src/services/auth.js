@@ -27,3 +27,14 @@ export const authRegisterAxios = (body) => {
   const URL = `${REACT_APP_HOST}/auth/register`
   return axios.post(URL, body)
 }
+
+
+export const authResetAxios = (body, token) => {
+  const URL = `${REACT_APP_HOST}/auth/reset-password`
+  return axios.put(URL, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    }
+  })
+}

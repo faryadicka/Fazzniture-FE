@@ -21,7 +21,7 @@
    background-color: transparent !important;
 }
 .navbar-underline{
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid black !important;
 }
 .navbar-1 {
   font-family: "Arimo", sans-serif;
@@ -39,7 +39,7 @@
   justify-content: center;
   text-align: center;
   column-gap: 30px;
-  font-family: "Arimo";
+  font-family: "Arimo", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -49,6 +49,7 @@
 }
 .navbar-2-content {
   width: auto;
+  border-bottom: 2px solid transparent;
 }
 .navbar-3 {
   display: flex;

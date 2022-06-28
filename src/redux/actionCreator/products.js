@@ -16,7 +16,8 @@ export const createProduct = (body, token) => {
     type: createNewProduct,
     payload: createNewProductAxios(body, token)
     }
-    }
+}
+
 export const getProductByIdAction = (id) => {
   return {
     type: getProductIdString,

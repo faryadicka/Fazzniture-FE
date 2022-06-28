@@ -2,27 +2,22 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import BlackButton from '../../components/Black-Button';
-// import Modal from "../../components/Modal"
+import Modal from "../../components/Modal"
 const { REACT_APP_HOST } = process.env
 
 const Forgot = (props) => {
     const [email, setEmail] = useState('')
-   //  const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     const sendLink = async ()=>{
         try {
             const body = {email}
             const result = await axios.post(`${REACT_APP_HOST}/auth/forgot-password`, body)
-            modalHandler()
+            setShowModal(true)
             console.log(result);
         } catch (error) {
             console.log(error);
         }
-    }
-    
-    const modalHandler = () => {
-      // setShowModal(false)
-      props.pageHandler("login")
     }
 
     return (
@@ -46,7 +41,7 @@ const Forgot = (props) => {
                  Back to Login
               </div>
            </div>
-           {/* <Modal  modalHandler={showModal} title="Success!" message="The email has been sent" button="Continue" navigateTo="/reset" close="true" />: */}
+           {showModal ? <Modal title="Succes!" message="Please check your email to reset your password." button="Continue" navigateTo="/" close="false" /> : <></>}
         </div>
      );
 }
