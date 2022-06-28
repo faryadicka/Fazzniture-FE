@@ -56,8 +56,7 @@ class Login extends Component {
 
   render() {
     // if (this.props.token) return <Navigate to="/" />
-    const { pageHandler, navigate, token } = this.props;
-    console.log(token)
+    const { pageHandler, navigate } = this.props;
     return (
       <>
         <div className="login-main">
