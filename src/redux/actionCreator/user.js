@@ -1,7 +1,7 @@
 // RequestAXIOS
 import { authLoginAxios, getProfileAxios } from "../../services/auth"
 // ActionString
-import { loginAuth, getProfile } from "../actionCreator/actionString"
+import { loginAuth, getProfile, logoutAuth } from "../actionCreator/actionString"
 
 export const loginAuthAction = (body) => {
   return {
@@ -14,5 +14,14 @@ export const getProfileAction = (token) => {
   return {
     type: getProfile,
     payload: getProfileAxios(token)
+  }
+}
+
+export const logoutAuthAction = (remove) => {
+  return {
+    type: logoutAuth,
+    payload: {
+      remove
+    }
   }
 }

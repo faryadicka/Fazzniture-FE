@@ -51,6 +51,7 @@ function App() {
          </PersistGate>
       </ReduxProvider>
    );
+
 }
 
 export default App;
