@@ -371,7 +371,7 @@ class Products extends Component {
                 <></>
               ) : (
                 pageItem.map((page) => (
-                  <PageButton number={page} currentPage={active} />
+                  <PageButton number={page} currentPage={active} key={page} />
                 ))
               )}
             </div>
