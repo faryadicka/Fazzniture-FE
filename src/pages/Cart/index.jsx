@@ -11,11 +11,19 @@ export class Cart extends Component {
   state = {
     empty: true,
   };
+
+  componentDidMount() {
+    window.document.title = "Cart";
+  }
   render() {
     return (
       <>
-        <Navbar page="shop"/>
-        <Header title="Your Cart" desc="Buy everything in your cart now!" section="Cart"/>
+        <Navbar page="shop" />
+        <Header
+          title="Your Cart"
+          desc="Buy everything in your cart now!"
+          section="Cart"
+        />
         <div className="container my-md-5">
           {this.state.empty ? <EmptyCart /> : <FilledCart />}
         </div>

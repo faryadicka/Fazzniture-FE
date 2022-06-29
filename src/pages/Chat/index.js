@@ -12,6 +12,9 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
 class Chat extends Component {
+  componentDidMount() {
+    window.document.title = "Chat";
+  }
   render() {
     return (
       <>

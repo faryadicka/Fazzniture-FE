@@ -9,7 +9,7 @@ class ModalWarning extends Component {
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body
           className={`text-center ${
-            success ? "text-success" : "text-warning"
+            success ? "text-success" : "text-danger"
           } fw-bold text-center`}
         >
           {message}

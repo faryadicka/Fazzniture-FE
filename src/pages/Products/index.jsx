@@ -97,7 +97,6 @@ class Products extends Component {
   };
 
   componentDidMount() {
-    console.log("haii");
     window.document.title = "Products";
     const { dispatch, searchParams } = this.props;
     const name = searchParams.get("name") || "";
@@ -121,17 +120,22 @@ class Products extends Component {
         sort,
         order
       )
-    );
+    )
+      .then((res) => {
+        console.log(res.value);
+        this.setState({
+          totalPage: res.value.data.meta.totalPage,
+          page: res.value.data.meta.page,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     this.getAllCategories();
     this.getAllBrands();
     this.getAllSizes();
     this.getAllColors();
     dispatch(deleteParamsAction({}));
-    const { meta } = this.props.products;
-    this.setState({
-      totalPage: meta.totalPage,
-      page: meta.page,
-    });
   }
   componentDidUpdate(prevProps) {
     const { dispatch, searchParams } = this.props;
@@ -179,7 +183,7 @@ class Products extends Component {
       min_range,
       max_range,
       errorGet,
-      totalPage,
+      totalPage = 0,
       page,
     } = this.state;
     let active = Number(page);

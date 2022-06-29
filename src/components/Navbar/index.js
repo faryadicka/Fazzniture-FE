@@ -4,7 +4,8 @@ import withHOC from "../../helpers/withHOC";
 import { connect } from 'react-redux'
 
 //ReduxAction
-import { setSearch } from "../../redux/actionCreator/helpers"
+import { setSearch, deleteParamsAction } from "../../redux/actionCreator/helpers"
+import { logoutAuthAction } from "../../redux/actionCreator/user"
 
 export class Navbar extends Component {
   state = {
@@ -66,7 +67,10 @@ export class Navbar extends Component {
                   <></>
                 }
                 {this.props.isLoggedIn ?
-                  <div className="dropdown-content-child" onClick={() => { navigate("/") }}>Logout</div> :
+                  <div className="dropdown-content-child" onClick={() => {
+                    dispatch(logoutAuthAction({}, false))
+                    navigate("/")
+                  }}>Logout</div> :
                   <></>
                 }
               </div>
@@ -85,6 +89,7 @@ export class Navbar extends Component {
               alt="Search"
               className="navbar-search-logo"
               onClick={() => {
+                dispatch(deleteParamsAction({}));
                 dispatch(setSearch(this.state.searchProduct))
                 setSearchParams(urlParams)
               }} />

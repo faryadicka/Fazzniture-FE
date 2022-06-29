@@ -5,7 +5,7 @@ import withHOC from '../../helpers/withHOC';
 
 import "./CategoryList.css"
 
-import { setCategory, deleteParamsAction } from "../../redux/actionCreator/helpers"
+import { setCategory } from "../../redux/actionCreator/helpers"
 
 class CategoryList extends Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class CategoryList extends Component {
       <div className='d-flex justify-content-between'>
         <button
           onClick={() => {
-            dispatch(deleteParamsAction({}));
             dispatch(setCategory(name))
             setSearchParams(urlParams)
           }}

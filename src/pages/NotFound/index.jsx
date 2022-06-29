@@ -10,10 +10,13 @@ import "./NotFound.css";
 import NF from "../../assets/img/notfound.png";
 
 export class NotFound extends Component {
+  componentDidMount() {
+    window.document.title = "404";
+  }
   render() {
     return (
       <div>
-        <Navbar/>
+        <Navbar />
         <div className="container notfound-container">
           <div className="row">
             <div className="col-md-7">
@@ -38,9 +41,9 @@ export class NotFound extends Component {
             </div>
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </div>
-    )
+    );
   }
 }
 

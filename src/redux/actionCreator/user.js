@@ -17,11 +17,12 @@ export const getProfileAction = (token) => {
   }
 }
 
-export const logoutAuthAction = (remove) => {
+export const logoutAuthAction = (remove, value) => {
   return {
     type: logoutAuth,
     payload: {
-      remove
+      remove,
+      value
     }
   }
 }

@@ -4,6 +4,9 @@ import "./MyOrder.css";
 import CardOrder from "../CardOrder";
 
 export class MyOrder extends Component {
+  componentDidMount() {
+    window.document.title = "My Order";
+  }
   render() {
     return (
       <>

@@ -10,27 +10,31 @@ import Register from './Register.js';
 import Forgot from './Forgot.jsx';
 
 export class index extends Component {
-constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       page: "login"
     };
-};
-pageHandler = (page) => {
-  this.setState({
-    page: page
-  })
-}
+  };
+
+  componentDidMount() {
+    window.document.title = "Auth";
+  }
+  pageHandler = (page) => {
+    this.setState({
+      page: page
+    })
+  }
   render() {
-    const {page} = this.state
+    const { page } = this.state
     return (
       <Fragment>
-          <Navbar/>
-          <Header title="My Account" desc="Register and log in with your account to be able to shop at will"/>
-          {page === "login" && <Login pageHandler={this.pageHandler}/>}
-          {page === "register" && <Register pageHandler={this.pageHandler}/>}
-          {page === "forgot" && <Forgot pageHandler={this.pageHandler}/>}
-          <Footer/>
+        <Navbar />
+        <Header title="My Account" desc="Register and log in with your account to be able to shop at will" />
+        {page === "login" && <Login pageHandler={this.pageHandler} />}
+        {page === "register" && <Register pageHandler={this.pageHandler} />}
+        {page === "forgot" && <Forgot pageHandler={this.pageHandler} />}
+        <Footer />
       </Fragment>
     )
   };

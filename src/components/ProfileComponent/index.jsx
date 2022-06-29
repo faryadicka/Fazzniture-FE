@@ -12,7 +12,10 @@ import ModalSuccess from "../../components/ModalSuccess";
 //Axios
 import { updateProfileAxios } from "../../services/auth";
 //ReduxAction
-import { getProfileAction } from "../../redux/actionCreator/user";
+import {
+  getProfileAction,
+  logoutAuthAction,
+} from "../../redux/actionCreator/user";
 import { connect } from "react-redux";
 
 class ProfileComponent extends Component {
@@ -127,6 +130,7 @@ class ProfileComponent extends Component {
   };
 
   componentDidMount() {
+    window.document.title = "Profile";
     const { token } = this.props;
     this.getProfilePage(token);
   }
@@ -149,7 +153,7 @@ class ProfileComponent extends Component {
       errorMsg,
       successMsg,
     } = this.state;
-    const { role_id } = this.props;
+    const { role_id, dispatch } = this.props;
     // console.log(image);
     return (
       <>
@@ -388,7 +392,12 @@ class ProfileComponent extends Component {
             </div>
           </div>
         </div>
-        <button className="btn btn-danger mt-md-5 mt-5">
+        <button
+          className="btn btn-danger mt-md-5 mt-5"
+          onClick={() => {
+            dispatch(logoutAuthAction({}, false));
+          }}
+        >
           <img src={Logout} alt="" />
           LOGOUT
         </button>

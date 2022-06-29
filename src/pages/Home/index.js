@@ -35,32 +35,34 @@ export class index extends Component {
   }
 
   componentDidMount = () => {
+    window.document.title = "Home"
     window.scrollTo(0, 0)
     this.getFavoriteProduct()
+    console.log(this.props.token)
   }
 
   render() {
-    const {favoriteProducts} = this.props
+    const { favoriteProducts } = this.props
     return (
       <div>
-        <Navbar page="home"/>
+        <Navbar page="home" />
         <Jumbotron />
         {favoriteProducts.map((item) => {
-            return (favoriteProducts.indexOf(item) % 2 === 0 ?
-              <CardLeft
+          return (favoriteProducts.indexOf(item) % 2 === 0 ?
+            <CardLeft
               name={item.name}
               description="Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo. Curabitur blandit ultrices ex. Curabitur ut magna dignissim, dignissim neque et, placerat risus. Morbi dictum lectus quam"
               picture={item.file}
               key={item.id}
-              />:
-              <CardRight
+            /> :
+            <CardRight
               name={item.name}
               description="Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque a nunc vel diam auctor commodo. Curabitur blandit ultrices ex. Curabitur ut magna dignissim, dignissim neque et, placerat risus. Morbi dictum lectus quam"
               picture={item.file}
               key={item.id}
-              />
+            />
 
-            )
+          )
         })}
 
 

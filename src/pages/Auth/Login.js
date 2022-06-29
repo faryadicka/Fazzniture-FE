@@ -129,10 +129,10 @@ class Login extends Component {
             </div>
           </div>
         </div>
-        <ModalWarning showModal={this.state.showModal} hideModal={() => {
+        <ModalWarning message="YOU HAVE TO LOGIN FIRST" showModal={this.state.showModal} hideModal={() => {
           this.setState({
             showModal: false
-          }, () => navigate("/auth"))
+          }, () => navigate("/auth", { replace: true, state: null }))
         }} />
       </>
     );

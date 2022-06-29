@@ -27,7 +27,9 @@ const userReducer = (state = initialState, action) => {
       return { ...state, isLoading: false, err: action.payload }
 
     case logoutAuth:
-      state.loginData = {}
+      const { remove, value } = action.payload
+      state.loginData = remove
+      state.isLoggedIn = value
       return { ...state }
     default:
       return state
