@@ -38,7 +38,6 @@ export class index extends Component {
     window.document.title = "Home"
     window.scrollTo(0, 0)
     this.getFavoriteProduct()
-    console.log(this.props.token)
   }
 
   render() {

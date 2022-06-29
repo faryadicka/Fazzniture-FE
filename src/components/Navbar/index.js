@@ -45,6 +45,7 @@ export class Navbar extends Component {
           </div>
           <div className='navbar-3 col-12 col-md-4'>
             <div><img src={require("../../assets/vector/Vector-Search.png")} alt="Search" className="navbar-3-logo" onClick={() => {
+              dispatch(deleteParamsAction({}));
               this.setState({ search: !this.state.search })
             }} /></div>
             <div><img src={require("../../assets/vector/Vector-Love.png")} alt="Love" className="navbar-3-logo"
@@ -89,7 +90,6 @@ export class Navbar extends Component {
               alt="Search"
               className="navbar-search-logo"
               onClick={() => {
-                dispatch(deleteParamsAction({}));
                 dispatch(setSearch(this.state.searchProduct))
                 setSearchParams(urlParams)
               }} />
