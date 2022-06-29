@@ -32,6 +32,9 @@ import Footer from "../../components/Footer/index";
 import ImageDetail from "../../components/ImageDetail";
 import CardProduct from "../../components/CardProduct";
 
+// ReduxAction
+import { addWhishlistAction } from "../../redux/actionCreator/wishlist";
+
 //Axios request
 import {
   getProductByIdAxios,
@@ -50,14 +53,16 @@ class ProductDetail extends Component {
       productId: "",
       stock: 0,
       qty: 0,
+      productInfo: {},
     };
   }
 
   getProductById = (id) => {
     getProductByIdAxios(id)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         this.setState({
+          productInfo: res.data.data,
           pict: res.data.pict,
           brand: res.data.data.brand,
           price: res.data.data.price,
@@ -75,7 +80,7 @@ class ProductDetail extends Component {
   getProductRelated = (category) => {
     getProductRelatedAxios(category)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         this.setState({
           relatedProduct: res.data.data,
         });
@@ -88,25 +93,18 @@ class ProductDetail extends Component {
     window.document.title = "Product Detail";
     const {
       params: { id },
+      wishlist: { wishlist },
     } = this.props;
     const { category } = this.state;
     this.getProductById(id);
     this.getProductRelated(category);
+    console.log(wishlist);
   }
 
-  // const {
-  // productId: { file },
-  // productId,
-  // } = this.props;
-
-  // const image = pict[0].file;
-
   render() {
-    console.log(this.props);
     const {
       params: { id },
       dispatch,
-      // cart,
     } = this.props;
     const {
       pict,
@@ -205,7 +203,19 @@ class ProductDetail extends Component {
               <div className="square-love">
                 <img src={Love} alt="love" className="love-button" />
               </div>
-              <button className="button-wishlist">Add to wishlist</button>
+              <button
+                onClick={() => {
+                  const {
+                    wishlist: { wishlist },
+                  } = this.props;
+                  const { pict, productInfo } = this.state;
+                  productInfo.image = pict[0].file;
+                  dispatch(addWhishlistAction([...wishlist, productInfo]));
+                }}
+                className="button-wishlist"
+              >
+                Add to wishlist
+              </button>
             </div>
             <div className="row mt-md-5">
               <ul className="description-list">
@@ -253,16 +263,6 @@ class ProductDetail extends Component {
                   id={product.product_id}
                 />
               ))}
-              {/* <CardProduct
-                title="Coaster 506222-CO Loveseat"
-                price="$765.99"
-                image={Pd}
-              />
-              <CardProduct
-                title="Coaster 506222-CO Loveseat"
-                price="$765.99"
-                image={Pd}
-              /> */}
             </div>
           </div>
         </div>
@@ -276,10 +276,12 @@ const mapStateToProps = (state) => {
   const {
     products: { productId },
     cartOfProduct: { cart },
+    wishlist,
   } = state;
   return {
     productId,
     cart,
+    wishlist,
   };
 };
 

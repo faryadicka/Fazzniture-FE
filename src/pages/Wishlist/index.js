@@ -22,11 +22,12 @@ export class index extends Component {
   };
 
   render() {
-    const wishlist = [
-      { image: require('../../assets/img/Mask.png'), name: 'Product-1', stock: 100, price: 2000 },
-      { image: require('../../assets/img/Mask.png'), name: 'Product-2', stock: 100, price: 3000 },
-      { image: require('../../assets/img/Mask.png'), name: 'Product-3', stock: 100, price: 2000 },
-    ];
+    // const wishlist = [
+    //   { image: require('../../assets/img/Mask.png'), name: 'Product-1', stock: 100, price: 2000 },
+    //   { image: require('../../assets/img/Mask.png'), name: 'Product-2', stock: 100, price: 3000 },
+    //   { image: require('../../assets/img/Mask.png'), name: 'Product-3', stock: 100, price: 2000 },
+    // ];
+    const { wishlist: { wishlist } } = this.props
     return (
       <div>
         <Navbar />
@@ -43,10 +44,12 @@ const mapStateToProps = (state) => {
       loginData: { token },
     },
     favorite: { favoriteProducts },
+    wishlist,
   } = state;
   return {
     token,
     favoriteProducts,
+    wishlist
   };
 };
 

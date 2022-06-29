@@ -6,7 +6,8 @@ const initialState = {
   isLoading: false,
   err: null,
   statusGet: false,
-  result: []
+  result: [],
+  array: []
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ const productsReducer = (state = initialState, action) => {
     case getProductsString + PENDING:
       return { ...state, isLoading: true }
     case getProductsString + FULFILLED:
+      console.log(action.payload.data.data)
       return { ...state, products: action.payload.data, isLoading: false }
     case getProductsString + REJECTED:
       return { ...state, isLoading: false, err: action.payload }

@@ -10,6 +10,8 @@ export const increaseProduct = "ADD_PRODUCT"
 export const decreaseProduct = "REDUCE_PRODUCT"
 export const updateCart = "UPDATE_CART"
 export const createNewProduct = "CREATE_PRODUCT"
+export const addWhishlist = "ADD_WISHLIST"
+export const removeWhishlist = "REMOVE_WISHLIST"
 
 
 //Other
