@@ -54,6 +54,8 @@ class ProductDetail extends Component {
       stock: 0,
       qty: 0,
       productInfo: {},
+      bigPict: null,
+      imgDefault: null,
     };
   }
 
@@ -89,6 +91,10 @@ class ProductDetail extends Component {
         console.log(err);
       });
   };
+
+  handlerImage = (image, def) => {
+    this.setState({ ...this.state, bigPict: image, imgDefault: def });
+  };
   componentDidMount() {
     window.document.title = "Product Detail";
     const {
@@ -116,6 +122,7 @@ class ProductDetail extends Component {
       category,
       relatedProduct,
     } = this.state;
+    console.log(pict);
     return (
       <>
         <Navbar />
@@ -143,7 +150,11 @@ class ProductDetail extends Component {
             <div className="col-12 col-md-3">
               <div className="row justify-content-around">
                 {pict.map((item) => (
-                  <ImageDetail image={item.file} key={item.id} />
+                  <ImageDetail
+                    handlerImage={this.handlerImage}
+                    image={item.file}
+                    key={item.id}
+                  />
                 ))}
               </div>
             </div>
@@ -151,7 +162,9 @@ class ProductDetail extends Component {
               <div className="row">
                 <div className="col-md-8">
                   <img
-                    // src={image}
+                    src={
+                      this.state.bigPict ? this.state.bigPict : pict[0]?.file
+                    }
                     alt="img-big"
                     className="mt-md-5 image-zoom"
                   />
